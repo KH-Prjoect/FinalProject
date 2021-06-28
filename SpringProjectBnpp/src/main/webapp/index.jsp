@@ -9,6 +9,7 @@
 <body>
 
 	<a href="home.do">home</a>
+	<b>testtest</b>
 
 </body>
 </html>
