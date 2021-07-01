@@ -14,20 +14,23 @@ private Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 	
 	//spring 3.2 이상부터는 servlet-context.xml에서 <exclude-mapping-path>를 통해 설정 가능!
 	
-	@Override
+
+
+@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 
 		logger.info("[Interceptor] : preHandle");
 		
 		
-		if(request.getRequestURI().contains("/loginform.do") || 	
+/*		if(request.getRequestURI().contains("/loginform.do") || 	
 		   request.getRequestURI().contains("/ajaxlogin.do") || 
 		   request.getSession().getAttribute("login") != null 	||	
 		   request.getRequestURI().contains("/test.do")			||
 		   request.getRequestURI().contains("/registerform.do")	||
 		   request.getRequestURI().contains("/register.do")		||
-		   request.getRequestURI().contains("/home.do")
+		   request.getRequestURI().contains("/home.do") 
+		   
 			) {
 			
 		return true;
@@ -37,9 +40,12 @@ private Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 		if(request.getSession().getAttribute("login") == null) {	
 			response.sendRedirect("loginform.do");
 		}
-		
 		return false;
-	}
+	*/	
+		return true;
+
+
+}
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
@@ -58,4 +64,5 @@ private Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 		logger.info("[Interceptor] : afterCompletion");
 
 	}
+
 }

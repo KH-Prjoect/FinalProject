@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.board.recipe">
+
+
+
+	<select id="selectList" resultType="RboardDto">
+	SELECT BR_NUM, BR_TITLE, BR_CONTENT, BR_REGDATE, BR_READCOUNT,BR_RECCOUNT,BR_DELFLAG,BR_CATEGORY,MEMBER_ID
+	FROM BOARDRECIPE
+	ORDER BY BR_NUM DESC
+	</select>
+	
+	<select id="selectOne" parameterType="int" resultType="RboardDto">
+	SELECT BR_NUM, BR_TITLE, BR_CONTENT, BR_REGDATE, BR_READCOUNT,BR_RECCOUNT,BR_DELFLAG,BR_CATEGORY,MEMBER_ID
+	FROM BOARDRECIPE
+	WHERE BR_NUM = #{br_num}
+	</select>
+	
+	<insert id="insert" parameterType="RboardDto">
+	INSERT INTO BOARDRECIPE
+	VALUES(BRNUMSEQ.NEXTVAL,#{br_title},#{br_content},SYSDATE,0,0,'N','Board',#{member_id})	
+	</insert>
+
+	<update id="update" parameterType="RboardDto">
+	UPDATE BOARDRECIPE
+	SET BR_TITLE = #{br_title}, BR_CONTENT = #{br_content}
+	WHERE BR_NUM = #{br_num} 
+	</update>
+
+	<update id="delete" parameterType="int">
+	DELETE FROM BOARDRECIPE
+	WHERE BR_NUM = #{br_num}
+	</update>
+
+</mapper>

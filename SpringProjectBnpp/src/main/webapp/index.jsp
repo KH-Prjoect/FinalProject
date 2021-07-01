@@ -9,7 +9,7 @@
 <body>
 
 	<a href="home.do">home</a>
-	<b>testtest</b>
+	<a href="list.do">recipeboard</a>
 
 </body>
 </html>
