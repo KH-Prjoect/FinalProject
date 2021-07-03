@@ -4,10 +4,12 @@
 
 <typeAliases>
 <typeAlias type="com.kh.bnpp.model.dto.RboardDto" alias="RboardDto"/>
+<typeAlias type="com.kh.bnpp.model.dto.ReplyDto" alias="ReplyDto"/>
 </typeAliases>
 
 <!--  resource : src/main/resources와 연결됨 -->
 <mappers>
 <mapper resource="/mybatis/rboard-mapper.xml"/>
+<mapper resource="/mybatis/reply-mapper.xml"/>
 </mappers>
 </configuration>

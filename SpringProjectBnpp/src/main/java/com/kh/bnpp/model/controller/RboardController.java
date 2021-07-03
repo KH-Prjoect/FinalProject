@@ -1,11 +1,13 @@
 package com.kh.bnpp.model.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.bnpp.model.biz.RboardBiz;
+import com.kh.bnpp.model.biz.ReplyBiz;
 import com.kh.bnpp.model.dto.RboardDto;
 
 @Controller
@@ -13,6 +15,7 @@ public class RboardController {
 
 	@Autowired
 	private RboardBiz biz;
+	private ReplyBiz rbiz;
 	
 
 	@RequestMapping("/list.do")
@@ -31,12 +34,6 @@ public class RboardController {
 	@RequestMapping("/insertres.do")
 	public String insertRes(RboardDto dto) {
 		
-		System.out.println("RboardDto : "+ dto);
-		System.out.println("작성 : "+ dto.getMember_id());
-		System.out.println("제목 : "+ dto.getBr_title());
-		System.out.println("내용 : "+ dto.getBr_content());
-		
-		
 		if (biz.insert(dto) > 0) {
 			return "redirect:list.do";
 		}
@@ -48,6 +45,8 @@ public class RboardController {
 	public String selectOne(Model model, int br_num) {
 		
 		model.addAttribute("dto",biz.selectOne(br_num));
+		// 댓글조회
+//		model.addAttribute("replylist",rbiz.reply_selectList(br_num));
 		
 		return "rboardselect";
 	}
