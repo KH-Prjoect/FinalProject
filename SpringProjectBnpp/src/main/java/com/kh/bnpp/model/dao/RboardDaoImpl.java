@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.bnpp.model.dto.PagingDto;
 import com.kh.bnpp.model.dto.RboardDto;
 
 @Repository
@@ -76,4 +77,29 @@ public class RboardDaoImpl implements RboardDao {
 		return res;
 	}
 
+	@Override
+	public int countBoard() {
+		int res = 0;
+		try {
+			return sqlSession.selectOne(NAMESPACE+ "countBoard");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+		
+	}
+
+	@Override
+	public List<RboardDto> selectBoard(PagingDto pdto) {
+		List<RboardDto> list = new ArrayList<RboardDto>();
+
+		try {
+			list = sqlSession.selectList(NAMESPACE + "selectBoard", pdto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 }

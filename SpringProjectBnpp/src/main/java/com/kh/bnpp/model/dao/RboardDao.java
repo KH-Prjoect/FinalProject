@@ -2,6 +2,7 @@ package com.kh.bnpp.model.dao;
 
 import java.util.List;
 
+import com.kh.bnpp.model.dto.PagingDto;
 import com.kh.bnpp.model.dto.RboardDto;
 
 public interface RboardDao {
@@ -17,4 +18,11 @@ public interface RboardDao {
 	public int update(RboardDto dto);
 
 	public int delete(int br_num);
+
+	// 게시물 총 갯수
+	public int countBoard();
+
+	// 페이징 처리 게시글 조회
+	public List<RboardDto> selectBoard(PagingDto pdto);
+
 }

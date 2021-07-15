@@ -10,7 +10,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </head>
 
 <script type="text/javascript"
@@ -54,24 +64,26 @@
 		});
 
 		$("#replyListDiv").on("click", ".replyDeleteBtn", function() {
-				
-				var reply_no = $(this).attr("name");
-				var isDelete=confirm("확인을 누르면 댓글이 삭제 됩니다.");
-				if(isDelete){
-					//페이지 전환 없이 ajax요청을 통해서 삭제하기
-					$.ajax({
-						url:"replydelete.do",
-						method:"post",
-						data: {"reply_no":reply_no}, // 삭제할 댓글의 번호 전송
-						success:function(responseData){
-							if(responseData.isSuccess){
-								alert("삭제완료");
-								location.reload();
-							}
+
+			var reply_no = $(this).attr("name");
+			var isDelete = confirm("확인을 누르면 댓글이 삭제 됩니다.");
+			if (isDelete) {
+				//페이지 전환 없이 ajax요청을 통해서 삭제하기
+				$.ajax({
+					url : "replydelete.do",
+					method : "post",
+					data : {
+						"reply_no" : reply_no
+					}, // 삭제할 댓글의 번호 전송
+					success : function(responseData) {
+						if (responseData.isSuccess) {
+							alert("삭제완료");
+							location.reload();
 						}
-					});
-				}
-			
+					}
+				});
+			}
+
 		});
 	});
 </script>
@@ -88,8 +100,9 @@
 			<td>${dto.br_title }</td>
 		</tr>
 		<tr>
-			<th>내용</th>
-			<td><textarea rows="10" cols="60" readonly="readonly">${dto.br_content }</textarea></td>
+			<th></th>
+			<td><div id="summernote" 
+					class="form-control" style="width: 600px; height: 100%;">${dto.br_content }</div></td>
 		</tr>
 
 		<tr>
@@ -101,7 +114,7 @@
 				onclick="location.href='updateform.do?br_num=${dto.br_num}'" /> <input
 				type="button" value="삭제"
 				onclick="location.href='delete.do?br_num=${dto.br_num}'" /> <input
-				type="button" value="목록" onclick="location.href='list.do?'" /></td>
+				type="button" value="목록" onclick="location.href='boardList.do?'" /></td>
 		</tr>
 	</table>
 
@@ -119,7 +132,8 @@
 							pattern="yyyy-MM-dd" />
 						<input type="button" class="replyUpdateBtn"
 							name="${reply.reply_no }" value="수정"> <input
-							type="button" name="${reply.reply_no }" class="replyDeleteBtn" value="삭제">
+							type="button" name="${reply.reply_no }" class="replyDeleteBtn"
+							value="삭제">
 					</div>
 				</div>
 				<div>
@@ -146,14 +160,18 @@
 				<label>작성자</label> <input type="text" name="reply_member_id">
 			</p>
 			<p>
-				<textarea rows="5" cols="50" name="reply_content"></textarea>
+				<textarea rows="2" cols="60" name="reply_content"></textarea>
 				<button type="submit">댓글 작성</button>
 			</p>
 			<p></p>
 		</form>
 
 	</div>
-<body>
-
+	<script>
+		$(document).ready(function() {
+			$('#summernote').summernote({
+			});
+		});
+	</script>
 </body>
 </html>

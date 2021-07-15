@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.bnpp.model.dao.RboardDao;
+import com.kh.bnpp.model.dto.PagingDto;
 import com.kh.bnpp.model.dto.RboardDto;
 
 @Service
@@ -37,6 +38,16 @@ public class RboardBizImpl implements RboardBiz {
 	@Override
 	public int delete(int br_num) {
 		return dao.delete(br_num);
+	}
+
+	@Override
+	public int countBoard() {
+		return dao.countBoard();
+	}
+
+	@Override
+	public List<RboardDto> selectBoard(PagingDto pdto) {
+		return dao.selectBoard(pdto);
 	}
 
 }

@@ -10,6 +10,7 @@
 
 	<a href="home.do">home</a>
 	<a href="list.do">recipeboard</a>
+	<a href="boardList.do">boardPaging</a>
 
 </body>
 </html>
