@@ -1,9 +1,13 @@
 package com.kh.bnpp.model.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.bnpp.model.biz.ReplyBiz;
 import com.kh.bnpp.model.dto.ReplyDto;
@@ -28,12 +32,39 @@ public class ReplyController {
 			return "redirect:select.do?br_num=" + rdto.getBr_num();
 		}
 
-		System.out.println("ReplyDto : " + rdto);
-		System.out.println("글번호 : " + rdto.getBr_num());
-		System.out.println("작성 : " + rdto.getReply_member_id());
-		System.out.println("내용 : " + rdto.getReply_content());
-
 		return "redirect:select.do?br_num=" + rdto.getBr_num();
 	}
 
+	
+	@ResponseBody
+	@RequestMapping("/replyupdateres.do")
+	public Map<String,Object> replyupdateRes(ReplyDto rdto) {
+
+		if (rbiz.reply_update(rdto) > 0) {
+			Map<String,Object> map = new HashMap<>();
+			map.put("isSuccess", true );
+			return map;
+		}
+		Map<String,Object> map = new HashMap<>();
+		map.put("isSuccess", false );
+		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/replydelete.do")
+	public Map<String,Object> replydeleteRes(int reply_no) {
+
+		if (rbiz.reply_delete(reply_no) > 0) {
+			System.out.println("댓글번호 : " + reply_no);
+			Map<String,Object> map = new HashMap<>();
+			map.put("isSuccess", true );
+			return map;
+		}
+
+		System.out.println("댓글번호 : " + reply_no);
+		Map<String,Object> map = new HashMap<>();
+		map.put("isSuccess", false );
+		return map;
+	}
+	
 }

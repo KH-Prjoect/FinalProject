@@ -99,4 +99,17 @@ public class ReplyDaoImpl implements ReplyDao {
 		return res;
 	}
 
+	@Override
+	public ReplyDto selectOne(int reply_no) {
+
+		ReplyDto dto = null;
+		try {
+		dto = sqlSession.selectOne(NAMESPACE+"reply_select", reply_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+
 }

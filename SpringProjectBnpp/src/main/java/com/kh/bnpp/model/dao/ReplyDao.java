@@ -10,6 +10,7 @@ public interface ReplyDao {
 	String NAMESPACE = "com.board.reply.";
 
 	public List<ReplyDto> reply_selectList(int br_num);
+	public ReplyDto selectOne(int reply_no);
 	public int reply_insert(ReplyDto Rdto);
 	public int reply_update(ReplyDto Rdto);
 	public int reply_delete(int reply_no);

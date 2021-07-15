@@ -15,6 +15,7 @@ public class RboardController {
 
 	@Autowired
 	private RboardBiz biz;
+	@Autowired
 	private ReplyBiz rbiz;
 	
 
@@ -26,7 +27,7 @@ public class RboardController {
 		return "rboardlist";
 	}
 	
-	@RequestMapping("/insertform.do")
+	@RequestMapping("/insertform.do") 
 	public String insertForm() {
 		return "rboardinsert";
 	}
@@ -46,7 +47,7 @@ public class RboardController {
 		
 		model.addAttribute("dto",biz.selectOne(br_num));
 		// 댓글조회
-//		model.addAttribute("replylist",rbiz.reply_selectList(br_num));
+		model.addAttribute("replylist",rbiz.reply_selectList(br_num));
 		
 		return "rboardselect";
 	}
@@ -61,13 +62,6 @@ public class RboardController {
 	
 	@RequestMapping("/updateres.do")
 	public String updateRes(RboardDto dto) {
-		
-		
-		System.out.println("RboardDto : "+ dto);
-		System.out.println("작성 : "+ dto.getMember_id());
-		System.out.println("제목 : "+ dto.getBr_title());
-		System.out.println("내용 : "+ dto.getBr_content());
-		
 		
 		if(biz.update(dto)>0) {
 			return "redirect:select.do?br_num="+dto.getBr_num();
