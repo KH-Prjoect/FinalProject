@@ -85,6 +85,17 @@
 			}
 
 		});
+		
+		$("#btnRecommend").click(function(){
+		    if(confirm("해당 글을 추천하시겠습니까?")){
+		        document.form1.action="recommend.do";
+		        document.form1.submit();
+		        
+		        alert("해당 글을 추천하였습니다.")
+		        
+		        }
+		    });
+		
 	});
 </script>
 <body>
@@ -107,7 +118,7 @@
 
 		<tr>
 			<td colspan="2" align="center">${dto.br_reccount }<input
-				type="button" value="추천" onclick="" /></td>
+				type="button" class="btnRecommend" value="추천" /></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right"><input type="button" value="수정"
@@ -157,7 +168,7 @@
 		<form method="post" action="replyinsert.do">
 			<input type="hidden" name="br_num" value="${dto.br_num }" />
 			<p>
-				<label>작성자</label> <input type="text" name="reply_member_id">
+				<label>작성자</label> <input type="text" name="reply_member_id" placeholder="${dto.member_id }">
 			</p>
 			<p>
 				<textarea rows="2" cols="60" name="reply_content"></textarea>

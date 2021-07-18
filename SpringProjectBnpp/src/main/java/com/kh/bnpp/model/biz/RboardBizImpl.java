@@ -41,13 +41,18 @@ public class RboardBizImpl implements RboardBiz {
 	}
 
 	@Override
-	public int countBoard() {
-		return dao.countBoard();
+	public int countBoard(PagingDto pdto) {
+		return dao.countBoard(pdto);
 	}
 
 	@Override
 	public List<RboardDto> selectBoard(PagingDto pdto) {
 		return dao.selectBoard(pdto);
+	}
+
+	@Override
+	public int readCount(int br_num) {
+		return dao.readCount(br_num);
 	}
 
 }

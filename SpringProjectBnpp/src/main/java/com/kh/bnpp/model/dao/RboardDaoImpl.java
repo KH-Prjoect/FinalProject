@@ -1,6 +1,7 @@
 package com.kh.bnpp.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -78,10 +79,10 @@ public class RboardDaoImpl implements RboardDao {
 	}
 
 	@Override
-	public int countBoard() {
+	public int countBoard(PagingDto pdto) {
 		int res = 0;
 		try {
-			return sqlSession.selectOne(NAMESPACE+ "countBoard");
+			return sqlSession.selectOne(NAMESPACE+ "countBoard",pdto);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -96,10 +97,22 @@ public class RboardDaoImpl implements RboardDao {
 
 		try {
 			list = sqlSession.selectList(NAMESPACE + "selectBoard", pdto);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return list;
+	}
+
+	@Override
+	public int readCount(int br_num) {
+		int res = 0;
+		try {
+			res = sqlSession.insert(NAMESPACE + "readcount",br_num);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 }

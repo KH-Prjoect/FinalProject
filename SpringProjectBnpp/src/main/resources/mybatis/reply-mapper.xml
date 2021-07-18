@@ -4,21 +4,21 @@
 <mapper namespace="com.board.reply">
 
 	<select id="reply_selectList" parameterType="int" resultType="ReplyDto">
-		SELECT REPLY_NO, REPLY_GROUPNO, REPLY_GROUPSEQ, REPLY_TAB, REPLY_DELFLAG, REPLY_CONTENT, REPLY_REGDATE, BR_NUM, REPLY_MEMBER_ID
+		SELECT REPLY_NO, REPLY_DELFLAG, REPLY_CONTENT, REPLY_REGDATE, BR_NUM, REPLY_MEMBER_ID
 		FROM BOARDREPLY
 		WHERE BR_NUM = #{br_num} AND REPLY_DELFLAG = 'N'
-		ORDER BY REPLY_REGDATE, REPLY_GROUPNO DESC, REPLY_GROUPSEQ
+		ORDER BY REPLY_REGDATE
 	</select>
 	
 	<select id="reply_insert" parameterType="ReplyDto">
 		INSERT INTO BOARDREPLY
 		VALUES(
-		REPLY_NO_SEQ.NEXTVAL, REPLY_GROUPNO_SEQ.NEXTVAL, 1, 0, 'N', #{reply_content}, SYSDATE, #{br_num}, #{reply_member_id}
+		REPLY_NO_SEQ.NEXTVAL, 'N', #{reply_content}, SYSDATE, #{br_num}, #{reply_member_id}
 		)
 	</select>
 	
 	<select id="reply_select" parameterType="ReplyDto">
-		SELECT REPLY_NO, REPLY_GROUPNO, REPLY_GROUPSEQ, REPLY_TAB, REPLY_DELFLAG, REPLY_CONTENT, REPLY_REGDATE, BR_NUM, REPLY_MEMBER_ID
+		SELECT REPLY_NO,REPLY_DELFLAG, REPLY_CONTENT, REPLY_REGDATE, BR_NUM, REPLY_MEMBER_ID
 		FROM BOARDREPLY
 		WHERE REPLY_NO = #{reply_no}
 	</select>
@@ -35,30 +35,5 @@
 		WHERE REPLY_NO = #{reply_no}
 	</update>
 	
-	<select id="r_reply_insert" parameterType="ReplyDto">
-		INSERT INTO BOARDREPLY
-		VALUES(
-		REPLY_NO_SEQ.NEXTVAL,
-		(SELECT REPLY_GROUPNO FROM BOARDREPLY WHERE REPLY_NO = #{reply_no}),
-		(SELECT REPLY_GROUPSEQ FROM BOARDREPLY WHERE REPLY_NO = #{reply_no}) + 1,
-		(SELECT REPLY_TAB FROM BOARDREPLY WHERE REPLY_NO = #{reply_no}) + 1,
-		'N', #{reply_content}, SYSDATE,
-		(SELECT BR_NUM FROM BOARDREPLY WHERE REPLY_NO = #{reply_no}),
-		#{reply_member_id}
-		
-		)
-	</select>
-	
-	<update id="reply_groupseq_update" parameterType="int">
-		UPDATE BOARDREPLY
-		SET REPLY_GROUPSEQ = REPLY_GROUPSEQ + 1
-		WHERE REPLY_GROUPNO = (SELECT REPLY_GROUPNO FROM BOARDREPLY WHERE BR_NUM = #{br_num})
-		AND REPLY_GROUPSEQ > (SELECT REPLY_GROUPSEQ FROM BOARDREPLY WHERE BR_NUM = #{br_num})
-	</update>
-	
-	<delete id="board_delete" parameterType="int">
-		DELETE FROM BOARDREPLY
-		WHERE BR_NUM = #{br_num}
-	</delete>
 
 </mapper>

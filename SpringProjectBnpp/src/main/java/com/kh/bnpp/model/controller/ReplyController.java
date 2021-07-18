@@ -41,11 +41,11 @@ public class ReplyController {
 	public Map<String,Object> replyupdateRes(ReplyDto rdto) {
 
 		if (rbiz.reply_update(rdto) > 0) {
-			Map<String,Object> map = new HashMap<>();
+			Map<String,Object> map = new HashMap<String, Object>();
 			map.put("isSuccess", true );
 			return map;
 		}
-		Map<String,Object> map = new HashMap<>();
+		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("isSuccess", false );
 		return map;
 	}
@@ -56,13 +56,13 @@ public class ReplyController {
 
 		if (rbiz.reply_delete(reply_no) > 0) {
 			System.out.println("댓글번호 : " + reply_no);
-			Map<String,Object> map = new HashMap<>();
+			Map<String,Object> map = new HashMap<String, Object>();
 			map.put("isSuccess", true );
 			return map;
 		}
 
 		System.out.println("댓글번호 : " + reply_no);
-		Map<String,Object> map = new HashMap<>();
+		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("isSuccess", false );
 		return map;
 	}

@@ -23,7 +23,7 @@
 	
 	<div style="width: 60%; margin: auto;">
 	<form method="post" action="insertres.do">
-		<input type="text" name="member_id" style="width: 20%;" placeholder="작성자"/><br>
+		<input type="text" name="member_id" style="width: 20%;" placeholder="${dto.member_id }"/><br>
 		<input type="text" name="br_title" style="width: 40%;" placeholder="제목"/>
 		<br><br> 
 		<div class="form-group">

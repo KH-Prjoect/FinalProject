@@ -18,9 +18,11 @@ public interface RboardBiz {
 	public int delete(int br_num);
 
 	// 게시물 총 갯수
-	public int countBoard();
+	public int countBoard(PagingDto pdto);
 
 	// 페이징 처리 게시글 조회
 	public List<RboardDto> selectBoard(PagingDto pdto);
 
+	//조회수
+	public int readCount(int br_num);
 }

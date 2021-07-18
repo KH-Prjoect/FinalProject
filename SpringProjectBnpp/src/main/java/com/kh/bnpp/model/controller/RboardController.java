@@ -20,6 +20,7 @@ public class RboardController {
 	@Autowired
 	private ReplyBiz rbiz;
 	
+	
 
 	@RequestMapping("/list.do")
 	public String selectList(Model model) {
@@ -47,9 +48,13 @@ public class RboardController {
 	@RequestMapping("/select.do")
 	public String selectOne(Model model, int br_num) {
 		
+		// 조회수
+		biz.readCount(br_num);
 		model.addAttribute("dto",biz.selectOne(br_num));
+		
 		// 댓글조회
 		model.addAttribute("replylist",rbiz.reply_selectList(br_num));
+		
 		
 		return "rboardselect";
 	}
@@ -81,11 +86,18 @@ public class RboardController {
 	}
 	
 	@RequestMapping("/boardList.do")
-	public String boardList(PagingDto pdto, Model model
+	public String boardList(Model model, PagingDto pdto
 			, @RequestParam(value="nowPage", required=false)String nowPage
-			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage
+			, @RequestParam(required = false, defaultValue = "br_title") String searchType
+			, @RequestParam(required = false) String keyword) {
 		
-		int total = biz.countBoard();
+		
+		System.out.println(searchType);
+		System.out.println(keyword);
+
+		
+		int total = biz.countBoard(pdto);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "5";
@@ -94,11 +106,24 @@ public class RboardController {
 		} else if (cntPerPage == null) { 
 			cntPerPage = "5";
 		}
-		pdto = new PagingDto(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		
+		pdto = new PagingDto(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), keyword, searchType);
 		model.addAttribute("paging", pdto);
 		model.addAttribute("list", biz.selectBoard(pdto));
+		
+		System.out.println(pdto.toString());
+		
 		return "boardPaging";
 	}
 	
+	//게시물 추천
+    @RequestMapping("/recommend.do")
+    public String recommend (@RequestParam int member_id) {
+        
+       // memberbiz.recommend(member_id);
+    
+        return "forward:/boardList.do"; 
+    }
+
 	
 }
