@@ -1,0 +1,76 @@
+package com.kh.bnpp.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.kh.bnpp.biz.MemberBiz;
+import com.kh.bnpp.dto.MemberDto;
+
+@Controller
+public class MemberController {
+
+	@Autowired
+	private MemberBiz biz;
+	
+	@RequestMapping("/mypage.do")
+	public String mypage(Model model, String member_id) {
+		MemberDto dto = biz.selectOne(member_id);
+		model.addAttribute("member_id", member_id);
+		if (dto.getMember_role().equals("M")) {
+			return "mypage_student";
+		}
+		return "mypage_teacher";
+	}
+	
+	@RequestMapping("/memberlist.do")
+	public String selectList(Model model) {
+		model.addAttribute("list", biz.selectList());	
+		return "memberlist";
+	}
+	
+	@RequestMapping("/memberselect.do")
+	public String selectOne(Model model, String member_id) {
+		model.addAttribute("dto", biz.selectOne(member_id));
+		return "memberselect";
+	}
+	
+	@RequestMapping("/studentupdate.do")
+	public String studentupdate(Model model, String member_id) {
+		model.addAttribute("dto", biz.selectOne(member_id));
+		return "studentupdate";
+	}
+	
+	@RequestMapping("/studentupdateres.do")
+	public String studentupdateres(MemberDto dto) {
+		if (biz.updatestudent(dto) > 0) {
+			System.out.println("수정성공(학생)");
+			return "redirect:mypage.do?member_id="+dto.getMember_id();
+		}
+		return "redirect:studentupdate.do?member_id="+dto.getMember_id();
+	}
+	
+	@RequestMapping("/teacherupdate.do")
+	public String teacherupdate(Model model, String member_id) {
+		model.addAttribute("dto", biz.selectOne(member_id));
+		return "teacherupdate";
+	}
+	
+	@RequestMapping("/teacherupdateres.do")
+	public String teacherupdateres(MemberDto dto) {
+		if (biz.updateteacher(dto) > 0) {
+			return "redirect:memberselect.do?member_id="+dto.getMember_id();
+		}
+		return "redirect:teacherupdate.do?member_id="+dto.getMember_id();
+	}
+	
+	@RequestMapping("/memberdelete.do")
+	public String delete(String member_id) {
+		if (biz.delete(member_id) > 0) {
+			return "redirect:memberlist.do";
+		}
+		return "redirect:memberselect.do?member_id="+member_id;
+	}
+	
+}

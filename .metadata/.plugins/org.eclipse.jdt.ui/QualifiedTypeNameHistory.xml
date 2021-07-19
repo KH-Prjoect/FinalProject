@@ -1,2 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.awt.List"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.lecture.dao.LectureDao"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.lecture.biz.LectureBiz"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.lecture.dto.LectureDto"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.dao.PayDao"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.dto.PaytestDto"/>
+    <fullyQualifiedTypeName name="org.springframework.security.crypto.codec.Base64"/>
+    <fullyQualifiedTypeName name="java.util.Base64"/>
+    <fullyQualifiedTypeName name="java.io.FileInputStream"/>
+    <fullyQualifiedTypeName name="org.codehaus.jackson.annotate.JsonValue"/>
+    <fullyQualifiedTypeName name="com.google.gson.JsonParser"/>
+    <fullyQualifiedTypeName name="org.json.JSONObject"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.dao.FoodDao"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.dao.BillDao"/>
+    <fullyQualifiedTypeName name="org.json.JSONArray"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.dto.BillDto"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.clova.Clova_temp"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="java.util.Set"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="org.mybatis.spring.SqlSessionTemplate"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.dao.MemberDao"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.biz.MemberBiz"/>
+    <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
+    <fullyQualifiedTypeName name="javax.annotation.Resource"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.dto.MemberDto"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.biz.PayBiz"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.biz.LectureBiz"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.biz.FoodBiz"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.dto.PayDto"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.dto.LectureDto"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.dto.FoodDto"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="org.apache.catalina.connector.Response"/>
+</qualifiedTypeNameHistroy>

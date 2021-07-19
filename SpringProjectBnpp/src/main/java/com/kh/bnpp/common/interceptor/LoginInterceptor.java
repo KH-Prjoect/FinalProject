@@ -27,7 +27,13 @@ private Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 		   request.getRequestURI().contains("/test.do")			||
 		   request.getRequestURI().contains("/registerform.do")	||
 		   request.getRequestURI().contains("/register.do")		||
-		   request.getRequestURI().contains("/home.do")
+		   request.getRequestURI().contains("/home.do") || 
+		   		   
+		   request.getRequestURI().contains("/memberdelete.do") ||
+		   request.getRequestURI().contains("/mypage.do") || 
+		   request.getRequestURI().contains("/mypage_student.do") || 
+		   request.getRequestURI().contains("/teacherupdateres.do") ||
+		   request.getRequestURI().contains("/studentupdateres.do")
 			) {
 			
 		return true;
