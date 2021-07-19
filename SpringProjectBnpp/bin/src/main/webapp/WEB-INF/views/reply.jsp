@@ -95,6 +95,7 @@
 
 	<h1>REPLY</h1>
 	   <!-- 댓글목 -->
+	   <table>
 	                   <c:forEach var="replyList" items="${replyList}" varStatus="status">
                     <tr reply_type="<c:if test="${replyList.reply_tab == '0'}">main</c:if><c:if test="${replyList.reply_tab == '1'}">sub</c:if>"><!-- 댓글의 depth 표시 -->
                         <td width="820px">
