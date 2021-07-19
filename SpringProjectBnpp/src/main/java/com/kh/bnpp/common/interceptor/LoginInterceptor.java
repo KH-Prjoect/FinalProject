@@ -23,11 +23,15 @@ private Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 		
 		if(request.getRequestURI().contains("/loginform.do") || 	
 		   request.getRequestURI().contains("/ajaxlogin.do") || 
-		   request.getSession().getAttribute("login") != null 	||	
+		   request.getSession().getAttribute("login") != null 	||	    
 		   request.getRequestURI().contains("/test.do")			||
 		   request.getRequestURI().contains("/registerform.do")	||
 		   request.getRequestURI().contains("/register.do")		||
-		   request.getRequestURI().contains("/home.do")
+		   request.getRequestURI().contains("/home.do")	  ||
+		   request.getRequestURI().contains("/machine.do")     ||    // 로그인 없이 티처블 머신으로 바로 갈 때 잡아주는 intercepter
+		   request.getRequestURI().contains("/chatlogin.do")	        // chat 에서 아직 로그인 연동 안됐을 경우 chatlogin 통해들어가도록 잡음 
+		   
+
 			) {
 			
 		return true;
