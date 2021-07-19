@@ -1,7 +1,6 @@
 package com.kh.bnpp.model.dao;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
