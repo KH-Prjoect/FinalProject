@@ -1,4 +1,4 @@
-package com.kh.bnpp.model.controller;
+package com.kh.bnpp.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,13 @@ public class RboardController {
 	@Autowired
 	private ReplyBiz rbiz;
 	
+
 	
+	@RequestMapping("/main.do")
+	public String main() {
+		
+		return "mainpage";
+	}
 
 	@RequestMapping("/list.do")
 	public String selectList(Model model) {

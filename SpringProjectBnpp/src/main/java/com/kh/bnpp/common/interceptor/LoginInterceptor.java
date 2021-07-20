@@ -21,7 +21,7 @@ private Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 			throws Exception {
 
 		logger.info("[Interceptor] : preHandle");
-		
+	/*	
 		//요기 if안에 *.do에 속하는 view로 갈때 세션에 로그인한 회원의 값이 없어도 view로 이동가능
 		if(request.getRequestURI().contains("/loginform.do") || 	
 		   request.getRequestURI().contains("/ajaxlogin.do") || 
@@ -55,6 +55,9 @@ private Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 		}
 		
 		return false;
+	*/
+		return true;
+	
 	}
 
 	@Override

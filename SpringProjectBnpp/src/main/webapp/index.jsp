@@ -11,6 +11,7 @@
 <body>
 
 	<a href="home.do">home</a>
+	<a href="main.do">main</a>
 	<a href="boardList.do">recipeboard</a>
 
 	<br>
@@ -38,6 +39,7 @@
 			<a href="loginform.do">로그인</a>
 		</c:otherwise>
 	</c:choose>
+	
 
 
 </body>
