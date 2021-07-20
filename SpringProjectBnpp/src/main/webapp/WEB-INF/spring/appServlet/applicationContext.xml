@@ -5,7 +5,6 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
-
 	<!-- classpath : src/main/resources/ 연결해줌! -->
 	<!-- db.properties -->
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -18,28 +17,21 @@
 
 	<!-- dataSource -->
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-	<property name="driverClassName" value="${driver}"/>
-	<property name="url" value="${url}"/>
-	<property name="username" value="${username}"/>
-	<property name="password" value="${password}"/>
+		<property name="driverClassName" value="${driver}"/>
+		<property name="url" value="${url}"/>
+		<property name="username" value="${username}"/>
+		<property name="password" value="${password}"/>
 	</bean>
 
 	<!-- mybatis -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
-	<property name="dataSource" ref="dataSource"/>
-	<property name="configLocation" value="WEB-INF/spring/sqls/config.xml"/>
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" ref="WEB-INF/spring/sqls/config.xml"/>
 	</bean>
 
 	<!-- mybatis template -->
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSession"/>
-	</bean>
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations">
-			<list>
-				<value>classpath:mybatis/db.properties</value>
-			</list>
-		</property>
 	</bean>
 
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
