@@ -5,14 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.kh.bnpp.biz.MemberBiz2;
-import com.kh.bnpp.dto.MemberDto2;
+import com.kh.bnpp.biz.MemberBiz;
+import com.kh.bnpp.dto.MemberDto;
 
 @Controller
 public class MemberController {
 
 	@Autowired
-	private MemberBiz2 biz;
+	private MemberBiz biz;
 	
 	@RequestMapping("/memberlist.do")
 	public String selectList(Model model) {
@@ -32,8 +32,6 @@ public class MemberController {
 		return "studentupdate";
 	}
 	
-	
-	
 	@RequestMapping("/teacherupdate.do")
 	public String teacherupdate(Model model, String member_id) {
 		model.addAttribute("dto", biz.selectOne(member_id));
@@ -41,7 +39,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/teacherupdateres.do")
-	public String teacherupdateres(MemberDto2 dto) {
+	public String teacherupdateres(MemberDto dto) {
 		if (biz.updateteacher(dto) > 0) {
 			System.out.println("수정성공(강사)");
 			return "redirect:mypage.do?member_id="+dto.getMember_id();

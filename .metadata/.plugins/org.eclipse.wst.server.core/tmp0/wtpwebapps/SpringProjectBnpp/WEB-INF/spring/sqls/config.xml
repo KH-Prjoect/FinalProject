@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
+
+
+	<settings> 
+	 	<setting name="jdbcTypeForNull" value="NULL" /> 
+	 </settings>
+
 	<typeAliases>
 		<typeAlias type="com.kh.bnpp.dto.LectureDto" alias="LectureDto"/>
 		<typeAlias type="com.kh.bnpp.dto.PayDto" alias="PayDto"/>
 		<typeAlias type="com.kh.bnpp.dto.FoodDto" alias="FoodDto"/>
 		<typeAlias type="com.kh.bnpp.dto.BillDto" alias="BillDto"/>
 		<typeAlias type="com.kh.bnpp.dto.MemberDto" alias="MemberDto"/>
+		<typeAlias type="com.kh.bnpp.dto.KakaoDto" alias="kakaoDto"/>
 	</typeAliases>
 	
 	<mappers>
@@ -15,5 +22,7 @@
 		<mapper resource="/mybatis/food-mapper.xml"/>
 		<mapper resource="/mybatis/bill-mapper.xml"/>
 		<mapper resource="/mybatis/member-mapper.xml"/>
+		<mapper resource="/mybatis/kakao-mapper.xml"/>
 	</mappers>
+	
 </configuration>

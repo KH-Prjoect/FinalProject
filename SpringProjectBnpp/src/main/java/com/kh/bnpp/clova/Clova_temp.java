@@ -18,6 +18,11 @@ import org.json.JSONObject;
 
 import com.kh.bnpp.dto.BillDto;
 
+/*
+ 	String pathSet = request.getSession().getServletContext().getRealPath("/resources/img/receipt1.jpg");
+
+	List<String> list = Clova_temp.OCR(pathSet);
+*/
 
 public class Clova_temp {
 

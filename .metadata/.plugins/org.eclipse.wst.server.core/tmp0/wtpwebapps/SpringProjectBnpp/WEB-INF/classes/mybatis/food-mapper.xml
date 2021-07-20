@@ -27,7 +27,7 @@
 	
 	<update id="updateLife" parameterType="FoodDto">
 		UPDATE FOOD
-		SET FOOD_LIFE = #{food_life}
+		SET FOOD_NAME = #{food_name}, FOOD_LIFE = #{food_life}
 		WHERE FOOD_NUM = #{food_num}
 	</update>
 	

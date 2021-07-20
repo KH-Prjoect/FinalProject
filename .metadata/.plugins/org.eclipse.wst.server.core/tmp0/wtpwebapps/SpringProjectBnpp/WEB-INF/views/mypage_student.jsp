@@ -1,8 +1,8 @@
+<%@page import="com.kh.bnpp.dto.MemberDto"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.kh.bnpp.biz.FoodBizImpl"%>
 <%@page import="com.kh.bnpp.biz.LectureBizImpl"%>
 <%@page import="com.kh.bnpp.biz.PayBizImpl"%>
-<%@page import="com.kh.bnpp.biz.MemberBizImpl"%>
 <%@page import="com.kh.bnpp.dto.FoodDto"%>
 <%@page import="com.kh.bnpp.biz.FoodBiz"%>
 <%@page import="com.kh.bnpp.biz.LectureBiz"%>
@@ -11,8 +11,6 @@
 <%@page import="com.kh.bnpp.biz.PayBiz"%>
 <%@page import="com.kh.bnpp.dto.PayDto"%>
 <%@page import="java.util.List"%>
-<%@page import="com.kh.bnpp.dto.MemberDto"%>
-<%@page import="com.kh.bnpp.biz.MemberBiz"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -41,7 +39,7 @@
 	});
 	
 	$(function() {
-		  $( "#datepicker" ).datepicker({
+		$( "#datepicker" ).datepicker({
 		    dateFormat: 'yy-mm-dd',
 		    prevText: '이전 달',
 		    nextText: '다음 달',
@@ -55,8 +53,8 @@
 		    changeYear: true,
 		    yearSuffix: '년'
 		  });
-		});
-	
+	});
+		  
 	$(function(){
 		$("#selboxDirect").hide();	      
 		$("#addr").change(function() {
@@ -136,7 +134,6 @@
 							<span>----------수강한 강의가 없습니다----------</span>
 						</c:when>
 						<c:otherwise>
-							<c:set var="tempname" value="" />
 							<ul>
 								<c:forEach items="${l_list }" var="dto">
 									<li class="lecture_list">
@@ -163,43 +160,47 @@
 			<h2>나의 냉장고</h2>
 			<br>
 			<div class="mypage_food">
-				<table border="1">
-					<col width="100"/>
-					<col width="200"/>
-					<tr>
-						<th>식품명</th>
-						<th>유통기한</th>
-					</tr>
-					<c:choose>
-						<c:when test="${empty f_list}">
-							<tr>
-								<th>---------------------등록된 식품이 없습니다----------------------</th>
-							</tr>
-						</c:when>
-						<c:otherwise>
-							<c:forEach items="${f_list }" var="dto">
+				<form action="" method="post">
+					<table border="1">
+						<col width="100"/>
+						<col width="200"/>
+						<tr>
+							<th>식품명</th>
+							<th>유통기한</th>
+						</tr>
+						<c:choose>
+							<c:when test="${empty f_list}">
 								<tr>
-									<td>${dto.food_name }</td>
-									<td>
-										<c:choose>
-											<c:when test="${empty dto.food_life}">
-												<input type="text" name="food_life" id="datepicker" value="미설정" />
-											</c:when>
-											<c:otherwise>
-												<input type="text" name="food_life" id="datepicker" value="${dto.food_life }" />
-											</c:otherwise>
-										</c:choose>
-									</td>
+									<th>---------------------등록된 식품이 없습니다----------------------</th>
 								</tr>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
-					<tr>
-						<td colspan="4" align="right">
-							<input type="button" value="영수증 스캔" onclick="location.href='./foodinsert.do'"/>
-						</td>
-					</tr>
-				</table>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${f_list }" var="dto">
+									<tr>
+										<td><input type="text" name="food_name" value="${dto.food_name }" /></td>
+										<td>
+											<input type="hidden" name="food_num" value="${dto.food_num }"/>
+											<c:choose>
+												<c:when test="${empty dto.food_life}">
+													<input type="text" name="food_life" id="datepicker" value="미설정" />
+												</c:when>
+												<c:otherwise>
+													<input type="text" name="food_life" id="datepicker" value="${dto.food_life }" />
+												</c:otherwise>
+											</c:choose>
+										</td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+						<tr>
+							<td colspan="4" align="right">
+								<input type="submit" value="수정사항 적용" />
+								<input type="button" value="영수증 스캔" onclick="location.href='./foodinsert.do'"/>
+							</td>
+						</tr>
+					</table>
+				</form>
 			</div>
 		</div>
 		

@@ -1,5 +1,7 @@
 package com.kh.bnpp.common.interceptor;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,34 +15,52 @@ public class LoginInterceptor implements HandlerInterceptor {
 private Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 	
 	//spring 3.2 이상부터는 servlet-context.xml에서 <exclude-mapping-path>를 통해 설정 가능!
-	
+	//주석
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 
 		logger.info("[Interceptor] : preHandle");
 		
-		
+		//요기 if안에 *.do에 속하는 view로 갈때 세션에 로그인한 회원의 값이 없어도 view로 이동가능
 		if(request.getRequestURI().contains("/loginform.do") || 	
 		   request.getRequestURI().contains("/ajaxlogin.do") || 
 		   request.getSession().getAttribute("login") != null 	||	
 		   request.getRequestURI().contains("/test.do")			||
+
 		   request.getRequestURI().contains("/registerform.do")	||
 		   request.getRequestURI().contains("/register.do")		||
-		   request.getRequestURI().contains("/home.do") || 
 		   		   
 		   request.getRequestURI().contains("/memberdelete.do") ||
 		   request.getRequestURI().contains("/mypage.do") || 
 		   request.getRequestURI().contains("/mypage_student.do") || 
 		   request.getRequestURI().contains("/teacherupdateres.do") ||
-		   request.getRequestURI().contains("/studentupdateres.do")
+		   request.getRequestURI().contains("/studentupdateres.do") ||
+
+		   request.getRequestURI().contains("/signupform.do")	||
+		   request.getRequestURI().contains("/signupres.do")	||
+		   request.getRequestURI().contains("/home.do")			||
+		   request.getRequestURI().contains("/idCheck.do")		||
+		   request.getRequestURI().contains("/findIdPw.do")		||
+		   request.getRequestURI().contains("/logout.do")		||
+		   request.getRequestURI().contains("/toindex.do")		||
+		   request.getRequestURI().contains("/findId.do")		||
+		   request.getRequestURI().contains("/findPw.do")		||
+		   request.getRequestURI().contains("/kakaologin.do")		||
+		   request.getRequestURI().contains("/kakaologout.do")		||
+		   request.getRequestURI().contains("/naverlogin.do")		||
+		   request.getRequestURI().contains("/callback")		||
+		   request.getRequestURI().contains("/naverlogout.do")		||
+		   request.getRequestURI().contains("/ajaxlogin.do")
 			) {
 			
 		return true;
 		
 		}
 		
+		//요청의 세션에 login 즉 컨트롤러에서 session.setAttribute("login",res); 해준 적 없으면 로그인으로 돌아가라
 		if(request.getSession().getAttribute("login") == null) {	
+			System.out.println("인터셉터 확인해라!!!!!!");
 			response.sendRedirect("loginform.do");
 		}
 		

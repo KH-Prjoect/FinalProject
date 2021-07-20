@@ -1,9 +1,5 @@
 INDEX VERSION 1.131
-C:\Workspaces\Workspace_fin\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\864658804.index
-\SpringProjectBnpp\src\main\java
 C:\Workspaces\Workspace_fin\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2609629059.index
-\SpringProjectBnpp\src\main\java
-C:\Workspaces\Workspace_fin\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2700332938.index
 \SpringProjectBnpp\src\main\java
 C:\Workspaces\Workspace_fin\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2006147609.index
 \SpringProjectBnpp\src\main\java
