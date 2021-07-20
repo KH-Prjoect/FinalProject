@@ -39,6 +39,9 @@
 		</c:otherwise>
 	</c:choose>
 
+	<a href="home.do">home</a>  <br>
+	<a href="chatlogin.do">Chatlogin</a> <br>
+	<a href="machine.do">machine</a>
 
 </body>
 </html>
