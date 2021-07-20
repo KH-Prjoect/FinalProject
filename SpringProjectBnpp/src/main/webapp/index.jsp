@@ -10,9 +10,8 @@
 </head>
 <body>
 
-	<a href="home.do">home</a>
 	<a href="boardList.do">recipeboard</a>
-
+	<a href="recipe.do">randomrecipe</a>
 	<br>
 	<br>
 	<br>
@@ -38,7 +37,5 @@
 			<a href="loginform.do">로그인</a>
 		</c:otherwise>
 	</c:choose>
-
-
 </body>
 </html>

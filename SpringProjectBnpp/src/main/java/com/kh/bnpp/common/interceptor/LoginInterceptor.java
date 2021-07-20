@@ -41,7 +41,8 @@ private Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 		   request.getRequestURI().contains("/naverlogin.do")		||
 		   request.getRequestURI().contains("/callback")		||
 		   request.getRequestURI().contains("/naverlogout.do")		||
-		   request.getRequestURI().contains("/ajaxlogin.do")
+		   request.getRequestURI().contains("/ajaxlogin.do")   ||
+			request.getRequestURI().contains("/recipe.do")
 			) {
 			
 		return true;
@@ -49,12 +50,12 @@ private Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 		}
 		
 		//요청의 세션에 login 즉 컨트롤러에서 session.setAttribute("login",res); 해준 적 없으면 로그인으로 돌아가라
-		if(request.getSession().getAttribute("login") == null) {
+		/*if(request.getSession().getAttribute("login") == null) {
 			System.out.println("인터셉터 확인해라!!!!!!");
 			response.sendRedirect("loginform.do");
 		}
-		
-		return false;
+		*/
+		return true;
 	}
 
 	@Override

@@ -7,14 +7,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kh.bnpp.biz.MemberBiz;
-import com.kh.bnpp.common.interceptor.LoginInterceptor;
-import com.kh.bnpp.dto.MemberDto;
+import com.kh.bnpp.model.biz.MemberBiz;
+import com.kh.bnpp.model.dto.MemberDto;
 
 @Controller
 public class SignUpController {
