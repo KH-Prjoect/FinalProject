@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kh.bnpp.biz.MemberBiz;
-import com.kh.bnpp.biz.NaverLoginBiz;
-import com.kh.bnpp.dto.MemberDto;
+import com.kh.bnpp.model.biz.MemberBiz;
+import com.kh.bnpp.model.biz.NaverLoginBiz;
+import com.kh.bnpp.model.dto.MemberDto;
 
 @Controller
 public class LoginController {

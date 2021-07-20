@@ -1,4 +1,4 @@
-package com.kh.bnpp.dao;
+package com.kh.bnpp.model.dao;
 
 
 
@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 
-import com.kh.bnpp.dto.KakaoDto;
+import com.kh.bnpp.model.dto.KakaoDto;
 
 @Repository
 public class KakaoDao {

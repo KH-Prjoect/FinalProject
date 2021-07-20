@@ -1,4 +1,4 @@
-package com.kh.bnpp.model.controller;
+package com.kh.bnpp.controller;
 
 import java.util.HashMap;
 import java.util.Map;

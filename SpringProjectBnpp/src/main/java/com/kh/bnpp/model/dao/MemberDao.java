@@ -1,6 +1,6 @@
-package com.kh.bnpp.dao;
+package com.kh.bnpp.model.dao;
 
-import com.kh.bnpp.dto.MemberDto;
+import com.kh.bnpp.model.dto.MemberDto;
 
 public interface MemberDao {
 	

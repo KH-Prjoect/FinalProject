@@ -1,4 +1,4 @@
-package com.kh.bnpp;
+package com.kh.bnpp.controller;
 
 import java.text.DateFormat;
 import java.util.Date;

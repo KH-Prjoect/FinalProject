@@ -1,4 +1,4 @@
-package com.kh.bnpp.model.controller;
+package com.kh.bnpp.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

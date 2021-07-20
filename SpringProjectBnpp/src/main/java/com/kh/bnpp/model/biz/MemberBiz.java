@@ -1,6 +1,6 @@
-package com.kh.bnpp.biz;
+package com.kh.bnpp.model.biz;
 
-import com.kh.bnpp.dto.MemberDto;
+import com.kh.bnpp.model.dto.MemberDto;
 
 public interface MemberBiz {
 
