@@ -1,13 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
-<meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
@@ -17,7 +13,6 @@
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
 	rel="stylesheet">
 
-<title>Space Dynamic - SEO HTML5 Template</title>
 
 <!-- Bootstrap core CSS -->
 <link href="resources/vendor/bootstrap/css/bootstrap.min.css"
@@ -37,15 +32,9 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!--
-    
-TemplateMo 562 Space Dynamic
-
-https://templatemo.com/tm-562-space-dynamic
-
--->
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 
 <body>
@@ -62,42 +51,7 @@ https://templatemo.com/tm-562-space-dynamic
 	<!-- ***** Preloader End ***** -->
 
 	<!-- ***** Header Area Start ***** -->
-	<header class="header-area header-sticky wow slideInDown"
-		data-wow-duration="0.75s" data-wow-delay="0s">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<nav class="main-nav">
-						<!-- ***** Logo Start ***** -->
-						<a href="main.do" class="logo">
-							<h4>
-								Bona<span>ppetit</span>
-							</h4>
-						</a>
-						<!-- ***** Logo End ***** -->
-						<!-- ***** Menu Start ***** -->
-						<ul class="nav">
-							<li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-							<li class="scroll-to-section"><a href="#about">레시피 공유</a></li>
-							<li class="scroll-to-section"><a href="#services">강사</a></li>
-							<li class="scroll-to-section"><a href="#portfolio">고객센터</a></li>
-							<!-- <li class="scroll-to-section"><a href="#blog">Blog</a></li> 
-              <li class="scroll-to-section"><a href="#contact">Message Us</a></li>  -->
-							<li class="scroll-to-section"><div class="main-blue-button">
-									<a href="#contact">로그인</a>
-								</div></li>
-							<li class="scroll-to-section"><div class="main-red-button">
-									<a href="#contact">회원가입</a>
-								</div></li>
-						</ul>
-						<a class='menu-trigger'> <span>Menu</span>
-						</a>
-						<!-- ***** Menu End ***** -->
-					</nav>
-				</div>
-			</div>
-		</div>
-	</header>
+	<jsp:include page="header.jsp" />
 	<!-- ***** Header Area End ***** -->
 
 	<div class="main-banner wow fadeIn" id="top" data-wow-duration="1s"
@@ -111,13 +65,11 @@ https://templatemo.com/tm-562-space-dynamic
 								data-wow-duration="1s" data-wow-delay="1s">
 								<h6>BONAPPETIT 여름학기</h6>
 								<h2>
-									온라인 클래스로 <br><em>한식부터</em>  <span>홈베이킹까지</span> <br>준비된 강의
+									온라인 클래스로 <br>
+									<em>한식부터</em> <span>홈베이킹까지</span> <br>준비된 강의
 								</h2>
-								<p>
-									요리를 위한 재료를 준비하고 레시피를 만드는 것 부터 수업을 준비하는 과정입니다.
-									모두가 즐거운 요리를 경험하는 시간, 한 그릇의 음식이 주는 특별한 행복을 전달해드립니다.
-									
-								</p>
+								<p>요리를 위한 재료를 준비하고 레시피를 만드는 것 부터 수업을 준비하는 과정입니다. 모두가 즐거운 요리를
+									경험하는 시간, 한 그릇의 음식이 주는 특별한 행복을 전달해드립니다.</p>
 								<form id="search" action="#" method="GET">
 									<fieldset>
 										<input type="address" name="address" class="email"
@@ -133,37 +85,41 @@ https://templatemo.com/tm-562-space-dynamic
 							<div class="right-image wow fadeInRight" data-wow-duration="1s"
 								data-wow-delay="0.5s">
 								<div class="container mt-3">
-		<h2>NEW!</h2>
-		<div id="myCarousel" class="carousel slide" data-ride="carousel">
-			<!-- Indicators -->
-			<ul class="carousel-indicators">
-				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#myCarousel" data-slide-to="1"></li>
-				<li data-target="#myCarousel" data-slide-to="2"></li>
-			</ul>
-			<!-- The slideshow -->
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img src="resources/assets/images/main001.png" alt=""
-						width="1100" height="500">
-				</div>
-				<div class="carousel-item">
-					<img src="resources/assets/images/main002.png"
-						alt="" width="1100" height="500">
-				</div>
-				<div class="carousel-item">
-					<img src="resources/assets/images/main003.png"
-						alt="" width="1100" height="500">
-				</div>
-			</div>
-			<!-- Left and right controls -->
-			<a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-				<span class="carousel-control-prev-icon"></span>
-			</a> <a class="carousel-control-next" href="#myCarousel"
-				data-slide="next"> <span class="carousel-control-next-icon"></span>
-			</a>
-		</div>
-	</div>
+									<h2>NEW!</h2>
+									<div id="myCarousel" class="carousel_slide"
+										data-ride="carousel">
+										<!-- Indicators -->
+										<ul class="carousel-indicators">
+											<li data-target="#myCarousel" data-slide-to="0"
+												class="active"></li>
+											<li data-target="#myCarousel" data-slide-to="1"></li>
+											<li data-target="#myCarousel" data-slide-to="2"></li>
+										</ul>
+										<!-- The slideshow -->
+										<div class="carousel-inner">
+											<div class="carousel-item active">
+												<img src="resources/assets/images/main001.png" alt=""
+													width="1100" height="500">
+											</div>
+											<div class="carousel-item">
+												<img src="resources/assets/images/main002.png" alt=""
+													width="1100" height="500">
+											</div>
+											<div class="carousel-item">
+												<img src="resources/assets/images/main003.png" alt=""
+													width="1100" height="500">
+											</div>
+										</div>
+										<!-- Left and right controls -->
+										<a class="carousel-control-prev" href="#myCarousel"
+											data-slide="prev"> <span
+											class="carousel-control-prev-icon"></span>
+										</a> <a class="carousel-control-next" href="#myCarousel"
+											data-slide="next"> <span
+											class="carousel-control-next-icon"></span>
+										</a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -172,7 +128,7 @@ https://templatemo.com/tm-562-space-dynamic
 		</div>
 	</div>
 
-	
+
 
 
 	<div id="portfolio" class="our-portfolio section">
@@ -194,8 +150,7 @@ https://templatemo.com/tm-562-space-dynamic
 							data-wow-delay="0.3s">
 							<div class="hidden-content">
 								<h4>한식 전문가</h4>
-								<p>갓 지은 밥, 보글보글 찌개, 
-								고소한 나물 등 반상차림 하나로 한식의 매력을 알려드립니다!	</p>
+								<p>갓 지은 밥, 보글보글 찌개, 고소한 나물 등 반상차림 하나로 한식의 매력을 알려드립니다!</p>
 							</div>
 							<div class="showed-content">
 								<img src="resources/assets/images/portfolio-image1.png" alt="">
@@ -249,7 +204,7 @@ https://templatemo.com/tm-562-space-dynamic
 		</div>
 	</div>
 
-<!-- 
+	<!-- 
 	<div id="about" class="about-us section">
 		<div class="container">
 			<div class="row">
@@ -517,19 +472,9 @@ https://templatemo.com/tm-562-space-dynamic
     </div>
   </div>
 -->
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 wow fadeIn" data-wow-duration="1s"
-					data-wow-delay="0.25s">
-					<p>
-						© Copyright 2021 Space Dynamic Co. All Rights Reserved. <br>Design:
-						<a rel="nofollow" href="https://templatemo.com">TemplateMo</a>
-					</p>
-				</div>
-			</div>
-		</div>
-	</footer>
+
+<jsp:include page="footer.jsp" />
+
 	<!-- Scripts -->
 	<script src="resources/vendor/jquery/jquery.min.js"></script>
 	<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

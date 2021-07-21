@@ -2,10 +2,8 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 
 	function test(){
@@ -133,6 +131,10 @@
 </head>
 <body>
 
+<jsp:include page="header.jsp" />
+
+<div class="main-banner wow fadeIn">
+
 	<h1>회원가입</h1>
 	
 	<form name="signupform" action="signupres.do">
@@ -214,6 +216,9 @@
 			</tr>
 		</table>
 	</form>
-
+	</div>
+	
+<jsp:include page="footer.jsp" />
+	
 </body>
 </html>

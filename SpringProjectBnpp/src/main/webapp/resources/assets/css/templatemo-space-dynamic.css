@@ -131,9 +131,10 @@ p {
 }
 
 img {
-  width: 100%;
   overflow: hidden;
 }
+
+
 
 /* 
 ---------------------------------------------
@@ -819,6 +820,11 @@ preloader
     border-radius: 50%;
 }
 
+
+.carousel-item img {
+
+	width : 100%;
+}
 
 
 /* 

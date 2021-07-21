@@ -5,8 +5,8 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <style>
@@ -53,8 +53,13 @@ a {
 	});
 </script>
 
+
 <body>
-	<h2>게시판</h2>
+
+<jsp:include page="header.jsp" />
+
+<div class="main-banner wow fadeIn">
+	<h2>레시피공유게시판</h2>
 
 	<div id="outter">
 		<div style="float: right;">
@@ -111,6 +116,7 @@ a {
 				<td colspan="5" align="right"><input type="button" value="글작성"
 					onclick="location.href='insertform.do'" /></td>
 		</table>
+		</div>
 
 		<div style="display: block; text-align: center;">
 			<c:if test="${paging.startPage != 1 }">
@@ -159,6 +165,7 @@ a {
 	<!-- search -->
 
 
+<jsp:include page="footer.jsp" />
 
 </body>
 </html>

@@ -99,6 +99,9 @@
 	});
 </script>
 <body>
+<jsp:include page="header.jsp" />
+
+<div class="main-banner wow fadeIn">
 
 	<h1>DETAIL</h1>
 	<table border="1">
@@ -168,7 +171,7 @@
 		<form method="post" action="replyinsert.do">
 			<input type="hidden" name="br_num" value="${dto.br_num }" />
 			<p>
-				<label>작성자</label> <input type="text" name="reply_member_id" placeholder="${dto.member_id }">
+				<label>작성자</label> <input type="text" name="reply_member_id" value="${dbDto.member_id }">
 			</p>
 			<p>
 				<textarea rows="2" cols="60" name="reply_content"></textarea>
@@ -178,11 +181,16 @@
 		</form>
 
 	</div>
+</div>
 	<script>
 		$(document).ready(function() {
 			$('#summernote').summernote({
 			});
 		});
 	</script>
+	
+
+<jsp:include page="footer.jsp" />
+	
 </body>
 </html>
