@@ -10,8 +10,11 @@
 </head>
 <body>
 
-	<a href="boardList.do">recipeboard</a>
-	<a href="recipe.do">randomrecipe</a>
+	<a href="boardList.do">recipeboard</a> <br>
+	<a href="recipe.do">randomrecipe</a> <br>
+	<a href="home.do">home</a>  <br>
+	<a href="chatlogin.do">Chatlogin</a> <br>
+	<a href="machine.do">machine</a>
 	<br>
 	<br>
 	<br>
@@ -37,13 +40,7 @@
 			<a href="loginform.do">로그인</a>
 		</c:otherwise>
 	</c:choose>
-<<<<<<< HEAD
 
-	<a href="home.do">home</a>  <br>
-	<a href="chatlogin.do">Chatlogin</a> <br>
-	<a href="machine.do">machine</a>
 
-=======
->>>>>>> origin/gwanwoo
 </body>
 </html>
