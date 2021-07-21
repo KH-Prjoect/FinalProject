@@ -13,8 +13,8 @@
 	<select id="reply_insert" parameterType="ReplyDto">
 		INSERT INTO BOARDREPLY
 		VALUES(
-		REPLY_NO_SEQ.NEXTVAL, 'N', #{reply_content}, SYSDATE, #{br_num}, #{reply_member_id}
-		)
+				  REPLY_NO_SEQ.NEXTVAL, 'N', #{reply_content}, SYSDATE, #{br_num}, #{reply_member_id}
+			  )
 	</select>
 	
 	<select id="reply_select" parameterType="ReplyDto">

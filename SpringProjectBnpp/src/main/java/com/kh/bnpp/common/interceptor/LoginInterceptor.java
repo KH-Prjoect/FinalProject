@@ -21,11 +21,11 @@ private Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 			throws Exception {
 
 		logger.info("[Interceptor] : preHandle");
-	/*	
+		
 		//요기 if안에 *.do에 속하는 view로 갈때 세션에 로그인한 회원의 값이 없어도 view로 이동가능
-		if(request.getRequestURI().contains("/loginform.do") || 	
+		/*if(request.getRequestURI().contains("/loginform.do") ||
 		   request.getRequestURI().contains("/ajaxlogin.do") || 
-		   request.getSession().getAttribute("login") != null 	||	
+		   request.getSession().getAttribute("login") != null 	||
 		   request.getRequestURI().contains("/test.do")			||
 		   request.getRequestURI().contains("/signupform.do")	||
 		   request.getRequestURI().contains("/signupres.do")	||
@@ -41,23 +41,36 @@ private Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 		   request.getRequestURI().contains("/naverlogin.do")		||
 		   request.getRequestURI().contains("/callback")		||
 		   request.getRequestURI().contains("/naverlogout.do")		||
+<<<<<<< HEAD
 		   request.getRequestURI().contains("/ajaxlogin.do")
+		   request.getRequestURI().contains("/registerform.do")	||
+		   request.getRequestURI().contains("/register.do")		||
+		   request.getRequestURI().contains("/home.do")	  ||
+		   request.getRequestURI().contains("/machine.do")     ||    // 로그인 없이 티처블 머신으로 바로 갈 때 잡아주는 intercepter
+		   request.getRequestURI().contains("/chatlogin.do")	        // chat 에서 아직 로그인 연동 안됐을 경우 chatlogin 통해들어가도록 잡음
+
+
+=======
+		   request.getRequestURI().contains("/ajaxlogin.do")   ||
+			request.getRequestURI().contains("/recipe.do")
+>>>>>>> origin/gwanwoo
 			) {
 			
 		return true;
 		
 		}
 		
+<<<<<<< HEAD
+		if(request.getSession().getAttribute("login") == null) {	
+=======
 		//요청의 세션에 login 즉 컨트롤러에서 session.setAttribute("login",res); 해준 적 없으면 로그인으로 돌아가라
-		if(request.getSession().getAttribute("login") == null) {
+		/*if(request.getSession().getAttribute("login") == null) {
 			System.out.println("인터셉터 확인해라!!!!!!");
+>>>>>>> origin/gwanwoo
 			response.sendRedirect("loginform.do");
 		}
-		
-		return false;
-	*/
+		*/
 		return true;
-	
 	}
 
 	@Override

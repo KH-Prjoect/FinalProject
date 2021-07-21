@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.bnpp.model.biz.KakaoBiz;
-import com.kh.bnpp.model.biz.MemberBiz;
 
 @Controller
 public class KakaoController {

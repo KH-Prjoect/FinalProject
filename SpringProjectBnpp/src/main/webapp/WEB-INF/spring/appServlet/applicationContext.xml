@@ -5,7 +5,6 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
-
 	<!-- classpath : src/main/resources/ 연결해줌! -->
 	<!-- db.properties -->
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -18,16 +17,16 @@
 
 	<!-- dataSource -->
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-	<property name="driverClassName" value="${driver}"/>
-	<property name="url" value="${url}"/>
-	<property name="username" value="${username}"/>
-	<property name="password" value="${password}"/>
+		<property name="driverClassName" value="${driver}"/>
+		<property name="url" value="${url}"/>
+		<property name="username" value="${username}"/>
+		<property name="password" value="${password}"/>
 	</bean>
 
 	<!-- mybatis -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
-	<property name="dataSource" ref="dataSource"/>
-	<property name="configLocation" value="WEB-INF/spring/sqls/config.xml"/>
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="WEB-INF/spring/sqls/config.xml"/>
 	</bean>
 
 	<!-- mybatis template -->

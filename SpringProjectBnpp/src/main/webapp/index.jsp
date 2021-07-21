@@ -13,7 +13,7 @@
 	<a href="home.do">home</a>
 	<a href="main.do">main</a>
 	<a href="boardList.do">recipeboard</a>
-
+	<a href="recipe.do">randomrecipe</a>
 	<br>
 	<br>
 	<br>
@@ -39,8 +39,10 @@
 			<a href="loginform.do">로그인</a>
 		</c:otherwise>
 	</c:choose>
-	
 
+	<a href="home.do">home</a>  <br>
+	<a href="chatlogin.do">Chatlogin</a> <br>
+	<a href="machine.do">machine</a>
 
 </body>
 </html>
