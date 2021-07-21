@@ -22,6 +22,15 @@ public class PagingDto {
 			calcStartEndPage(getNowPage(), cntPage);
 			calcStartEnd(getNowPage(), getCntPerPage());
 		}
+		public PagingDto(int total, int nowPage, int cntPerPage) {
+			
+			setNowPage(nowPage);
+			setCntPerPage(cntPerPage);
+			setTotal(total);
+			calcLastPage(getTotal(), getCntPerPage());
+			calcStartEndPage(getNowPage(), cntPage);
+			calcStartEnd(getNowPage(), getCntPerPage());
+		}
 		// 제일 마지막 페이지 계산
 		public void calcLastPage(int total, int cntPerPage) {
 			setLastPage((int) Math.ceil((double)total / (double)cntPerPage));

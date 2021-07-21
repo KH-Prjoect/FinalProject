@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kh.bnpp.model.biz.MemberBiz;
 import com.kh.bnpp.model.biz.RboardBiz;
 import com.kh.bnpp.model.biz.ReplyBiz;
 import com.kh.bnpp.model.dto.PagingDto;
@@ -19,6 +20,8 @@ public class RboardController {
 	private RboardBiz biz;
 	@Autowired
 	private ReplyBiz rbiz;
+	@Autowired
+	private MemberBiz mbiz;
 	
 
 	
@@ -126,7 +129,7 @@ public class RboardController {
     @RequestMapping("/recommend.do")
     public String recommend (@RequestParam int member_id) {
         
-       // memberbiz.recommend(member_id);
+      // mbiz.recommend(member_id);
     
         return "forward:/boardList.do"; 
     }
