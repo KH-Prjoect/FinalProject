@@ -1,4 +1,4 @@
-package com.kh.bnpp.dto;
+package com.kh.bnpp.model.dto;
 
 import java.util.Date;
 

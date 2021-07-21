@@ -1,4 +1,4 @@
-package com.kh.bnpp.biz;
+package com.kh.bnpp.model.biz;
 
 import java.io.IOException;
 import java.util.UUID;

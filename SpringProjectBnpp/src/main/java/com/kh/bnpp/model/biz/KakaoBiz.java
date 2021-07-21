@@ -1,4 +1,4 @@
-package com.kh.bnpp.biz;
+package com.kh.bnpp.model.biz;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.kh.bnpp.dao.KakaoDao;
-import com.kh.bnpp.dto.KakaoDto;
+import com.kh.bnpp.model.dao.KakaoDao;
+import com.kh.bnpp.model.dto.KakaoDto;
 
 @Service
 public class KakaoBiz {

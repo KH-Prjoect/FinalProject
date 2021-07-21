@@ -1,10 +1,10 @@
-package com.kh.bnpp.biz;
+package com.kh.bnpp.model.biz;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kh.bnpp.dao.MemberDao;
-import com.kh.bnpp.dto.MemberDto;
+import com.kh.bnpp.model.dao.MemberDao;
+import com.kh.bnpp.model.dto.MemberDto;
 
 @Service
 public class MemberBizImpl implements MemberBiz{

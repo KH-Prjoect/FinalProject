@@ -1,4 +1,4 @@
-package com.kh.bnpp.biz;
+package com.kh.bnpp.model.biz;
 
 
 import com.github.scribejava.core.builder.api.DefaultApi20;
