@@ -52,7 +52,7 @@
 			document.getElementById('id1').focus();
 			
 		}else{
-			alert("회원가입 버튼 클릭>>");
+			alert("회원가입 버튼 클릭");
 		
 			$('input[name=member_address]').val($('#roadAddress').val()
 											  + ' '
@@ -66,8 +66,8 @@
 			//alert("totalAddress = " + totalAddress);
 			$('input[name=member_address]').attr('value',totalAddress); */
 												  
-			alert("최종 input[name=member_address] = " + $("input[name=member_address]").val());
-			$("form[name=signupform]").submit();
+			//alert("최종 input[name=member_address] = " + $("input[name=member_address]").val());
+			//$("form[name=signupform]").submit();
 		}
 	}
 	
