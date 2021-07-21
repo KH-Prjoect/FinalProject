@@ -73,8 +73,6 @@ public class NaverController {
 		logger.info(String.format("%s \n %s \t %s", session, code, state));
 		oauthToken = naverLoginBiz.getAccessToken(session, code, state);
 		
-		logger.info("[NaverController] getAcTo으로 토큰값 받아옴?? : " + oauthToken);
-		
 		// 1. 로그인 사용자 정보를 읽어온다.
 		apiResult = naverLoginBiz.getUserProfile(oauthToken); // String형식의 json데이터
 
@@ -86,9 +84,8 @@ public class NaverController {
 		// 2. String형식인 apiResult를 json형태로 바꾸기
 		JsonParser parser = new JsonParser();
 		Object obj = parser.parse(apiResult);
-		System.out.println("json문자열을 tree로 만든거 어떻게 생김??? : " + obj);
 		JsonObject jsonObj = (JsonObject) obj;
-		System.out.println("jsonObj 어떻게 생김??? : " + jsonObj);
+		
 		// 3. 데이터 파싱
 		// Top레벨 단계 _response 파싱
 		JsonObject response_obj = (JsonObject) jsonObj.get("response");

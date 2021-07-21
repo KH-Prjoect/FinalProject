@@ -38,7 +38,7 @@ public class NaverLoginBiz {
 		String state = generateRandomString();
 		
 		/* 생성한 난수 값을 session에 저장 */
-		System.out.println("NaverBiz에서 session에 저장할 난수값 : " + state);
+
 		setSession(session,state);
 		
 		/* Scribe에서 제공하는 인증 URL 생성 기능을 이용하여 네아로 인증 URL생성 */
@@ -55,14 +55,10 @@ public class NaverLoginBiz {
 	/* 네이버아이디로 Callback 처리 및 AccessToken 획득 Method */
 	public OAuth2AccessToken getAccessToken(HttpSession session, String code, String state) throws IOException {
 		
-		System.out.println("NaverLoginBiz의 getAccessToken 들어옴?? code : " + code);
-		System.out.println("NaverLoginBiz의 getAccessToken 들어옴?? state: " + state);
-		
 		/* Callback으로 전달받은 세션검증용 난수값과 세션에 저장되어있는 값이 일치하는지 확인 */
 		String sessionState = getSession(session);
-		System.out.println("NaverLoginBiz의 session에 들어있는 state값 : " + sessionState);
+
 		if(StringUtils.pathEquals(sessionState, state)) {
-			System.out.println("?????????????????????????????????????????");
 			OAuth20Service oauthService = new ServiceBuilder()
 					.apiKey(CLIENT_ID)
 					.apiSecret(CLIENT_SECRET)
