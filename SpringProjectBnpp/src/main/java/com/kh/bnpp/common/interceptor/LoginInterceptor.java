@@ -39,7 +39,7 @@ private Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 		   request.getRequestURI().contains("/kakaologin.do")		||
 		   request.getRequestURI().contains("/kakaologout.do")		||
 		   request.getRequestURI().contains("/naverlogin.do")		||
-		   request.getRequestURI().contains("/callback")		||
+		   request.getRequestURI().contains("/callback.do")		||
 		   request.getRequestURI().contains("/naverlogout.do")		||
 		   request.getRequestURI().contains("/ajaxlogin.do")
 			) {

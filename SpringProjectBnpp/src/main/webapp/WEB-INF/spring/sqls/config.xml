@@ -8,8 +8,8 @@
 	 </settings>
 
 	<typeAliases>
-		<typeAlias type="com.kh.bnpp.dto.MemberDto" alias="memberDto"/>
-		<typeAlias type="com.kh.bnpp.dto.KakaoDto" alias="kakaoDto"/>
+		<typeAlias type="com.kh.bnpp.model.dto.MemberDto" alias="memberDto"/>
+		<typeAlias type="com.kh.bnpp.model.dto.KakaoDto" alias="kakaoDto"/>
 	</typeAliases>
 	
 	<mappers>

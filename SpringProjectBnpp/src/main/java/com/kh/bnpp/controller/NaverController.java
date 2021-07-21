@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.kh.bnpp.biz.NaverLoginBiz;
+import com.kh.bnpp.model.biz.NaverLoginBiz;
 
 @Controller
 public class NaverController {
@@ -25,13 +25,15 @@ public class NaverController {
 	private Logger logger = LoggerFactory.getLogger(NaverController.class);
 
 	/* NaverLoginBiz */
+	@Autowired
 	private NaverLoginBiz naverLoginBiz;
 	private String apiResult = null;
 
-	@Autowired
-	private void setNaverLoginBiz(NaverLoginBiz naverLoginBiz) {
-		this.naverLoginBiz = naverLoginBiz;
-	}
+	/* NaverLoginBiz */
+	//@Autowired
+	//private void setNaverLoginBiz(NaverLoginBiz naverLoginBiz) {
+	//	this.naverLoginBiz = naverLoginBiz;
+	//}
 	
 	// 참고
 	// index.jsp에서 인증URL을 전달해줄 때 ${URL}에 담아서 넘겨줘야해서 LoginController에서 넘겨주기로 함
@@ -67,6 +69,8 @@ public class NaverController {
 
 		logger.info("[NaverController] 네이버 로그인 성공 후 callback메소드 도착");
 		OAuth2AccessToken oauthToken;
+		logger.info("[NaverController] callback메소드로 code파라미터 가져옴?? : " + code);
+		logger.info(String.format("%s \n %s \t %s", session, code, state));
 		oauthToken = naverLoginBiz.getAccessToken(session, code, state);
 		
 		logger.info("[NaverController] getAcTo으로 토큰값 받아옴?? : " + oauthToken);
@@ -88,13 +92,15 @@ public class NaverController {
 		// 3. 데이터 파싱
 		// Top레벨 단계 _response 파싱
 		JsonObject response_obj = (JsonObject) jsonObj.get("response");
-		// response의 nickname값 파싱
-		String nickname = response_obj.get("nickname").getAsString();
+		System.out.println(response_obj);
+		// response의 name값 파싱
+		String nickname = response_obj.get("name").getAsString();
+		System.out.println(nickname);
 		System.out.println("nickname 가져왔음?? : " + nickname);
 
 		// 4.파싱 닉네임 세션으로 저장
 		session.setAttribute("sessionId", nickname);
-
+		session.setAttribute("loginCheck", true);
 		model.addAttribute("result", apiResult);
 
 		return "redirect:/";

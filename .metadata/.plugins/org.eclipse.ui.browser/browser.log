@@ -80,3 +80,33 @@
 7월 17, 2021 09:49:02.436 [12520:13116:0717/094902.436:ERROR:device_event_log_impl.cc(214)] [09:49:02.436] USB: usb_service_win.cc:281 SetupDiEnumDeviceInterfaces: 사용 가능한 데이터가 없습니다. (0x103)
 7월 17, 2021 09:49:07.381 [12520:13116:0717/094907.381:ERROR:device_event_log_impl.cc(214)] [09:49:07.380] USB: usb_service_win.cc:258 Failed to get device driver name: 요소가 없습니다. (0x490)
 7월 17, 2021 09:49:07.401 [12520:13116:0717/094907.401:ERROR:device_event_log_impl.cc(214)] [09:49:07.398] USB: usb_service_win.cc:281 SetupDiEnumDeviceInterfaces: 사용 가능한 데이터가 없습니다. (0x103)
+
+7월 19, 2021 19:22:42.91 NEW SESSION
+7월 19, 2021 19:22:42.91 [12052:15260:0719/192242.089:ERROR:device_event_log_impl.cc(214)] [19:22:42.090] USB: usb_device_handle_win.cc:1058 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+7월 19, 2021 19:22:42.130 [12052:15260:0719/192242.129:ERROR:device_event_log_impl.cc(214)] [19:22:42.130] USB: usb_device_handle_win.cc:1058 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+7월 19, 2021 19:22:42.131 [12052:15260:0719/192242.130:ERROR:device_event_log_impl.cc(214)] [19:22:42.131] USB: usb_device_handle_win.cc:1058 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+7월 19, 2021 19:22:42.132 [12052:15260:0719/192242.131:ERROR:device_event_log_impl.cc(214)] [19:22:42.132] USB: usb_device_handle_win.cc:1058 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+7월 19, 2021 19:22:42.133 [12052:15260:0719/192242.131:ERROR:device_event_log_impl.cc(214)] [19:22:42.132] USB: usb_device_handle_win.cc:1058 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+
+7월 21, 2021 11:57:35.807 NEW SESSION
+7월 21, 2021 11:57:35.808 [21280:21304:0721/115735.802:ERROR:device_event_log_impl.cc(214)] [11:57:35.803] USB: usb_device_handle_win.cc:1058 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+7월 21, 2021 11:57:35.828 [21280:21304:0721/115735.804:ERROR:device_event_log_impl.cc(214)] [11:57:35.804] USB: usb_device_handle_win.cc:1058 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+7월 21, 2021 11:57:35.831 [21280:21304:0721/115735.811:ERROR:device_event_log_impl.cc(214)] [11:57:35.811] USB: usb_device_handle_win.cc:1058 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+7월 21, 2021 11:57:35.833 [21280:21304:0721/115735.813:ERROR:device_event_log_impl.cc(214)] [11:57:35.813] USB: usb_device_handle_win.cc:1058 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+7월 21, 2021 12:13:24.626 [21280:21380:0721/121324.625:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106
+7월 21, 2021 12:13:45.204 [21280:21380:0721/121345.204:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106
+7월 21, 2021 12:14:28.914 [21280:21380:0721/121428.914:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106
+7월 21, 2021 12:16:00.409 [21280:21380:0721/121600.409:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106
+7월 21, 2021 12:19:45.572 [21280:21380:0721/121945.572:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106
+7월 21, 2021 12:26:58.957 [21280:21380:0721/122658.957:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106
+7월 21, 2021 12:27:26.194 [21280:21380:0721/122726.193:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106
+7월 21, 2021 12:28:13.156 [21280:21380:0721/122813.156:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106
+7월 21, 2021 12:29:50.31 [21280:21380:0721/122950.030:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106
+7월 21, 2021 12:33:33.406 [21280:21380:0721/123333.404:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106
+7월 21, 2021 12:40:23.375 [21280:21380:0721/124023.374:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106
+7월 21, 2021 12:50:23.379 [21280:21380:0721/125023.378:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106
+7월 21, 2021 13:00:23.382 [21280:21380:0721/130023.381:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106
+7월 21, 2021 13:10:23.386 [21280:21380:0721/131023.385:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106
+7월 21, 2021 13:20:23.388 [21280:21380:0721/132023.387:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106
+7월 21, 2021 13:30:23.390 [21280:21380:0721/133023.389:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106
+7월 21, 2021 13:40:23.392 [21280:21380:0721/134023.392:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106

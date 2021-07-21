@@ -27,7 +27,7 @@
 			 	<c:out value="${userId}"/>님 로그인 완료!
 			 	<a href="kakaologout.do">로그아웃</a>
 			 </c:if>
-			 <c:if test="${session != null }">
+			 <c:if test="${sessionId != null }">
 			 	<c:out value="${sessionId }"/>님 로그인 완료!
 			 	<a href="naverlogout.do">로그아웃</a>
 			 </c:if>
