@@ -4,6 +4,8 @@
 <html>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
 	function test(){
@@ -134,7 +136,7 @@
 <jsp:include page="header.jsp" />
 
 <div class="main-banner wow fadeIn">
-
+	<div style="position:relative; left:20%;">
 	<h1>회원가입</h1>
 	
 	<form name="signupform" action="signupres.do">
@@ -216,6 +218,7 @@
 			</tr>
 		</table>
 	</form>
+	</div>
 	</div>
 	
 <jsp:include page="footer.jsp" />

@@ -101,7 +101,7 @@ public class LoginController {
 		session.invalidate();   
 		logger.info("[LoginController] : 로그아웃 성공");
 		
-		return "redirect:/";
+		return "mainpage";
 	}
 	
 

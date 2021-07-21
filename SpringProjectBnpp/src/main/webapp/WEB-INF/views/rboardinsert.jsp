@@ -19,7 +19,7 @@
 	
 	<div style="width: 60%; margin: auto;">
 	<form method="post" action="insertres.do">
-		<input type="hidden" name="member_id" style="width: 20%;" placeholder="${dto.member_id }"/><br>
+		<input type="hidden" name="member_id" value="${dbDto.member_id }"/><br>
 		<input type="text" name="br_title" style="width: 40%;" placeholder="제목"/>
 		<br><br> 
 		<div class="form-group">

@@ -10,21 +10,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link
-	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-	rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 </head>
 
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$(".comment-update-form").hide();
@@ -85,112 +75,113 @@
 			}
 
 		});
-		
-		$("#btnRecommend").click(function(){
-		    if(confirm("해당 글을 추천하시겠습니까?")){
-		        document.form1.action="recommend.do";
-		        document.form1.submit();
-		        
-		        alert("해당 글을 추천하였습니다.")
-		        
-		        }
-		    });
-		
+
+		$("#btnRecommend").click(function() {
+			if (confirm("해당 글을 추천하시겠습니까?")) {
+				document.form1.action = "recommend.do";
+				document.form1.submit();
+
+				alert("해당 글을 추천하였습니다.")
+
+			}
+		});
+
 	});
 </script>
 <body>
-<jsp:include page="header.jsp" />
+	<jsp:include page="header.jsp" />
 
-<div class="main-banner wow fadeIn">
+	<div class="main-banner wow fadeIn">
 
-	<h1>DETAIL</h1>
-	<table border="1">
-		<tr>
-			<th>작성자</th>
-			<td>${dto.member_id }</td>
-		</tr>
-		<tr>
-			<th>제목</th>
-			<td>${dto.br_title }</td>
-		</tr>
-		<tr>
-			<th></th>
-			<td><div id="summernote" 
-					class="form-control" style="width: 600px; height: 100%;">${dto.br_content }</div></td>
-		</tr>
+		<h1>DETAIL</h1>
+		<table border="1">
+			<tr>
+				<th>작성자</th>
+				<td>${dto.member_id }</td>
+			</tr>
+			<tr>
+				<th>제목</th>
+				<td>${dto.br_title }</td>
+			</tr>
+			<tr>
+				<th></th>
+				<td><div id="summernote" class="form-control"
+						style="width: 600px; height: 100%;">${dto.br_content }</div></td>
+			</tr>
 
-		<tr>
-			<td colspan="2" align="center">${dto.br_reccount }<input
-				type="button" class="btnRecommend" value="추천" /></td>
-		</tr>
-		<tr>
-			<td colspan="2" align="right"><input type="button" value="수정"
-				onclick="location.href='updateform.do?br_num=${dto.br_num}'" /> <input
-				type="button" value="삭제"
-				onclick="location.href='delete.do?br_num=${dto.br_num}'" /> <input
-				type="button" value="목록" onclick="location.href='boardList.do?'" /></td>
-		</tr>
-	</table>
+			<tr>
+				<td colspan="2" align="center">${dto.br_reccount }<input
+					type="button" class="btnRecommend" value="추천" /></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="right"><input type="button" value="수정"
+					onclick="location.href='updateform.do?br_num=${dto.br_num}'" /> <input
+					type="button" value="삭제"
+					onclick="location.href='delete.do?br_num=${dto.br_num}'" /> <input
+					type="button" value="목록" onclick="location.href='boardList.do?'" /></td>
+			</tr>
+		</table>
 
 
-	<h1>REPLY</h1>
-	<div id="replyListDiv">
+		<h1>REPLY</h1>
+		<div id="replyListDiv">
 
-		<div>
-			<c:forEach items="${replylist}" var="reply">
-				<div>
-					<div align="left">${reply.reply_member_id}</div>
-
+			<div>
+				<c:forEach items="${replylist}" var="reply">
 					<div>
-						<fmt:formatDate value="${reply.reply_regdate}"
-							pattern="yyyy-MM-dd" />
-						<input type="button" class="replyUpdateBtn"
-							name="${reply.reply_no }" value="수정"> <input
-							type="button" name="${reply.reply_no }" class="replyDeleteBtn"
-							value="삭제">
+						<div align="left">${reply.reply_member_id}</div>
+
+						<div>
+							<fmt:formatDate value="${reply.reply_regdate}"
+								pattern="yyyy-MM-dd" />
+							<input type="button" class="replyUpdateBtn"
+								name="${reply.reply_no }" value="수정"> <input
+								type="button" name="${reply.reply_no }" class="replyDeleteBtn"
+								value="삭제">
+						</div>
 					</div>
-				</div>
-				<div>
-					<div id="reply_content">${reply.reply_content }</div>
-					<form class="comment-update-form" action="replyupdateres.do"
-						method="post">
-						<input type="hidden" name="reply_no" value="${reply.reply_no }" />
-						<textarea name="reply_content">${reply.reply_content }</textarea>
-						<button type="submit">수정완료</button>
-					</form>
-				</div>
-			</c:forEach>
+					<div>
+						<div id="reply_content">${reply.reply_content }</div>
+						<form class="comment-update-form" action="replyupdateres.do"
+							method="post">
+							<input type="hidden" name="reply_no" value="${reply.reply_no }" />
+							<textarea name="reply_content">${reply.reply_content }</textarea>
+							<button type="submit">수정완료</button>
+						</form>
+					</div>
+				</c:forEach>
+			</div>
+
+
 		</div>
 
 
+
+		<div>
+			<form method="post" action="replyinsert.do">
+				<div>
+					<input type="hidden" name="br_num" value="${dto.br_num }" />
+					<p>
+						<input type="hidden" name="reply_member_id"
+							value="${dbDto.member_id }">
+					</p>
+					<p>
+						<textarea rows="2" cols="60" name="reply_content"></textarea>
+						<button type="submit">댓글 작성</button>
+					</p>
+					</div>
+			</form>
+
+		</div>
 	</div>
-
-
-
-	<div>
-		<form method="post" action="replyinsert.do">
-			<input type="hidden" name="br_num" value="${dto.br_num }" />
-			<p>
-				<label>작성자</label> <input type="text" name="reply_member_id" value="${dbDto.member_id }">
-			</p>
-			<p>
-				<textarea rows="2" cols="60" name="reply_content"></textarea>
-				<button type="submit">댓글 작성</button>
-			</p>
-			<p></p>
-		</form>
-
-	</div>
-</div>
 	<script>
 		$(document).ready(function() {
-			$('#summernote').summernote({
-			});
+			$('#summernote').summernote({});
 		});
 	</script>
-	
 
-<jsp:include page="footer.jsp" />
-	
+
+	<jsp:include page="footer.jsp" />
+
 </body>
 </html>
