@@ -1,15 +1,15 @@
-<%@page import="com.kh.bnpp.dto.MemberDto"%>
+<%@page import="com.kh.bnpp.model.dto.MemberDto"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
-<%@page import="com.kh.bnpp.biz.FoodBizImpl"%>
-<%@page import="com.kh.bnpp.biz.LectureBizImpl"%>
-<%@page import="com.kh.bnpp.biz.PayBizImpl"%>
-<%@page import="com.kh.bnpp.dto.FoodDto"%>
-<%@page import="com.kh.bnpp.biz.FoodBiz"%>
-<%@page import="com.kh.bnpp.biz.LectureBiz"%>
+<%@page import="com.kh.bnpp.model.biz.FoodBizImpl"%>
+<%@page import="com.kh.bnpp.model.biz.LectureBizImpl"%>
+<%@page import="com.kh.bnpp.model.biz.PayBizImpl"%>
+<%@page import="com.kh.bnpp.model.dto.FoodDto"%>
+<%@page import="com.kh.bnpp.model.biz.FoodBiz"%>
+<%@page import="com.kh.bnpp.model.biz.LectureBiz"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.kh.bnpp.dto.LectureDto"%>
-<%@page import="com.kh.bnpp.biz.PayBiz"%>
-<%@page import="com.kh.bnpp.dto.PayDto"%>
+<%@page import="com.kh.bnpp.model.dto.LectureDto"%>
+<%@page import="com.kh.bnpp.model.biz.PayBiz"%>
+<%@page import="com.kh.bnpp.model.dto.PayDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -109,6 +109,7 @@
 				}).open();
 	}
 	
+	
 </script>
 </head>
 <body>
@@ -124,6 +125,16 @@
 				</ul>
 			</nav>
 		</div>
+		<%
+			List<FoodDto> foods = (List<FoodDto>)request.getAttribute("f_list");
+			for (FoodDto f_dto : foods) {
+				%>
+				<script type="text/javascript">
+					alert("<%=f_dto.getFood_name()%>");
+				</script>
+				<% 
+			}
+		%>
 		<div class="mypage">
 			<h3>나의 수강 목록</h3>
 			<br>
@@ -160,7 +171,8 @@
 			<h2>나의 냉장고</h2>
 			<br>
 			<div class="mypage_food">
-				<form action="" method="post">
+					<form action="foodlifeupdateres.do" method="post">
+					<input type="hidden" name="member_id" value="${m_dto.member_id }">
 					<table border="1">
 						<col width="100"/>
 						<col width="200"/>
@@ -168,6 +180,7 @@
 							<th>식품명</th>
 							<th>유통기한</th>
 						</tr>
+						<c:set var="size" value="${f_list.size()}" />
 						<c:choose>
 							<c:when test="${empty f_list}">
 								<tr>
@@ -175,28 +188,34 @@
 								</tr>
 							</c:when>
 							<c:otherwise>
+								<%
+									int i = 0;
+								%>
 								<c:forEach items="${f_list }" var="dto">
-									<tr>
-										<td><input type="text" name="food_name" value="${dto.food_name }" /></td>
-										<td>
-											<input type="hidden" name="food_num" value="${dto.food_num }"/>
-											<c:choose>
-												<c:when test="${empty dto.food_life}">
-													<input type="text" name="food_life" id="datepicker" value="미설정" />
-												</c:when>
-												<c:otherwise>
-													<input type="text" name="food_life" id="datepicker" value="${dto.food_life }" />
-												</c:otherwise>
-											</c:choose>
-										</td>
-									</tr>
+										<tr>
+											<td><input type="text" name="food_list[<%=i%>].food_name" value="${dto.food_name }" /></td>
+											<td>
+												<input type="hidden" name="food_list[<%=i%>].food_num" value="${dto.food_num }"/>
+												<c:choose>
+													<c:when test="${empty dto.food_life}">
+														<input type="text" name="food_list[<%=i%>].food_life" id="datepicker" value="미설정" />
+													</c:when>
+													<c:otherwise>
+														<input type="text" name="food_list[<%=i%>].food_life" id="datepicker" value="${dto.food_life }" />
+													</c:otherwise>
+												</c:choose>
+											</td>
+										</tr>
+									<%
+										i++;
+									%>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
 						<tr>
 							<td colspan="4" align="right">
 								<input type="submit" value="수정사항 적용" />
-								<input type="button" value="영수증 스캔" onclick="location.href='./foodinsert.do'"/>
+								<input type="button" value="영수증 스캔" onclick=""/>
 							</td>
 						</tr>
 					</table>

@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.kh.bnpp.biz.FoodBiz;
-import com.kh.bnpp.dto.FoodDto;
+import com.kh.bnpp.model.biz.FoodBiz;
+import com.kh.bnpp.model.dto.FoodDto;
 
 @Controller
 public class FoodController {
@@ -51,13 +51,6 @@ public class FoodController {
 		return "foodlifeupdate";
 	}
 	
-	@RequestMapping("/foodlifeupdateres.do")
-	public String lifeupdateres(FoodDto dto) {
-		if (biz.updateLife(dto) > 0) {
-			return "redirect:foodselect.do?food_num="+dto.getFood_num();
-		}
-		return "redirect:foodlifeupdate.do?food_num="+dto.getFood_num();
-	}
 	
 	@RequestMapping("/fooddelete.do")
 	public String delete(int food_num) {

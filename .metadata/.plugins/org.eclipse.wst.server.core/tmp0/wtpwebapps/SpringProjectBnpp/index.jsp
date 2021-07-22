@@ -1,9 +1,9 @@
-<%@page import="com.kh.bnpp.dao.MemberDaoImpl"%>
-<%@page import="com.kh.bnpp.dao.MemberDao"%>
-<%@page import="com.kh.bnpp.biz.MemberBizImpl"%>
-<%@page import="com.kh.bnpp.biz.MemberBiz"%>
+<%@page import="com.kh.bnpp.model.dao.MemberDaoImpl"%>
+<%@page import="com.kh.bnpp.model.dao.MemberDao"%>
+<%@page import="com.kh.bnpp.model.biz.MemberBizImpl"%>
+<%@page import="com.kh.bnpp.model.biz.MemberBiz"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
-<%@page import="com.kh.bnpp.dto.MemberDto"%>
+<%@page import="com.kh.bnpp.model.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

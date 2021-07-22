@@ -16,7 +16,7 @@ import java.util.UUID;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.kh.bnpp.dto.BillDto;
+import com.kh.bnpp.model.dto.BillDto;
 
 /*
  	String pathSet = request.getSession().getServletContext().getRealPath("/resources/img/receipt1.jpg");

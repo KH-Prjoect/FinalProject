@@ -16,3 +16,7 @@
 1626698767644	Rename type 'MemberBiz'
 1626698778075	Rename type 'MemberBizImpl'
 1626764406634	Delete element
+1626852992211	Rename package 'com.kh.bnpp.dto'
+1626853023439	Rename package 'com.kh.bnpp.dao'
+1626853041214	Rename package 'com.kh.bnpp.biz'
+1626872291034	Delete element

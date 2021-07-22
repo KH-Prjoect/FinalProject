@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.kh.bnpp.biz.NaverLoginBiz;
+import com.kh.bnpp.model.biz.NaverLoginBiz;
 
 @Controller
 public class NaverController {

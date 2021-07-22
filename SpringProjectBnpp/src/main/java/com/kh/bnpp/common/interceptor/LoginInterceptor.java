@@ -51,7 +51,8 @@ private Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 		   request.getRequestURI().contains("/naverlogin.do")		||
 		   request.getRequestURI().contains("/callback")		||
 		   request.getRequestURI().contains("/naverlogout.do")		||
-		   request.getRequestURI().contains("/ajaxlogin.do")
+		   request.getRequestURI().contains("/ajaxlogin.do") || 
+		   request.getRequestURI().contains("/foodlifeupdateres.do")
 			) {
 			
 		return true;

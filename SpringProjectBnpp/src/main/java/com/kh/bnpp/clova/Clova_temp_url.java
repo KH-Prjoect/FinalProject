@@ -12,7 +12,7 @@ import java.util.UUID;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.kh.bnpp.dto.BillDto;
+import com.kh.bnpp.model.dto.BillDto;
 
 public class Clova_temp_url {
 	

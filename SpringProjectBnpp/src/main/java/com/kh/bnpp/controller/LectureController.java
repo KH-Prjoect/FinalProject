@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.kh.bnpp.biz.LectureBiz;
-import com.kh.bnpp.dto.LectureDto;
+import com.kh.bnpp.model.biz.LectureBiz;
+import com.kh.bnpp.model.dto.LectureDto;
 
 @Controller
 public class LectureController {

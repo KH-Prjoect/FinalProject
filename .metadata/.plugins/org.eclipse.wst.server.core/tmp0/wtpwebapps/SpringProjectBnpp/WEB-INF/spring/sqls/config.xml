@@ -8,12 +8,12 @@
 	 </settings>
 
 	<typeAliases>
-		<typeAlias type="com.kh.bnpp.dto.LectureDto" alias="LectureDto"/>
-		<typeAlias type="com.kh.bnpp.dto.PayDto" alias="PayDto"/>
-		<typeAlias type="com.kh.bnpp.dto.FoodDto" alias="FoodDto"/>
-		<typeAlias type="com.kh.bnpp.dto.BillDto" alias="BillDto"/>
-		<typeAlias type="com.kh.bnpp.dto.MemberDto" alias="MemberDto"/>
-		<typeAlias type="com.kh.bnpp.dto.KakaoDto" alias="kakaoDto"/>
+		<typeAlias type="com.kh.bnpp.model.dto.LectureDto" alias="LectureDto"/>
+		<typeAlias type="com.kh.bnpp.model.dto.PayDto" alias="PayDto"/>
+		<typeAlias type="com.kh.bnpp.model.dto.FoodDto" alias="FoodDto"/>
+		<typeAlias type="com.kh.bnpp.model.dto.BillDto" alias="BillDto"/>
+		<typeAlias type="com.kh.bnpp.model.dto.MemberDto" alias="MemberDto"/>
+		<typeAlias type="com.kh.bnpp.model.dto.KakaoDto" alias="kakaoDto"/>
 	</typeAliases>
 	
 	<mappers>

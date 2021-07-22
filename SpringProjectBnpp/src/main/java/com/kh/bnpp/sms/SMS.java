@@ -8,6 +8,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -124,6 +128,33 @@ public class SMS {
 		String encodeBase64String = Base64.encodeBase64String(rawHmac);
 		
 	  return encodeBase64String;
+	}
+	
+	public static String compareDate(String date) throws ParseException {
+		Calendar cal = Calendar.getInstance();
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	    Date foodlife = sdf.parse(date);
+	    Date sysdate1 = new Date(System.currentTimeMillis()); 
+	    String sys = sdf.format(sysdate1);
+	    Date sysdate = sdf.parse(sys);
+	    
+	    int res = foodlife.compareTo(sysdate);
+	    
+	    if (res == 0) {
+	    	return "유통기한이 오늘까지 입니다.";
+	    }
+	    
+	    cal.setTime(foodlife);
+	    cal.add(Calendar.DATE, 3);
+	    foodlife = cal.getTime();
+	    
+	    res = foodlife.compareTo(sysdate);
+	    System.out.println(res);
+	    if (res > 0) {
+    		return "유통기한이 3일 이내로 남았습니다.";
+    	}
+	    return "0";
 	}
 	
 }

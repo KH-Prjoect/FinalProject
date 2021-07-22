@@ -11,15 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kh.bnpp.biz.FoodBiz;
-import com.kh.bnpp.biz.LectureBiz;
-import com.kh.bnpp.biz.MemberBiz;
-import com.kh.bnpp.biz.PayBiz;
-import com.kh.bnpp.dto.FoodDto;
-import com.kh.bnpp.dto.LectureDto;
-import com.kh.bnpp.dto.MemberDto;
-import com.kh.bnpp.dto.PayDto;
+import com.kh.bnpp.model.biz.FoodBiz;
+import com.kh.bnpp.model.biz.LectureBiz;
+import com.kh.bnpp.model.biz.MemberBiz;
+import com.kh.bnpp.model.biz.PayBiz;
+import com.kh.bnpp.model.dto.FoodDto;
+import com.kh.bnpp.model.dto.FoodListDto;
+import com.kh.bnpp.model.dto.LectureDto;
+import com.kh.bnpp.model.dto.MemberDto;
+import com.kh.bnpp.model.dto.PayDto;
 
 @Controller
 public class MypageController {
@@ -71,8 +73,25 @@ public class MypageController {
 		if (m_biz.updatestudent(dto) > 0) {
 			return "redirect:mypage.do?member_id="+dto.getMember_id();
 		}
-		System.out.println("수정실패(학생)");
 		return "redirect:mypage.do?member_id="+dto.getMember_id();
+	}
+	
+	@RequestMapping(value = "/foodlifeupdateres.do", method = RequestMethod.POST)
+	public String lifeupdateres(FoodListDto food_list, String member_id) {
+		int num = 0;
+		int k;
+		List<FoodDto> f_list = food_list.getFood_list();
+		for (FoodDto dto : f_list) {
+			k = f_biz.updateLife(dto);
+			num += k;
+		}
+			
+		if (num > f_list.size()) {
+			// logger.info("음식 수정 성공");
+			return "redirect:mypage.do?member_id="+member_id;
+		}
+		// logger.info("음식 수정 실패");
+		return "redirect:mypage.do?member_id="+member_id;
 	}
 	
 	@RequestMapping("/memberdelete.do")
@@ -80,13 +99,13 @@ public class MypageController {
 		MemberDto dto = m_biz.selectOne(member_id);
 		if (dto.getMember_pw().equals(member_password)) {
 			if (m_biz.delete(dto) > 0) {
-				System.out.println("회원탈퇴성공");
+				logger.info("회원탈퇴성공");
 				return "index";
 			}
-			System.out.println("회원탈퇴실패");
+			logger.info("회원탈퇴실패");
 			return "redirect:mypage.do?member_id="+member_id;
 		}
-		System.out.println("비번틀림");
+		logger.info("비번틀림");
 		return "redirect:mypage.do?member_id="+member_id;
 	}
 	

@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.kh.bnpp.biz.PayBiz;
-import com.kh.bnpp.dto.PayDto;
+import com.kh.bnpp.model.biz.PayBiz;
+import com.kh.bnpp.model.dto.PayDto;
 
 @Controller
 public class PayController {

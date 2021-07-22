@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.kh.bnpp.biz.MemberBiz;
-import com.kh.bnpp.dto.MemberDto;
+import com.kh.bnpp.model.biz.MemberBiz;
+import com.kh.bnpp.model.dto.MemberDto;
 
 @Controller
 public class MemberController {

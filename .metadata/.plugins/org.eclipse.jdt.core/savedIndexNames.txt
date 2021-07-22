@@ -40,7 +40,6 @@ INDEX VERSION 1.131+C:\Workspaces\Workspace_fin\.metadata\.plugins\org.eclipse.j
 1292399890.index
 1543493102.index
 1173437036.index
-3632490333.index
 1944395522.index
 310942334.index
 3056920437.index
