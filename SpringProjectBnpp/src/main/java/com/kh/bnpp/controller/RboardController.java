@@ -12,6 +12,7 @@ import com.kh.bnpp.model.biz.RboardBiz;
 import com.kh.bnpp.model.biz.ReplyBiz;
 import com.kh.bnpp.model.dto.PagingDto;
 import com.kh.bnpp.model.dto.RboardDto;
+import com.kh.bnpp.model.dto.ReplyDto;
 
 @Controller
 public class RboardController {
@@ -62,7 +63,7 @@ public class RboardController {
 		model.addAttribute("dto",biz.selectOne(br_num));
 		
 		// 댓글조회
-		model.addAttribute("replylist",rbiz.reply_selectList(br_num));
+		model.addAttribute("reply",new ReplyDto());
 		
 		
 		return "rboardselect";
@@ -102,8 +103,8 @@ public class RboardController {
 			, @RequestParam(required = false) String keyword) {
 		
 		
-		System.out.println(searchType);
-		System.out.println(keyword);
+		//System.out.println(searchType);
+		//System.out.println(keyword);
 
 		
 		int total = biz.countBoard(pdto);

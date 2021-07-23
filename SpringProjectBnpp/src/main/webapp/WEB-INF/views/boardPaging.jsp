@@ -34,7 +34,8 @@ a {
 	function selChange() {
 		var sel = document.getElementById('cntPerPage').value;
 		location.href = "boardList.do?nowPage=${paging.nowPage}&cntPerPage="
-				+ sel+"&searchType=${paging.searchType}&keyword=${paging.keyword}";
+				+ sel
+				+ "&searchType=${paging.searchType}&keyword=${paging.keyword}";
 	}
 
 	$(function() {
@@ -45,8 +46,6 @@ a {
 			url = url + "?searchType=" + $('#searchType').val();
 			url = url + "&keyword=" + $('#keyword').val();
 			location.href = url;
-			
-			
 
 		});
 
@@ -56,66 +55,72 @@ a {
 
 <body>
 
-<jsp:include page="header.jsp" />
+	<jsp:include page="header.jsp" />
 
-<div class="main-banner wow fadeIn">
-	<h2>레시피공유게시판</h2>
+	<div class="main-banner wow fadeIn">
+		<h2>레시피공유게시판</h2>
 
-	<div id="outter">
-		<div style="float: right;">
-			<select id="cntPerPage" name="sel" onchange="selChange()">
-				<option value="5"
-					<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄
-					보기</option>
-				<option value="10"
-					<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄
-					보기</option>
-				<option value="15"
-					<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄
-					보기</option>
-				<option value="20"
-					<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄
-					보기</option>
-			</select>
-		</div>
-		<!-- 옵션선택 끝 -->
+		<div id="outter">
+			<div style="float: right;">
+				<select id="cntPerPage" name="sel" onchange="selChange()">
+					<option value="5"
+						<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄
+						보기</option>
+					<option value="10"
+						<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄
+						보기</option>
+					<option value="15"
+						<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄
+						보기</option>
+					<option value="20"
+						<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄
+						보기</option>
+				</select>
+			</div>
+			<!-- 옵션선택 끝 -->
 
-		<table border="1">
-			<col width="50">
-			<col width="500">
-			<col width="100">
-			<col width="100">
-			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>날짜</th>
-				<th>조회수</th>
-			</tr>
+			<table border="1">
+				<col width="50">
+				<col width="500">
+				<col width="100">
+				<col width="100">
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>날짜</th>
+					<th>조회수</th>
+				</tr>
 
-			<c:choose>
-				<c:when test="${empty list }">
-					<tr>
-						<th colspan="4">-------------작성된 글이 없습니다------------</th>
-					</tr>
-				</c:when>
-				<c:otherwise>
-					<c:forEach items="${list }" var="dto">
+				<c:choose>
+					<c:when test="${empty list }">
 						<tr>
-							<td>${dto.br_num }</td>
-							<td><a href="select.do?br_num=${dto.br_num }">${dto.br_title }</a></td>
-							<td>${dto.member_id }</td>
-							<td>${dto.br_regdate }</td>
-							<td>${dto.br_readcount }</td>
+							<th colspan="4">-------------작성된 글이 없습니다------------</th>
 						</tr>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>
-
-			<tr>
-				<td colspan="5" align="right"><input type="button" value="글작성"
-					onclick="location.href='insertform.do'" /></td>
-		</table>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${list }" var="dto">
+							<tr>
+								<td>${dto.br_num }</td>
+								<td><a href="select.do?br_num=${dto.br_num }">${dto.br_title }</a></td>
+								<td>${dto.member_id }</td>
+								<td>${dto.br_regdate }</td>
+								<td>${dto.br_readcount }</td>
+							</tr>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+					<c:when test="${sessionScope.loginCheck eq true}">
+						<c:if test="${not empty dbDto.member_id}">
+							<tr>
+								<td colspan="5" align="right"><input type="button"
+									value="글작성" onclick="location.href='insertform.do'" /></td>
+							</tr>
+						</c:if>
+					</c:when>
+				</c:choose>
+			</table>
 		</div>
 
 		<div style="display: block; text-align: center;">
@@ -155,7 +160,8 @@ a {
 		</div>
 
 		<div>
-			<input type="text" name="keyword" id="keyword" value="${paging.keyword}">
+			<input type="text" name="keyword" id="keyword"
+				value="${paging.keyword}">
 		</div>
 		<div>
 			<button name="btnSearch" id="btnSearch">검색</button>
@@ -165,7 +171,7 @@ a {
 	<!-- search -->
 
 
-<jsp:include page="footer.jsp" />
+	<jsp:include page="footer.jsp" />
 
 </body>
 </html>

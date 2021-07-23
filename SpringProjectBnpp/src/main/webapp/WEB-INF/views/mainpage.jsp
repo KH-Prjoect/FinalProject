@@ -72,7 +72,7 @@
 									경험하는 시간, 한 그릇의 음식이 주는 특별한 행복을 전달해드립니다.</p>
 								<form id="search" action="#" method="GET">
 									<fieldset>
-										<input type="address" name="address" class="email"
+										<input type="search" name="text" class="email"
 											placeholder="오늘 뭐 먹지?" autocomplete="on" required>
 									</fieldset>
 									<fieldset>

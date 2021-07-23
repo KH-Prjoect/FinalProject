@@ -20,15 +20,15 @@ public class QboardController {
 
 	@RequestMapping("/qnainsertform.do")
 	public String insertForm() {
-		return "qboardinsert";
+		return "qnaboardinsert";
 	}
 
 	@RequestMapping("/qnainsert.do")
 	public String insertRes(QboardDto dto) {
 		if (biz.insert(dto) > 0) {
-			return "redirect:.do";
+			return "faqboard";
 		}
-		return "redirect:.do";
+		return "";
 	}
 
 	@RequestMapping("/qnaselect.do")

@@ -14,7 +14,8 @@
 	<a href="main.do">main</a>
 	<a href="boardList.do">recipeboard</a>
 	<a href="recipe.do">randomrecipe</a>
-	<br>
+	
+	
 	<br>
 	<br>
 	<br>

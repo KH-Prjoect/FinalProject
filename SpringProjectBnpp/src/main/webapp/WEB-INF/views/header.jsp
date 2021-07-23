@@ -59,29 +59,15 @@
 									공유</a></li>
 							<li class="scroll-to-section"><a href="#">강사</a></li>
 							<li class="scroll-to-section"><a href="qnalist.do">고객센터</a></li>
-							<c:choose>
+							<li class="scroll-to-section">
+									<c:choose>
 								<c:when test="${sessionScope.loginCheck eq true}">
-									<c:if test="${not empty dbDto.member_id}">
 										<li class="scroll-to-section" ><a href="#">${dbDto.member_id }님
 										</a></li>
 										<li class="scroll-to-section"><div
 												class="main-blue-button">
 												<a href="logout.do">로그아웃</a>
 											</div>
-									</c:if>
-									<c:if test="${userId ne null}">
-										<c:out value="${userId}" />님 로그인 완료!
-			 	<li class="scroll-to-section"><div class="main-blue-button">
-												<a href="kakaologout.do">로그아웃</a>
-											</div>
-									</c:if>
-									<c:if test="${session != null }">
-										<c:out value="${sessionId }" />님 로그인 완료!
-										<li class="scroll-to-section"><div
-												class="main-blue-button">
-												<a href="naverlogout.do">로그아웃</a>
-											</div>
-									</c:if>
 								</c:when>
 							<c:otherwise>
 									<li class="scroll-to-section"><div
@@ -93,7 +79,6 @@
 										</div></li>
 							</c:otherwise>
 							</c:choose>
-
 						</ul>
 						<a class='menu-trigger'> <span>Menu</span>
 						</a>
