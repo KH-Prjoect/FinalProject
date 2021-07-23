@@ -10,6 +10,7 @@ public interface LectureDao {
 	
 	public List<LectureDto> selectList();
 	public LectureDto selectOne(int lecture_num);
+	public List<LectureDto> selectMyList(String member_id);
 	public int insert(LectureDto dto);
 	public int update(LectureDto dto);
 	public int delete(int lecture_num);

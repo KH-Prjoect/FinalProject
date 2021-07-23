@@ -46,9 +46,11 @@ public class MypageController {
 		
 		if (dto.getMember_role().equals("M")) {
 			return "redirect:mypage_student.do?member_id="+member_id;
+		} else if (dto.getMember_role().equals("T")) {
+			return "redirect:mypage_teacher.do?member_id="+member_id;
+		} else {
+			return "redirect:mypage_admin.do?member_id="+member_id;
 		}
-		return "redirect:mypage_teacher.do?member_id="+member_id;
-		
 	}
 	
 	@RequestMapping("/mypage_student.do")
@@ -68,9 +70,28 @@ public class MypageController {
 		return "mypage_student";
 	}
 	
+	@RequestMapping("/mypage_teacher.do")
+	public String mypage_teacher(Model model, String member_id) {
+		MemberDto m_dto = m_biz.selectOne(member_id);
+		List<LectureDto> l_list = l_biz.selectMyList(member_id);
+		List<FoodDto> f_list = f_biz.selectMyList(member_id);
+		model.addAttribute("l_list", l_list);
+		model.addAttribute("f_list", f_list);
+		model.addAttribute("m_dto", m_dto);
+		return "mypage_teacher";
+	}
+	
 	@RequestMapping("/studentupdateres.do")
 	public String studentupdateres(MemberDto dto) {
 		if (m_biz.updatestudent(dto) > 0) {
+			return "redirect:mypage.do?member_id="+dto.getMember_id();
+		}
+		return "redirect:mypage.do?member_id="+dto.getMember_id();
+	}
+	
+	@RequestMapping("/teacherupdateres.do")
+	public String teacherupdateres(MemberDto dto) {
+		if (m_biz.updateteacher(dto) > 0) {
 			return "redirect:mypage.do?member_id="+dto.getMember_id();
 		}
 		return "redirect:mypage.do?member_id="+dto.getMember_id();

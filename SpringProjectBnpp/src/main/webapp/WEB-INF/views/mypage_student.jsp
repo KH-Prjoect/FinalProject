@@ -55,23 +55,9 @@
 		    yearSuffix: '년'
 		  });
 	});
-		  
-	$(function(){
-		$("#selboxDirect").hide();	      
-		$("#addr").change(function() {
-			//직접입력을 누를 때 나타남
-			if($("#addr").val() == "직접입력") {
-				$("#selboxDirect").show();
-			} else {
-				$("#selboxDirect").hide();
-			}
-		}) 
-	});
+		
 
 	function check() {
-		var member_email = $('input[name=member_email_1]').val() + "@"
-				+ $('select[name=member_email_2]').val();
-		$('input[name=member_email]').attr('value', member_email);
 		var member_phone = $('input[name=member_phone_1]').val() + "-"
 				+ $('input[name=member_phone_2]').val() + "-"
 				+ $('input[name=member_phone_3]').val();
@@ -114,6 +100,10 @@
 </script>
 </head>
 <body>
+ 
+	<!-- ***** Header Area Start ***** -->
+	<jsp:include page="header.jsp" />
+	<!-- ***** Header Area End ***** -->
 
 	<div class="mypage-body">
 		<div id="mypage_nav">
@@ -126,19 +116,7 @@
 				</ul>
 			</nav>
 		</div>
-		<%
-			List<FoodDto> foods = (List<FoodDto>)request.getAttribute("f_list");
-			MemberDto m_dto2 = null;
-			String res, msg;
-			for (FoodDto f_dto : foods) {
-				if (f_dto.getFood_alarm_yn().equals("N")) {
-					res = SMS.compareDate(f_dto.getFood_life());
-					if (!SMS.compareDate(res).equals("0")) {
-						
-					}
-				}
-			}
-		%>
+		
 		<div class="mypage">
 			<h3>나의 수강 목록</h3>
 			<br>
@@ -184,7 +162,6 @@
 							<th>식품명</th>
 							<th>유통기한</th>
 						</tr>
-						<c:set var="size" value="${f_list.size()}" />
 						<c:choose>
 							<c:when test="${empty f_list}">
 								<tr>
@@ -270,47 +247,18 @@
 							</div>
 						</div>
 						
-						<%
-						MemberDto m_dto = (MemberDto)request.getAttribute("m_dto");
-						String[] email = m_dto.getMember_email().split("@");
-						String email_name = email[0];
-						String email_addr = email[1];
-						%>
 						<div class="general_signup_row">
 							<h4 class="general_signup_title">이메일</h4>
 							<div class="general_signup_email">
-								<input type="hidden" name="member_email" value="">
 								<span class="general_signup_span">
-									<input type="text" id="general_signup_email" name="member_email_1" maxlength="30" value="<%=email_name%>">
-									@			
-									<select id="addr" name="member_email_2">
-										<option>naver.com</option>
-										<option>daum.net</option>
-										<option>gmail.com</option>
-										<option>nate.com</option>			
-									</select>	
+									<input type="text" id="general_signup_email" name="member_email" maxlength="30" value="${m_dto.member_email }">
 								</span>
 							</div>
 						</div>
-							<%-- email_2 결정 --%>
-							<script type="text/javascript">
-					
-								if("<%=email_addr%>" == "naver.com"){
-									$('#addr option:eq(0)').prop("selected",true);
-								}
-								else if("<%=email_addr%>" == "daum.net"){
-									$('#addr option:eq(1)').prop("selected",true);
-								}
-								else if("<%=email_addr%>" == "gmail.com"){
-									$('#addr option:eq(2)').prop("selected",true);
-								}
-								else if("<%=email_addr%>" == "nate.com"){
-									$('#addr option:eq(3)').prop("selected",true);
-								}
-							</script>
 							
 						<%
-							String[] phone_num = m_dto.getMember_phone().split("-");
+						MemberDto m_dto = (MemberDto)request.getAttribute("m_dto");
+						String[] phone_num = m_dto.getMember_phone().split("-");
 						%>
 						<div class="general_signup_row">
 							<h4 class="general_signup_title">휴대폰</h4>
@@ -383,5 +331,15 @@
 			</form>
 		</div>
 	</div>
+	
+	<jsp:include page="footer.jsp" />
+
+	<!-- Scripts -->
+	<script src="resources/vendor/jquery/jquery.min.js"></script>
+	<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="resources/assets/js/owl-carousel.js"></script>
+	<script src="resources/assets/js/animation.js"></script>
+	<script src="resources/assets/js/imagesloaded.js"></script>
+	<script src="resources/assets/js/templatemo-custom.js"></script>
 </body>
 </html>

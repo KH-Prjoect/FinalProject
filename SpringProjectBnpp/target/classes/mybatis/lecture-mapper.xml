@@ -14,6 +14,12 @@
 		WHERE LECTURE_NUM = #{lecture_num}
 	</select>
 	
+	<select id="selectMyList" parameterType="String" resultType="LectureDto">
+		SELECT LECTURE_NUM, LECTURE_NAME, MEMBER_ID, MEMBER_NAME, LECTURE_CATEGORY, LECTURE_PRICE, LECTURE_CONTENT
+		FROM LECTURE
+		WHERE MEMBER_ID = #{member_id}
+	</select>
+	
 	<insert id="insert" parameterType="LectureDto">
 		INSERT INTO LECTURE
 		VALUES(LECTURESEQ.NEXTVAL, #{lecture_name}, #{member_id}, #{member_name}, #{lecture_category}, #{lecture_price}, #{lecture_content})

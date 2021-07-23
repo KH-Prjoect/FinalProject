@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+<<<<<<< HEAD
+Built-By: Gwanwoo
+Build-Jdk: Amazon Corretto version 11.0.3
+=======
+Built-By: parkgw
+Build-Jdk: 11.0.11
+>>>>>>> origin/gwanwoo
+

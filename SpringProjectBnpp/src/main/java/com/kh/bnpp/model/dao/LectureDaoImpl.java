@@ -25,6 +25,17 @@ public class LectureDaoImpl implements LectureDao {
 		}
 		return list;
 	}
+	
+	@Override
+	public List<LectureDto> selectMyList(String member_id) {
+		List<LectureDto> list = new ArrayList<LectureDto>();
+		try {
+			list = sqlSession.selectList(NAMESPACE + "selectMyList", member_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	@Override
 	public LectureDto selectOne(int lecture_num) {

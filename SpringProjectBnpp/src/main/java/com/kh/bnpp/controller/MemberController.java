@@ -32,20 +32,5 @@ public class MemberController {
 		return "studentupdate";
 	}
 	
-	@RequestMapping("/teacherupdate.do")
-	public String teacherupdate(Model model, String member_id) {
-		model.addAttribute("dto", biz.selectOne(member_id));
-		return "teacherupdate";
-	}
-	
-	@RequestMapping("/teacherupdateres.do")
-	public String teacherupdateres(MemberDto dto) {
-		if (biz.updateteacher(dto) > 0) {
-			System.out.println("수정성공(강사)");
-			return "redirect:mypage.do?member_id="+dto.getMember_id();
-		}
-		System.out.println("수정실패(강사)");
-		return "redirect:mypage.do?member_id="+dto.getMember_id();
-	}
 	
 }

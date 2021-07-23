@@ -23,6 +23,11 @@ public class LectureBizImpl implements LectureBiz {
 	public LectureDto selectOne(int lecture_num) {
 		return dao.selectOne(lecture_num);
 	}
+	
+	@Override
+	public List<LectureDto> selectMyList(String member_id) {
+		return dao.selectMyList(member_id);
+	}
 
 	@Override
 	public int insert(LectureDto dto) {
