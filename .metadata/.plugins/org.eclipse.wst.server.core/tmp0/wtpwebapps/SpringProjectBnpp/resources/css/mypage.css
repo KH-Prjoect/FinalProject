@@ -37,10 +37,6 @@
 	font-weight: bolder;
 }
 
-.mypage_product {
-	margin-bottom: 15px;
-}
-
 .lecture_list {
 	margin-top:5px;
 	margin-bottom : 5px;
@@ -123,10 +119,6 @@
 	list-style: none;
 }
 
-.animal {
-	display: none;
-}
-
 .orderIng ol li {
 	left: 61px;
 	padding-right: 45px;
@@ -157,15 +149,7 @@
 	display: block;
 	border: solid 1px #dadada;
 	width: 450px;
-	height: 60px;
-}
-
-.general_signup_animal {
-	display: block;
-	padding-top: 10px;
-	border: none;
-	width: 400px;
-	height: 50px;
+	height: 80px;
 }
 
 .general_signup_text {
@@ -182,7 +166,7 @@
 #general_signup_email {
 	display: inline-block;
 	height: 40px;
-	width: 40%;
+	width: 75%;
 	border: solid 1px #dadada;
 	padding-left: 10px;
 	margin-top: 5px;
@@ -210,15 +194,6 @@
 	display: block;
 	margin-bottom: 3px;
 	margin-top: 10px;
-}
-
-.general_signup_age, .general_signup_weight,
-	.general_signup_animal_gender, .general_signup_animal_yn {
-	display: inline-block;
-	padding-right: 10px;
-	margin-bottom: 3px;
-	margin-top: 10px;
-	height: 20px;
 }
 
 #general_signup_btn {
