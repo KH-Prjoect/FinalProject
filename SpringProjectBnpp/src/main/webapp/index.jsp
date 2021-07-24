@@ -16,6 +16,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1><a href="main.do">main</a></h1>
 
 	<a href="paytest.do">paytest</a>
 	<a href="mypaylist.do?member_id=asd123">mypaytest</a>
@@ -26,7 +27,6 @@
 	<a href="mypage.do?member_id=12">mypage-강사</a>
 	
 	<a href="home.do">home</a>
-	<a href="main.do">main</a>
 	<a href="boardList.do">recipeboard</a>
 	<a href="recipe.do">randomrecipe</a>
 	

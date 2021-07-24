@@ -365,7 +365,7 @@
 						<h4 class="general_signup_title">비밀번호</h4>
 						<div class="general_signup_pw">
 							<span class="general_signup_span">
-								<input class="general_signup_text" type="password" name="member_password" ">
+								<input class="general_signup_text" type="password" name="member_password" />
 							</span>
 						</div>
 					</div>
@@ -373,7 +373,7 @@
 						<h4 class="general_signup_title">비밀번호 확인</h4>
 						<div class="general_signup_pw">
 							<span class="general_signup_span">
-								<input class="general_signup_text" type="password" name="member_password_chk" ">
+								<input class="general_signup_text" type="password" name="member_password_chk" />
 							</span>
 						</div>
 					</div>
