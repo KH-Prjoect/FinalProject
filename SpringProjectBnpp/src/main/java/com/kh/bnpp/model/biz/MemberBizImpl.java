@@ -1,5 +1,7 @@
 package com.kh.bnpp.model.biz;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +48,24 @@ public class MemberBizImpl implements MemberBiz{
 		return dao.findPw(dto);
 	}
 	
+	@Override
+	public List<MemberDto> selectList() {
+		return dao.selectList();
+	}
+
+	@Override
+	public MemberDto selectOne(String member_id) {
+		return dao.selectOne(member_id);
+	}
 	
+	@Override
+	public int updatestudent(MemberDto dto) {
+		return dao.updatestudent(dto);
+	}
+	
+	@Override
+	public int updateteacher(MemberDto dto) {
+		return dao.updateteacher(dto);
+	}
 	
 }

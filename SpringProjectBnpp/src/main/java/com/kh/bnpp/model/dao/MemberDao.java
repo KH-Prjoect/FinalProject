@@ -1,5 +1,7 @@
 package com.kh.bnpp.model.dao;
 
+import java.util.List;
+
 import com.kh.bnpp.model.dto.MemberDto;
 
 public interface MemberDao {
@@ -12,4 +14,10 @@ public interface MemberDao {
 	public String checkId(String checkID);	//아이디 중복확인
 	public String findId(MemberDto dto); //아이디 찾기
 	public String findPw(MemberDto dto); //비밀번호 찾기
+	
+	public List<MemberDto> selectList();
+	public MemberDto selectOne(String member_id);
+	public int updatestudent(MemberDto dto);
+	public int updateteacher(MemberDto dto);
+	
 }

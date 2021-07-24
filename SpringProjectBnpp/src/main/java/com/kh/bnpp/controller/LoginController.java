@@ -77,7 +77,7 @@ public class LoginController {
 		System.out.println("MemberDto_pw = " + dto.getMember_pw());
 		
 		MemberDto dbDto = biz.login(dto);
-		boolean check = false;
+		boolean check = false;	
 		 							//방금 가져온pw, db에 저장된 인코딩된pw
 		if(passwordEncoder.matches(dto.getMember_pw(), dbDto.getMember_pw())) {
 			logger.info("[LoginController] : 비밀번호 비교 성공, 세션에 넣는 중");

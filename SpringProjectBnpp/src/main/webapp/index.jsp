@@ -1,6 +1,13 @@
+<%@page import="com.kh.bnpp.model.dao.MemberDaoImpl"%>
+<%@page import="com.kh.bnpp.model.dao.MemberDao"%>
+<%@page import="com.kh.bnpp.model.biz.MemberBizImpl"%>
+<%@page import="com.kh.bnpp.model.biz.MemberBiz"%>
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="com.kh.bnpp.model.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +17,14 @@
 </head>
 <body>
 
+	<a href="paytest.do">paytest</a>
+	<a href="mypaylist.do?member_id=asd123">mypaytest</a>
+	<a href="lecturelist.do">lecture</a>
+	<a href="myfoodlist.do?member_id=asd123">냉장고test</a>
+	<a href="memberlist.do">member</a>
+	<a href="mypage.do?member_id=asd123">mypage-학생</a>
+	<a href="mypage.do?member_id=12">mypage-강사</a>
+	
 	<a href="home.do">home</a>
 	<a href="main.do">main</a>
 	<a href="boardList.do">recipeboard</a>

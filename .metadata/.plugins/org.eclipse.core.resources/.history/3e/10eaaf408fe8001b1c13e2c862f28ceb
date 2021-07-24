@@ -1,0 +1,18 @@
+package com.kh.bnpp.dao;
+
+import java.util.List;
+
+import com.kh.bnpp.dto.MemberDto;
+
+public interface MemberDao2 {
+
+	String NAMESPACE = "kh.bnpp.member.";
+	
+	public List<MemberDto> selectList();
+	public MemberDto selectOne(String member_id);
+	public int insert(MemberDto dto);
+	public int updatestudent(MemberDto dto);
+	public int updateteacher(MemberDto dto);
+	public int delete(String member_id);
+	
+}

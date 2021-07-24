@@ -1,0 +1,26 @@
+1626689303581	Move 'memberlist.jsp' to 'test'
+1626689308660	Move 'memberselect.jsp' to 'test'
+1626697917682	Move 'foodinsert.jsp' to 'test'
+1626697922235	Move 'foodlifeupdate.jsp' to 'test'
+1626697924595	Move 'foodselect.jsp' to 'test'
+1626697930537	Move 'myfoodlist.jsp' to 'test'
+1626697936863	Move 'mypaylist.jsp' to 'test'
+1626697940436	Move 'payment.jsp' to 'test'
+1626697943688	Move 'paytest.jsp' to 'test'
+1626697946899	Move 'studentupdate.jsp' to 'test'
+1626697950526	Move 'teacherupdate.jsp' to 'test'
+1626697964461	Rename resource 'test'
+1626698711854	Rename type 'MemberDao'
+1626698738082	Rename type 'MemberDaoImpl'
+1626698753958	Rename type 'MemberDto'
+1626698767644	Rename type 'MemberBiz'
+1626698778075	Rename type 'MemberBizImpl'
+1626764406634	Delete element
+1626852992211	Rename package 'com.kh.bnpp.dto'
+1626853023439	Rename package 'com.kh.bnpp.dao'
+1626853041214	Rename package 'com.kh.bnpp.biz'
+1626872291034	Delete element
+1626954358926	Delete element
+1627030271115	Copy file
+1627030327585	Copy file
+1627030336285	Copy file

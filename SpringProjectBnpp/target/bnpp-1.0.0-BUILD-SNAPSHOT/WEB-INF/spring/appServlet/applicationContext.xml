@@ -3,11 +3,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
+<<<<<<< HEAD
+=======
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
 
 	<!-- classpath : src/main/resources/ 연결해줌! -->
 	<!-- db.properties -->
+>>>>>>> b05bd2be1fcebd3ef89d7985efd8755263810cf3
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
@@ -15,6 +18,31 @@
 			</list>
 		</property>
 	</bean>
+<<<<<<< HEAD
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="${driver}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="WEB-INF/spring/sqls/config.xml" />
+	</bean>
+	
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSession" />
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+</beans>	
+
+=======
 
 	<!-- dataSource -->
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
@@ -46,3 +74,4 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 </beans>
+>>>>>>> b05bd2be1fcebd3ef89d7985efd8755263810cf3

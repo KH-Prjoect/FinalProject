@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
+<<<<<<< HEAD
+
+
+	<settings> 
+	 	<setting name="jdbcTypeForNull" value="NULL" /> 
+	 </settings>
+
+	<typeAliases>
+		<typeAlias type="com.kh.bnpp.model.dto.LectureDto" alias="LectureDto"/>
+		<typeAlias type="com.kh.bnpp.model.dto.PayDto" alias="PayDto"/>
+		<typeAlias type="com.kh.bnpp.model.dto.FoodDto" alias="FoodDto"/>
+		<typeAlias type="com.kh.bnpp.model.dto.BillDto" alias="BillDto"/>
+		<typeAlias type="com.kh.bnpp.model.dto.MemberDto" alias="MemberDto"/>
+		<typeAlias type="com.kh.bnpp.model.dto.KakaoDto" alias="kakaoDto"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="/mybatis/lecture-mapper.xml"/>
+		<mapper resource="/mybatis/pay-mapper.xml"/>
+		<mapper resource="/mybatis/food-mapper.xml"/>
+		<mapper resource="/mybatis/bill-mapper.xml"/>
+		<mapper resource="/mybatis/member-mapper.xml"/>
+		<mapper resource="/mybatis/kakao-mapper.xml"/>
+	</mappers>
+	
+=======
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL" />
 	</settings>
@@ -22,4 +48,5 @@
 	<mapper resource="/mybatis/kakao-mapper.xml"/>
 	<mapper resource="/mybatis/rrecipe-mapper.xml"/>
 </mappers>
+>>>>>>> b05bd2be1fcebd3ef89d7985efd8755263810cf3
 </configuration>

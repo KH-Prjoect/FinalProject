@@ -1,5 +1,19 @@
 1624870970568	Rename resource 'root-context.xml'
 1624870974439	Move 'applicationContext.xml' to 'appServlet'
+<<<<<<< HEAD
+1624952056786	Rename package 'com.kh.bnpp.lecture.biz'
+1624952075896	Rename package 'com.kh.bnpp.lecture.controller'
+1624952092500	Rename package 'com.kh.bnpp.lecture.dao'
+1624952107145	Rename package 'com.kh.bnpp.lecture.dto'
+1624957567139	Delete element
+1624965659131	Delete element
+1624967179995	Rename resource 'myboardlist.jsp'
+1624969582194	Rename resource 'myboardinsert.jsp'
+1624969912575	Rename resource 'myboardselect.jsp'
+1624970389101	Rename resource 'myboardupdate.jsp'
+1625039791323	Rename type 'ClovaOCR'
+=======
 1625035219089	Rename type 'memberDto'
 1625050414107	Rename resource 'signup.jsp'
 1625050441664	Rename resource 'login.jsp'
+>>>>>>> 282d69810bda88d8b1c90d02d6b1b83783d38a57
