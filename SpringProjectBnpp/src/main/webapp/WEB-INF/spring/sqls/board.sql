@@ -34,7 +34,6 @@ INSERT INTO BOARDRECIPE VALUES(BRNUMSEQ.NEXTVAL,'페이징테스트','페이징 
 	select * from tabs;
 	select * from member;
 	
-	
 
 	SELECT *
 		FROM (

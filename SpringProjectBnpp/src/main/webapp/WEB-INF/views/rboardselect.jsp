@@ -23,7 +23,7 @@ $(document).ready(function(){
 });
 function getreplylist(){
 	var replyurl = "replylist.do";
-	
+	var login_id = '<c:out value="${dbDto.member_id}"/>';
 	var paramData = {"br_num" : "${dto.br_num}"};
 	var reply_no = ${reply.reply_no};
 	
@@ -39,6 +39,7 @@ function getreplylist(){
 		}else{
 			
 			$(result).each(function(){
+				 if(login_id == this.reply_member_id ){
 				comments +='<div id="reply_no'+this.reply_no+'">';
 				comments +='<strong>'+'작성자 : ' + this.reply_member_id+'</strong>&nbsp;&nbsp;&nbsp;&nbsp;';
 				comments +='작성 날짜 : '+ this.reply_regdate+'<br/>';
@@ -49,13 +50,25 @@ function getreplylist(){
 				comments +='<div id ="buttonshow">';
 				comments +='<button type="button" class="btn btn-outline-success" onclick="updateviewBtn(' + this.reply_no + ',\'' + this.reply_regdate+'\', \''+ this.reply_content+'\', \''+ this.reply_member_id +'\')">';
 				comments +='댓글수정</button>';
-				comments +='<button type="button" class="btn btn-outline-success" onclick="replydelete('+this.reply_no+')">';
+				comments +='<button type="button" class="btn btn-outline-success"onclick="replydelete('+this.reply_no+')">';
 				comments +='댓글삭제';
 				comments +='</button>';
 				comments +='</div>';
 				comments +='</div>';
 				comments +='<br/>';
-				});
+				}
+				 else if (login_id != this.reply_member_id) {
+						 comments +='<div id="reply_no'+this.reply_no+'">';
+						comments +='<strong>'+'작성자 : ' + this.reply_member_id+'</strong>&nbsp;&nbsp;&nbsp;&nbsp;';
+						comments +='작성 날짜 : '+ this.reply_regdate+'<br/>';
+						comments += '<p>';
+						comments +='댓글 내용 : &nbsp;&nbsp;&nbsp;'+ this.reply_content;
+						comments +='</p>';
+						comments +='<br/>';
+						comments +='</div>';
+						comments +='<br/>';
+						}
+				 });
 				
 		};
 		
@@ -70,10 +83,9 @@ function getreplylist(){
 	});
 	
 };
-function replydelete(){
-	
+function replydelete(reply_no){
+	alert("댓글을 삭제합니다.");
 	var deleteurl = "replydelete.do";
-	var reply_no = $(this).attr("name");
 	
 	$.ajax({
 		url: deleteurl,
@@ -91,6 +103,7 @@ function replydelete(){
 		alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		}
 	});
+	
 	
 	
 }
@@ -159,7 +172,7 @@ $(function(){
 	
 	$('#replywriteBtn').click(function(){<!--insert 댓글 작성 ajax!-->
 		var reply_content = $('#reply_content').val();
-			reply_member_id = $('#reply_member_id').val();
+		var reply_member_id = '<c:out value="${dbDto.member_id}"/>';
 		var br_num = ${dto.br_num};
 		var paramData = {"br_num" : br_num,
 						 "reply_content":reply_content,
@@ -176,7 +189,6 @@ $(function(){
 				getreplylist();
 				$('#reply_content').val('');
 				$('#reply_member_id').val('');
-				location.reload();
 			}
 		, error:function(request, error) {
 			alert("fail");
@@ -187,14 +199,19 @@ $(function(){
 });
 	
 
-});	
+});
+
+$(document).ready(function(){
+$("#btnRecommend").click(function(){
+    if(confirm("해당 글을 추천하시겠습니까?")){
+        location.href = 'recommend.do?br_num=${dto.br_num}'
+        
+        }
+    });
+});
+
 </script>
 <style>
-
-#buttonshow {
-
-}
-
 </style>
 <body>
 	<jsp:include page="header.jsp" />
@@ -217,10 +234,13 @@ $(function(){
 					<td><div id="summernote" class="form-control"
 							style="width: 600px; height: 100%;">${dto.br_content }</div></td>
 				</tr>
-
+					
 				<tr>
-					<td colspan="2" align="center">${dto.br_reccount }<input
-						type="button" class="btnRecommend" value="추천" /></td>
+					<td colspan="2" align="center">추천수 : ${dto.br_reccount }
+						
+					<input
+						type="button" id="btnRecommend" class="btn btn-info likeBtn" value="좋아요" />
+					</td>
 				</tr>
 				<tr>
 					<c:if test="${dbDto.member_id == dto.member_id }">
@@ -238,11 +258,10 @@ $(function(){
 			</table>
 
 			<hr />
-			
+
 			<div class="reply">
 				<!-- 댓글이 들어갈 div -->
-				<div id="replylist">
-				</div>
+				<div id="replylist"></div>
 			</div>
 
 			<c:if test="${sessionScope.loginCheck eq true}">

@@ -79,11 +79,12 @@ a {
 			</div>
 			<!-- 옵션선택 끝 -->
 
-			<table border="1">
-				<col width="50">
+			<table class="table table-bordered">
+				<col width="60">
 				<col width="500">
 				<col width="100">
-				<col width="100">
+				<col width="140">
+				<col width="70">
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
@@ -104,7 +105,7 @@ a {
 								<td>${dto.br_num }</td>
 								<td><a href="select.do?br_num=${dto.br_num }">${dto.br_title }</a></td>
 								<td>${dto.member_id }</td>
-								<td>${dto.br_regdate }</td>
+								<td><fmt:formatDate value="${dto.br_regdate }" pattern="MM-dd HH:ss"/></td>
 								<td>${dto.br_readcount }</td>
 							</tr>
 						</c:forEach>

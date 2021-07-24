@@ -19,10 +19,6 @@ public class RboardController {
 
 	@Autowired
 	private RboardBiz biz;
-	@Autowired
-	private ReplyBiz rbiz;
-	@Autowired
-	private MemberBiz mbiz;
 	
 
 	
@@ -128,11 +124,14 @@ public class RboardController {
 	
 	//게시물 추천
     @RequestMapping("/recommend.do")
-    public String recommend (@RequestParam int member_id) {
-        
-      // mbiz.recommend(member_id);
+    public String recommend (@RequestParam int br_num) {
+        	
+    System.out.println(br_num);
+    		if(biz.recommend(br_num)>0) {
+    		  return "forward:/select.do"; 
+    		}
     
-        return "forward:/boardList.do"; 
+        return "forward:/select.do"; 
     }
 
 	
