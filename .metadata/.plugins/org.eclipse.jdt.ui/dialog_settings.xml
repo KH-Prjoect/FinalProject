@@ -91,8 +91,8 @@
 		<item key="RemoveFinal" value="false"/>
 	</section>
 	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
-		<item key="DIALOG_X_ORIGIN" value="869"/>
-		<item key="DIALOG_Y_ORIGIN" value="67"/>
+		<item key="DIALOG_X_ORIGIN" value="479"/>
+		<item key="DIALOG_Y_ORIGIN" value="65"/>
 		<item key="DIALOG_WIDTH" value="681"/>
 		<item key="DIALOG_HEIGHT" value="889"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
@@ -107,15 +107,16 @@
 		<item key="updateTextualMatches" value="false"/>
 		<item key="updateQualifiedNames" value="false"/>
 		<item key="patterns" value="*"/>
+		<item key="renameSubpackages" value="false"/>
 	</section>
 	<section name="JavaSearchPage">
 		<item key="CASE_SENSITIVE" value="false"/>
 		<item key="INCLUDE_MASK" value="11"/>
-		<item key="HISTORY_SIZE" value="10"/>
+		<item key="HISTORY_SIZE" value="12"/>
 		<section name="HISTORY0">
 			<item key="searchFor" value="1"/>
 			<item key="scope" value="0"/>
-			<item key="pattern" value="OAuth20Service"/>
+			<item key="pattern" value="jstl"/>
 			<item key="limitTo" value="2"/>
 			<item key="matchLocations" value="0"/>
 			<item key="javaElement" value=""/>
@@ -127,7 +128,7 @@
 		<section name="HISTORY1">
 			<item key="searchFor" value="1"/>
 			<item key="scope" value="0"/>
-			<item key="pattern" value="Controller"/>
+			<item key="pattern" value="main.do"/>
 			<item key="limitTo" value="2"/>
 			<item key="matchLocations" value="0"/>
 			<item key="javaElement" value=""/>
@@ -139,7 +140,7 @@
 		<section name="HISTORY2">
 			<item key="searchFor" value="1"/>
 			<item key="scope" value="0"/>
-			<item key="pattern" value="Contoller"/>
+			<item key="pattern" value="typeAlias"/>
 			<item key="limitTo" value="2"/>
 			<item key="matchLocations" value="0"/>
 			<item key="javaElement" value=""/>
@@ -151,7 +152,7 @@
 		<section name="HISTORY3">
 			<item key="searchFor" value="1"/>
 			<item key="scope" value="0"/>
-			<item key="pattern" value="Gson"/>
+			<item key="pattern" value="OAuth20Service"/>
 			<item key="limitTo" value="2"/>
 			<item key="matchLocations" value="0"/>
 			<item key="javaElement" value=""/>
@@ -163,7 +164,7 @@
 		<section name="HISTORY4">
 			<item key="searchFor" value="1"/>
 			<item key="scope" value="0"/>
-			<item key="pattern" value="contextLoader"/>
+			<item key="pattern" value="Controller"/>
 			<item key="limitTo" value="2"/>
 			<item key="matchLocations" value="0"/>
 			<item key="javaElement" value=""/>
@@ -175,7 +176,7 @@
 		<section name="HISTORY5">
 			<item key="searchFor" value="1"/>
 			<item key="scope" value="0"/>
-			<item key="pattern" value="contextConfigLocation"/>
+			<item key="pattern" value="Contoller"/>
 			<item key="limitTo" value="2"/>
 			<item key="matchLocations" value="0"/>
 			<item key="javaElement" value=""/>
@@ -187,7 +188,7 @@
 		<section name="HISTORY6">
 			<item key="searchFor" value="1"/>
 			<item key="scope" value="0"/>
-			<item key="pattern" value="checkId"/>
+			<item key="pattern" value="Gson"/>
 			<item key="limitTo" value="2"/>
 			<item key="matchLocations" value="0"/>
 			<item key="javaElement" value=""/>
@@ -197,6 +198,42 @@
 			</list>
 		</section>
 		<section name="HISTORY7">
+			<item key="searchFor" value="1"/>
+			<item key="scope" value="0"/>
+			<item key="pattern" value="contextLoader"/>
+			<item key="limitTo" value="2"/>
+			<item key="matchLocations" value="0"/>
+			<item key="javaElement" value=""/>
+			<item key="isCaseSensitive" value="false"/>
+			<item key="includeMask" value="11"/>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY8">
+			<item key="searchFor" value="1"/>
+			<item key="scope" value="0"/>
+			<item key="pattern" value="contextConfigLocation"/>
+			<item key="limitTo" value="2"/>
+			<item key="matchLocations" value="0"/>
+			<item key="javaElement" value=""/>
+			<item key="isCaseSensitive" value="false"/>
+			<item key="includeMask" value="11"/>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY9">
+			<item key="searchFor" value="1"/>
+			<item key="scope" value="0"/>
+			<item key="pattern" value="checkId"/>
+			<item key="limitTo" value="2"/>
+			<item key="matchLocations" value="0"/>
+			<item key="javaElement" value=""/>
+			<item key="isCaseSensitive" value="false"/>
+			<item key="includeMask" value="11"/>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY10">
 			<item key="searchFor" value="0"/>
 			<item key="scope" value="0"/>
 			<item key="pattern" value="json"/>
@@ -208,22 +245,10 @@
 			<list key="workingSets">
 			</list>
 		</section>
-		<section name="HISTORY8">
+		<section name="HISTORY11">
 			<item key="searchFor" value="0"/>
 			<item key="scope" value="0"/>
 			<item key="pattern" value="member"/>
-			<item key="limitTo" value="2"/>
-			<item key="matchLocations" value="0"/>
-			<item key="javaElement" value=""/>
-			<item key="isCaseSensitive" value="false"/>
-			<item key="includeMask" value="15"/>
-			<list key="workingSets">
-			</list>
-		</section>
-		<section name="HISTORY9">
-			<item key="searchFor" value="0"/>
-			<item key="scope" value="0"/>
-			<item key="pattern" value="member.login"/>
 			<item key="limitTo" value="2"/>
 			<item key="matchLocations" value="0"/>
 			<item key="javaElement" value=""/>

@@ -92,6 +92,10 @@
 </script>
 </head>
 <body>
+<jsp:include page="header.jsp" />
+
+<div class="main-banner wow fadeIn" >
+	<div style="position:relative; left:30%;">
 
 	<h1>아이디/비밀번호 찾기</h1>
 
@@ -150,6 +154,11 @@
 	<br>
 	
 	<input type="button" value="홈으로" onclick="location.href='toindex.do'">
+
+</div>
+</div>
+
+<jsp:include page="footer.jsp" />
 
 </body>
 </html>

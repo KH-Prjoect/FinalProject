@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
 	function test(){
@@ -67,7 +67,9 @@
 			$('input[name=member_address]').attr('value',totalAddress); */
 												  
 			//alert("최종 input[name=member_address] = " + $("input[name=member_address]").val());
-			//$("form[name=signupform]").submit();
+			
+			//회원가입 최종 버튼!!
+			$("form[name=signupform]").submit();
 		}
 	}
 	
@@ -133,7 +135,15 @@
 </head>
 <body>
 
+<jsp:include page="header.jsp" />
+
+<div class="main-banner wow fadeIn">
+	<div style="position:relative; left:20%;">
 	<h1>회원가입</h1>
+
+	<p> FilePath is ${imgFilePath}</p>
+	<p> VideoPath is ${videoFilePath}</p>
+	
 	
 	<form name="signupform" action="signupres.do">
 		<table border="1">
@@ -199,6 +209,10 @@
 				</td>
 			</tr>
 			<tr>
+				<th>강사 자기소개</th>
+				<td><textarea rows="10" cols="20" name="member_intro"></textarea></td>
+			</tr>
+			<tr>
 				<th>강사 자격증</th>
 				<td><textarea rows="10" cols="20" name="member_certi"></textarea></td>
 			</tr>
@@ -214,6 +228,10 @@
 			</tr>
 		</table>
 	</form>
-
+	</div>
+	</div>
+	
+<jsp:include page="footer.jsp" />
+	
 </body>
 </html>

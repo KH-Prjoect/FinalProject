@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
 	$(function(){
@@ -41,7 +42,7 @@
 				dataType:"json",
 				success: function(msg){
 					if(msg.check == true){
-						location.href="index.jsp";
+						location.href="main.do";
 					}else{
 						$("#loginChk").show();
 						$("#loginChk").html("ID 혹은 PW를 다시 확인해주세요");
@@ -62,8 +63,11 @@
 </script>
 </head>
 <body>
+<jsp:include page="header.jsp" />
 
-	<h1>로그인</h1>
+<div class="main-banner wow fadeIn" >
+	
+	<div style="position:relative; left:30%;"><h1>로그인</h1>
 	<h2>잘못온거면 인터셉터에 path확인해</h2>
 		<table>
 			<tr>
@@ -87,7 +91,7 @@
 			<tr>
 				<td colspan="2" align="center">
 					<a href="${url}">
-						<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/>
+						<img width="223px" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/>
 					</a>
 				</td>
 			</tr>
@@ -103,7 +107,11 @@
 				<td>RECAPTCHA API</td>
 			</tr>
 		</table>
+		</div>
+</div>
 
+
+<jsp:include page="footer.jsp" />
 
 </body>
 </html>

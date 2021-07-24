@@ -11,12 +11,14 @@
 <body>
 
 	<a href="home.do">home</a>
-	
+	<a href="main.do">main</a>
+	<a href="boardList.do">recipeboard</a>
+	<a href="recipe.do">randomrecipe</a>
 	<br>
 	<br>
 	<br>
 	<br>
-	
+
 	<c:choose>
 		<c:when test="${sessionScope.loginCheck eq true}">
 			 <c:if test="${not empty dbDto.member_id}">
@@ -37,7 +39,10 @@
 			<a href="loginform.do">로그인</a>
 		</c:otherwise>
 	</c:choose>
-	
+
+	<a href="home.do">home</a>  <br>
+	<a href="chatlogin.do">Chatlogin</a> <br>
+	<a href="machine.do">machine</a>
 
 </body>
 </html>

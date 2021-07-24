@@ -16,7 +16,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.kh.bnpp.model.dao.KakaoDao;
-import com.kh.bnpp.model.dto.KakaoDto;
+
 
 @Service
 public class KakaoBiz {
