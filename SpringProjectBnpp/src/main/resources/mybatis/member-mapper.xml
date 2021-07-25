@@ -62,4 +62,9 @@
 		WHERE MEMBER_ID = #{member_id} AND MEMBER_NAME = #{member_name}
 	</select>
 
+	<select id="findAllT" parameterType="String" resultType="MemberDto">
+		SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_PHONE, MEMBER_ADDRESS, MEMBER_ROLE, MEMBER_CATEGORY, MEMBER_INTRO, MEMBER_CERTI, MEMBER_CAREER , MEMBER_REGDATE
+		FROM MEMBER
+		WHERE MEMBER_CATEGORY = #{category}
+	</select>
 </mapper>
