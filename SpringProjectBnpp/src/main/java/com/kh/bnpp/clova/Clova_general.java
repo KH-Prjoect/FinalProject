@@ -122,4 +122,3 @@ public class Clova_general {
 		out.flush();
 	}
 }
-

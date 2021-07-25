@@ -17,7 +17,6 @@ public class QboardController {
 	private QboardBiz biz;
 
 
-
 	@RequestMapping("/qnainsertform.do")
 	public String insertForm() {
 		return "qnaboardinsert";
@@ -62,26 +61,7 @@ public class QboardController {
 	}
 
 	@RequestMapping("/qnalist.do")
-	public String boardList(Model model, PagingDto pdto
-			, @RequestParam(value="nowPage", required=false)String nowPage
-			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
-		
-		int total = biz.countBoard(pdto);
-		if (nowPage == null && cntPerPage == null) {
-			nowPage = "1";
-			cntPerPage = "5";
-		} else if (nowPage == null) {
-			nowPage = "1";
-		} else if (cntPerPage == null) { 
-			cntPerPage = "5";
-		}
-		
-		pdto = new PagingDto(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		model.addAttribute("paging", pdto);
-		model.addAttribute("list", biz.selectBoard(pdto));
-		
-		System.out.println(pdto.toString());
-		
+	public String boardList() {
 		return "faqboard";
 	}
 	
