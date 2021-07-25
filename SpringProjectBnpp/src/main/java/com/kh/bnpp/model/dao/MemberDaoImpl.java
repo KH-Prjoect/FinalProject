@@ -1,5 +1,8 @@
 package com.kh.bnpp.model.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -31,6 +34,8 @@ public class MemberDaoImpl implements MemberDao {
 
 		int res = 0;
 		
+		System.out.println("dao -> db 넘어갈 dto : " + dto);
+		
 		try {
 			res = sqlSession.insert(NAMESPACE + "insert",dto);
 		} catch (Exception e) {
@@ -58,8 +63,8 @@ public class MemberDaoImpl implements MemberDao {
 	public String checkId(String checkID) {
 		
 		String res = "false";
-		System.out.println("id 가져옴? ====" + checkID);
-		System.out.println("="+sqlSession.selectOne(NAMESPACE + "checkId", checkID));   //0
+		System.out.println("MemberDaoImpl로 id 가져옴? ====" + checkID);
+		System.out.println("="+sqlSession.selectOne(NAMESPACE + "checkId", checkID));   //0 이면 중복 ID없다.
 		try {
 			if(sqlSession.selectOne(NAMESPACE + "checkId", checkID).equals("0")) {
 				res = "true"; //res가 true이다 = DB에 중복되는 ID가 없다.
@@ -110,6 +115,20 @@ public class MemberDaoImpl implements MemberDao {
 		}
 		
 		return member_pw;
+	}
+
+	@Override
+	public List<MemberDto> findAllT(String category) {
+		
+		List<MemberDto> list = new ArrayList<MemberDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE + "findAllT", category);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 	
 }
