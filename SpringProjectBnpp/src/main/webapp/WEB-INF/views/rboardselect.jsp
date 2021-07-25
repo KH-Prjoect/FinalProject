@@ -284,7 +284,13 @@ $("#btnRecommend").click(function(){
 	</div>
 
 	<jsp:include page="footer.jsp" />
-
+<script type="text/javascript">
+$(document).ready(function() {
+	  $('#summernote').summernote({
+		  airMode : true
+	  });
+	  }
+</script>
 
 </body>
 </html>
