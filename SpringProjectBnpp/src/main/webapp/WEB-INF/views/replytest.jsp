@@ -1,29 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-
+    pageEncoding="UTF-8"%>
+    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.6.0.js"></script>
-
 </head>
 
-
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	getreplylist();
-
 });
 function getreplylist(){
 	var replyurl = "replylist.do";
-	var login_id = '<c:out value="${dbDto.member_id}"/>';
+	
 	var paramData = {"br_num" : "${dto.br_num}"};
 	var reply_no = ${reply.reply_no};
 	
@@ -39,52 +34,35 @@ function getreplylist(){
 		}else{
 			
 			$(result).each(function(){
-				 if(login_id == this.reply_member_id ){
-				comments +='<div id="reply_no'+this.reply_no+'">';
-				comments +='<strong>'+'작성자 : ' + this.reply_member_id+'</strong>&nbsp;&nbsp;&nbsp;&nbsp;';
-				comments +='작성 날짜 : '+ this.reply_regdate+'<br/>';
-				comments += '<p>';
-				comments +='댓글 내용 : &nbsp;&nbsp;&nbsp;'+ this.reply_content;
-				comments +='</p>';
-				comments +='<br/>';
-				comments +='<div id ="buttonshow">';
-				comments +='<button type="button" class="btn btn-outline-success" onclick="updateviewBtn(' + this.reply_no + ',\'' + this.reply_regdate+'\', \''+ this.reply_content+'\', \''+ this.reply_member_id +'\')">';
-				comments +='댓글수정</button>';
-				comments +='<button type="button" class="btn btn-outline-success"onclick="replydelete('+this.reply_no+')">';
-				comments +='댓글삭제';
-				comments +='</button>';
-				comments +='</div>';
-				comments +='</div>';
-				comments +='<br/>';
-				}
-				 else if (login_id != this.reply_member_id) {
-						 comments +='<div id="reply_no'+this.reply_no+'">';
-						comments +='<strong>'+'작성자 : ' + this.reply_member_id+'</strong>&nbsp;&nbsp;&nbsp;&nbsp;';
-						comments +='작성 날짜 : '+ this.reply_regdate+'<br/>';
-						comments += '<p>';
-						comments +='댓글 내용 : &nbsp;&nbsp;&nbsp;'+ this.reply_content;
-						comments +='</p>';
-						comments +='<br/>';
-						comments +='</div>';
-						comments +='<br/>';
-						}
-				 });
+			comments +='<div id="reply_no'+this.reply_no+'">';
+			comments +='<strong>'+'작성자 : ' + this.reply_member_id+'</strong>&nbsp;&nbsp;&nbsp;&nbsp;';
+			comments +='작성 날짜 : '+ this.reply_regdate+'<br/>';
+			comments += '<p>';
+			comments +='댓글 내용 : &nbsp;&nbsp;&nbsp;'+ this.reply_content;
+			comments +='</p>';
+			comments +='<br/>';
+			comments +='<div id ="buttonshow">';
+			comments +='<button type="button" class="btn btn-outline-success" onclick="updateviewBtn(' + this.reply_no + ',\'' + this.reply_regdate+'\', \''+ this.reply_content+'\', \''+ this.reply_member_id +'\')">';
+			comments +='댓글수정</button>';
+			comments +='<button type="button" class="btn btn-outline-success" onclick="replydelete('+this.reply_no+')">';
+			comments +='댓글삭제';
+			comments +='</button>';
+			comments +='</div>';
+			comments +='</div>';
+			comments +='<br/>';
+			});
 				
 		};
-		
-		$("#replylist").html(comments);
-			
+			$("#replylist").html(comments);
 		}, error:function(request, error) {
 			alert("fail");
 			// error 발생 이유를 알려준다.
 		alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		}
-	
 	});
-	
 };
 function replydelete(reply_no){
-	alert("댓글을 삭제합니다.");
+	
 	var deleteurl = "replydelete.do";
 	
 	$.ajax({
@@ -103,7 +81,6 @@ function replydelete(reply_no){
 		alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		}
 	});
-	
 	
 	
 }
@@ -172,7 +149,7 @@ $(function(){
 	
 	$('#replywriteBtn').click(function(){<!--insert 댓글 작성 ajax!-->
 		var reply_content = $('#reply_content').val();
-		var reply_member_id = '<c:out value="${dbDto.member_id}"/>';
+			reply_member_id = $('#reply_member_id').val();
 		var br_num = ${dto.br_num};
 		var paramData = {"br_num" : br_num,
 						 "reply_content":reply_content,
@@ -199,20 +176,8 @@ $(function(){
 });
 	
 
-});
-
-$(document).ready(function(){
-$("#btnRecommend").click(function(){
-    if(confirm("해당 글을 추천하시겠습니까?")){
-        location.href = 'recommend.do?br_num=${dto.br_num}'
-        
-        }
-    });
-});
-
+});	
 </script>
-<style>
-</style>
 <body>
 	<jsp:include page="header.jsp" />
 
@@ -234,63 +199,49 @@ $("#btnRecommend").click(function(){
 					<td><div id="summernote" class="form-control"
 							style="width: 600px; height: 100%;">${dto.br_content }</div></td>
 				</tr>
-					
+
 				<tr>
-					<td colspan="2" align="center">추천수 : ${dto.br_reccount }
-						
-					<input
-						type="button" id="btnRecommend" class="btn btn-info likeBtn" value="좋아요" />
-					</td>
+					<td colspan="2" align="center">${dto.br_reccount }<input
+						type="button" class="btnRecommend" value="추천" /></td>
 				</tr>
 				<tr>
-					<c:if test="${dbDto.member_id == dto.member_id }">
+					<c:choose>
+						<c:when test="${sessionScope.loginCheck eq true}">
+							<c:if test="${dbDto.member_id == dto.member_id }">
 
-						<td colspan="2" align="right"><input type="button" value="수정"
-							onclick="location.href='updateform.do?br_num=${dto.br_num}'" />
-							<input type="button" value="삭제"
-							onclick="location.href='delete.do?br_num=${dto.br_num}'" />
-					</c:if>
+								<td colspan="2" align="right"><input type="button"
+									value="수정"
+									onclick="location.href='updateform.do?br_num=${dto.br_num}'" />
+									<input type="button" value="삭제"
+									onclick="location.href='delete.do?br_num=${dto.br_num}'" />
+							</c:if>
+						</c:when>
 
+					</c:choose>
 					<td colspan="2" align="right"><input type="button" value="목록"
 						onclick="location.href='boardList.do?'">
 				</tr>
 
 			</table>
 
-			<hr />
-
-			<div class="reply">
-				<!-- 댓글이 들어갈 div -->
-				<div id="replylist"></div>
-			</div>
-
-			<c:if test="${sessionScope.loginCheck eq true}">
-				<div class="col-md-6">
-					<!-- 댓글 작성 div -->
-					<input type="hidden" class="form-control" id="reply_member_id"
-						value="${dbDto.member_id }"><br /> <label
-						for="reply_content">댓글 내용 :</label>
-					<textarea class="form-control" id="reply_content"
-						name="reply_content"></textarea>
-					<button type="button" class="btn btn-outline-success"
-						id="replywriteBtn">댓글 작성</button>
-				</div>
-			</c:if>
-			<br />
-			<hr />
-
-
+		<hr />
+		
+		<div class="reply"><!-- 댓글이 들어갈 div -->
+			<div id="replylist"></div>
 		</div>
-	</div>
+		
+		<div class="col-md-6"><!-- 댓글 작성 div -->
+			 <input type="hidden" class="form-control" id="reply_member_id" value="${dbDto.member_id }"><br />
+			<label for="reply_content">댓글 내용 :</label>
+			<textarea class="form-control" id="reply_content" name="reply_content"></textarea>
+			<button type="button" class="btn btn-outline-success" id="replywriteBtn">댓글 작성</button>
+		</div>
+		<br />
+		<hr />
 
-	<jsp:include page="footer.jsp" />
-<script type="text/javascript">
-$(document).ready(function() {
-	  $('#summernote').summernote({
-		  airMode : true
-	  });
-	  }
-</script>
+
+	</div>
+</div>
 
 </body>
 </html>

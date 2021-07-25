@@ -13,10 +13,10 @@
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
 	rel="stylesheet">
 
-
 <!-- Bootstrap core CSS -->
 <link href="resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
+
 
 <!-- Additional CSS Files -->
 <link rel="stylesheet" href="resources/assets/css/fontawesome.css">
@@ -72,7 +72,7 @@
 									경험하는 시간, 한 그릇의 음식이 주는 특별한 행복을 전달해드립니다.</p>
 								<form id="search" action="#" method="GET">
 									<fieldset>
-										<input type="address" name="address" class="email"
+										<input type="search" name="text" class="email"
 											placeholder="오늘 뭐 먹지?" autocomplete="on" required>
 									</fieldset>
 									<fieldset>

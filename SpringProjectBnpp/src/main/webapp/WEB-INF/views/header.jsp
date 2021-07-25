@@ -57,50 +57,17 @@
 							<li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
 							<li class="scroll-to-section"><a href="boardList.do">레시피
 									공유</a></li>
-							<li class="scroll-to-section"><a href="<c:url value='/teacherList.do?category=한식' />">강사</a></li>
-							<li class="scroll-to-section"><a href="#">고객센터</a></li>
-							
-							
-								
-								<c:choose>
-									<c:when test="${sessionScope.loginCheck eq true}">
-										<c:if test="${empty dbDto.member_img_path }">
-											<li class="scroll-to-section" ><img alt="profileimg" src="./resources/img/dummy.png" width="40" height="40">
-											<a href="javascript:openWindowPop('imgpopup.jsp','imgupload');">사진변경</a>
-											</li>
-										</c:if>
-										<c:if test="${not empty dbDto.member_img_path }">
-										
-										</c:if>
-									</c:when>
-									<c:otherwise>
-									</c:otherwise>
-								</c:choose>
-							
-							
-							<c:choose>
+							<li class="scroll-to-section"><a href="#">강사</a></li>
+							<li class="scroll-to-section"><a href="qnalist.do">고객센터</a></li>
+							<li class="scroll-to-section">
+									<c:choose>
 								<c:when test="${sessionScope.loginCheck eq true}">
-									<c:if test="${not empty dbDto.member_id}">
 										<li class="scroll-to-section" ><a href="#">${dbDto.member_id }님
 										</a></li>
 										<li class="scroll-to-section"><div
 												class="main-blue-button">
 												<a href="logout.do">로그아웃</a>
 											</div>
-									</c:if>
-									<c:if test="${userId ne null}">
-										<c:out value="${userId}" />님 로그인 완료!
-			 	<li class="scroll-to-section"><div class="main-blue-button">
-												<a href="kakaologout.do">로그아웃</a>
-											</div>
-									</c:if>
-									<c:if test="${session != null }">
-										<c:out value="${sessionId }" />님 로그인 완료!
-										<li class="scroll-to-section"><div
-												class="main-blue-button">
-												<a href="naverlogout.do">로그아웃</a>
-											</div>
-									</c:if>
 								</c:when>
 							<c:otherwise>
 									<li class="scroll-to-section"><div
@@ -112,7 +79,6 @@
 										</div></li>
 							</c:otherwise>
 							</c:choose>
-
 						</ul>
 						<a class='menu-trigger'> <span>Menu</span>
 						</a>
@@ -123,12 +89,6 @@
 		</div>
 	</header>
 	<!-- ***** Header Area End ***** -->
-	<script type="text/javascript">
-	
-		function openWindowPop(url,name){
-			var option = 'top=10, left=10, with=300, height=300, menubar=no, re'
-		}
-	
-	</script>
+
 </body>
 </html>
