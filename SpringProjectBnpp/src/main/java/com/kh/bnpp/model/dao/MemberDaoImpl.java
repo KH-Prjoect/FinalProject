@@ -158,5 +158,17 @@ public class MemberDaoImpl implements MemberDao {
 		}
 		return res;
 	}
-	
+
+	@Override
+	public List<MemberDto> findAllT(String category) {
+		List<MemberDto> list = new ArrayList<MemberDto>();
+
+		try {
+			list = sqlSession.selectList(NAMESPACE + "findAllT", category);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
 }
