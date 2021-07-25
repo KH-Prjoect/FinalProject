@@ -34,8 +34,6 @@ public class MemberDaoImpl implements MemberDao {
 
 		int res = 0;
 		
-		System.out.println("dao -> db 넘어갈 dto : " + dto);
-		
 		try {
 			res = sqlSession.insert(NAMESPACE + "insert",dto);
 		} catch (Exception e) {
@@ -63,8 +61,8 @@ public class MemberDaoImpl implements MemberDao {
 	public String checkId(String checkID) {
 		
 		String res = "false";
-		System.out.println("MemberDaoImpl로 id 가져옴? ====" + checkID);
-		System.out.println("="+sqlSession.selectOne(NAMESPACE + "checkId", checkID));   //0 이면 중복 ID없다.
+		System.out.println("id 가져옴? ====" + checkID);
+		System.out.println("="+sqlSession.selectOne(NAMESPACE + "checkId", checkID));   //0
 		try {
 			if(sqlSession.selectOne(NAMESPACE + "checkId", checkID).equals("0")) {
 				res = "true"; //res가 true이다 = DB에 중복되는 ID가 없다.
@@ -116,19 +114,49 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return member_pw;
 	}
-
+	
 	@Override
-	public List<MemberDto> findAllT(String category) {
-		
+	public List<MemberDto> selectList() {
 		List<MemberDto> list = new ArrayList<MemberDto>();
-		
 		try {
-			list = sqlSession.selectList(NAMESPACE + "findAllT", category);
+			list = sqlSession.selectList(NAMESPACE + "selectList");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return list;
+	}
+
+	@Override
+	public MemberDto selectOne(String member_id) {
+		MemberDto dto = null;
+		try {
+			dto = sqlSession.selectOne(NAMESPACE + "selectOne", member_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
+	
+	@Override
+	public int updatestudent(MemberDto dto) {
+		int res = 0;
+		try {
+			res = sqlSession.update(NAMESPACE + "updatestudent", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	@Override
+	public int updateteacher(MemberDto dto) {
+		int res = 0;
+		try {
+			res = sqlSession.update(NAMESPACE + "updateteacher", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 	
 }
