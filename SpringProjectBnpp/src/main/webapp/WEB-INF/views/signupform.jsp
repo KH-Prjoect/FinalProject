@@ -55,11 +55,11 @@
 			alert("회원가입 버튼 클릭>>");
 		
 			$('input[name=member_address]').val($('#roadAddress').val()
-											  + ' '
+											  + ','
 					  						  + $('#jibunAddress').val()
-					  						  + ' '
+					  						  + ','
 					  						  + $('#detailAddress').val()
-					  						  + ' '
+					  						  + ','
 										  	  + $('#extraAddress').val());
 			//위에랑 기능은 같음
 			/* var totalAddress = $('#roadAddress').val() + $('#jibunAddress').val() + $('#detailAddress').val() + $('#extraAddress').val();
