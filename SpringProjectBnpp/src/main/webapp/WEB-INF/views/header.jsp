@@ -57,8 +57,22 @@
 							<li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
 							<li class="scroll-to-section"><a href="boardList.do">레시피
 									공유</a></li>
-							<li class="scroll-to-section"><a href="#">강사</a></li>
+							<li class="scroll-to-section"><a href="<c:url value='/teacherList.do?category=한식' />">강사</a></li>
 							<li class="scroll-to-section"><a href="qnalist.do">고객센터</a></li>
+							<c:choose>
+								<c:when test="${sessionScope.loginCheck eq true}">
+									<c:if test="${empty dbDto.member_img_path }">
+										<li class="scroll-to-section" ><img alt="profileimg" src="./resources/img/dummy.png" width="40" height="40">
+											<a href="javascript:openWindowPop('imgpopup.jsp','imgupload');">사진변경</a>
+										</li>
+									</c:if>
+									<c:if test="${not empty dbDto.member_img_path }">
+
+									</c:if>
+								</c:when>
+								<c:otherwise>
+								</c:otherwise>
+							</c:choose>
 							<c:choose>
 								<c:when test="${sessionScope.loginCheck eq true}">
 									<c:if test="${not empty dbDto.member_id}">
