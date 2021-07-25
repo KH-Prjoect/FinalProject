@@ -12,5 +12,9 @@ public interface MemberBiz {
 	public String checkId(String checkID);  //아이디 중복확인
 	public String findId(MemberDto dto); //아이디 찾기
 	public String findPw(MemberDto dto); //비밀번호 찾기
-	public List<MemberDto> findAllT(String category); //카테고리별 강사 리스트 찾기
+	
+	public List<MemberDto> selectList();
+	public MemberDto selectOne(String member_id);
+	public int updatestudent(MemberDto dto);
+	public int updateteacher(MemberDto dto);
 }

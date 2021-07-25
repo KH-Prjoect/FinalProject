@@ -47,12 +47,25 @@ public class MemberBizImpl implements MemberBiz{
 	public String findPw(MemberDto dto) {
 		return dao.findPw(dto);
 	}
+	
+	@Override
+	public List<MemberDto> selectList() {
+		return dao.selectList();
+	}
 
 	@Override
-	public List<MemberDto> findAllT(String category) {
-		return dao.findAllT(category);
+	public MemberDto selectOne(String member_id) {
+		return dao.selectOne(member_id);
 	}
 	
+	@Override
+	public int updatestudent(MemberDto dto) {
+		return dao.updatestudent(dto);
+	}
 	
+	@Override
+	public int updateteacher(MemberDto dto) {
+		return dao.updateteacher(dto);
+	}
 	
 }
