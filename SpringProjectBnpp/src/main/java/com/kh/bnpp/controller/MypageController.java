@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +40,9 @@ public class MypageController {
 	
 	@Autowired
 	private FoodBiz f_biz;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	@RequestMapping("/mypage.do")
 	public String mypage(String member_id) {
@@ -83,6 +87,7 @@ public class MypageController {
 	
 	@RequestMapping("/studentupdateres.do")
 	public String studentupdateres(MemberDto dto) {
+		dto.setMember_pw(passwordEncoder.encode(dto.getMember_pw()));
 		if (m_biz.updatestudent(dto) > 0) {
 			return "redirect:mypage.do?member_id="+dto.getMember_id();
 		}
@@ -91,6 +96,7 @@ public class MypageController {
 	
 	@RequestMapping("/teacherupdateres.do")
 	public String teacherupdateres(MemberDto dto) {
+		dto.setMember_pw(passwordEncoder.encode(dto.getMember_pw()));
 		if (m_biz.updateteacher(dto) > 0) {
 			return "redirect:mypage.do?member_id="+dto.getMember_id();
 		}
