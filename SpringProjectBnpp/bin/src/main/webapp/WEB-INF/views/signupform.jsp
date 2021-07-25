@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
 	function test(){
@@ -55,11 +55,11 @@
 			alert("회원가입 버튼 클릭>>");
 		
 			$('input[name=member_address]').val($('#roadAddress').val()
-											  + ' '
+											  + ','
 					  						  + $('#jibunAddress').val()
-					  						  + ' '
+					  						  + ','
 					  						  + $('#detailAddress').val()
-					  						  + ' '
+					  						  + ','
 										  	  + $('#extraAddress').val());
 			//위에랑 기능은 같음
 			/* var totalAddress = $('#roadAddress').val() + $('#jibunAddress').val() + $('#detailAddress').val() + $('#extraAddress').val();
@@ -133,6 +133,10 @@
 </head>
 <body>
 
+<jsp:include page="header.jsp" />
+
+<div class="main-banner wow fadeIn">
+	<div style="position:relative; left:20%;">
 	<h1>회원가입</h1>
 	
 	<form name="signupform" action="signupres.do">
@@ -214,6 +218,10 @@
 			</tr>
 		</table>
 	</form>
-
+	</div>
+	</div>
+	
+<jsp:include page="footer.jsp" />
+	
 </body>
 </html>

@@ -16,8 +16,7 @@ public class QboardController {
 	@Autowired
 	private QboardBiz biz;
 
-
-
+	
 	@RequestMapping("/qnainsertform.do")
 	public String insertForm() {
 		return "qnaboardinsert";
@@ -81,7 +80,6 @@ public class QboardController {
 		model.addAttribute("list", biz.selectBoard(pdto));
 		
 		System.out.println(pdto.toString());
-		
 		return "faqboard";
 	}
 	

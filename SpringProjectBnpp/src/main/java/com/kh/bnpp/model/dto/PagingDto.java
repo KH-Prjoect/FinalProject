@@ -10,6 +10,9 @@ public class PagingDto {
 
 		private int cntPage = 5;
 		
+		
+		
+		
 		public PagingDto() {
 		}
 		public PagingDto(int total, int nowPage, int cntPerPage, String keyword, String searchType) {
