@@ -1,3 +1,4 @@
+
 package com.kh.bnpp.model.dao;
 
 import java.util.List;
@@ -17,3 +18,4 @@ public interface FoodDao {
 	public int delete(int food_num);
 	
 }
+

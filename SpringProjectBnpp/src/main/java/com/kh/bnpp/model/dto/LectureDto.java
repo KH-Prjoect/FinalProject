@@ -1,3 +1,4 @@
+
 package com.kh.bnpp.model.dto;
 
 public class LectureDto {
@@ -65,3 +66,4 @@ public class LectureDto {
 	}
 	
 }
+

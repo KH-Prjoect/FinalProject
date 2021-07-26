@@ -1,3 +1,4 @@
+
 package com.kh.bnpp.model.dao;
 
 import java.util.List;
@@ -16,3 +17,4 @@ public interface PayDao {
 	public int delete(int pay_num);
 	
 }
+

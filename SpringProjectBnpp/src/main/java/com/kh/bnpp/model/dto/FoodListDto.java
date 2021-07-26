@@ -1,3 +1,4 @@
+
 package com.kh.bnpp.model.dto;
 
 import java.util.List;
@@ -21,3 +22,4 @@ public class FoodListDto {
 		this.food_list = food_list;
 	}
 }
+

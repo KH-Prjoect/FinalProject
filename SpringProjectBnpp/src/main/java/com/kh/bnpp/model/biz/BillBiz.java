@@ -1,3 +1,4 @@
+
 package com.kh.bnpp.model.biz;
 
 import java.util.List;
@@ -13,3 +14,4 @@ public interface BillBiz {
 	public int delete(int bill_num);
 	
 }
+

@@ -28,8 +28,7 @@ a {
 	text-decoration: none;
 }
 </style>
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
 	function selChange() {
 		var sel = document.getElementById('cntPerPage').value;
@@ -37,8 +36,6 @@ a {
 				+ sel
 	}
 
-
-	});
 </script>
 
 
@@ -126,8 +123,6 @@ a {
 			</c:if>
 		</div>
 	</div>
-
-
 
 
 </body>

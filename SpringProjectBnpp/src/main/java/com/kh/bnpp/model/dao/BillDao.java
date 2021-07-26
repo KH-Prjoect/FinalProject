@@ -1,3 +1,4 @@
+
 package com.kh.bnpp.model.dao;
 
 import java.util.List;
@@ -15,3 +16,4 @@ public interface BillDao {
 	public int delete(int bill_num);
 	
 }
+

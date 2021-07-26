@@ -18,7 +18,9 @@
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </head>
 <body>
+<jsp:include page="header.jsp" />
 
+<div class="main-banner wow fadeIn">
 	<h1>UPDATE</h1>
 
 	<form action="updateres.do" method="post">
@@ -46,13 +48,32 @@
 
 	</table>
 	</form>
+	</div>
 <script>
 		$(document).ready(function() {
-			$('#summernote').summernote({
-				tabsize : 2,
-				height : 500
+			 $('#summernote').summernote({
+				    placeholder: '내용을 입력하세요',
+				    tabsize: 2,
+				    height: 500,
+				    toolbar: [
+				    	['fontname', ['fontname']],
+					    ['fontsize', ['fontsize']],
+					    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+					    ['color', ['forecolor','color']],
+					    ['table', ['table']],
+					    ['para', ['ul', 'ol', 'paragraph']],
+					    ['height', ['height']],
+					    ['insert',['picture','link','video']],
+					    ['view', ['fullscreen', 'help']]
+				    ],
+				    fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+					fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+						
+			  });
 			});
-		});
 	</script>
+	
+
+<jsp:include page="footer.jsp" />
 </body>
 </html>

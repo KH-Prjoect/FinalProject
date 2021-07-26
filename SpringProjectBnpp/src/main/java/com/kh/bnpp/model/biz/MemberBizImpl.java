@@ -1,3 +1,4 @@
+
 package com.kh.bnpp.model.biz;
 
 import java.util.List;
@@ -67,5 +68,10 @@ public class MemberBizImpl implements MemberBiz{
 	public int updateteacher(MemberDto dto) {
 		return dao.updateteacher(dto);
 	}
-	
+
+	@Override
+	public List<MemberDto> findAllT(String category) {
+		return dao.findAllT(category);
+	}
 }
+

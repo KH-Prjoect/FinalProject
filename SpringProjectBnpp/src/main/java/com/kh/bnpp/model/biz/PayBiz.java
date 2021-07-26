@@ -1,3 +1,4 @@
+
 package com.kh.bnpp.model.biz;
 
 import java.util.List;
@@ -14,3 +15,4 @@ public interface PayBiz {
 	public int delete(int pay_num);
 	
 }
+

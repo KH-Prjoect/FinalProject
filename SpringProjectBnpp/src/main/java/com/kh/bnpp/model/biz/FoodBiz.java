@@ -1,3 +1,4 @@
+
 package com.kh.bnpp.model.biz;
 
 import java.util.List;
@@ -15,3 +16,4 @@ public interface FoodBiz {
 	public int delete(int food_num);
 	
 }
+

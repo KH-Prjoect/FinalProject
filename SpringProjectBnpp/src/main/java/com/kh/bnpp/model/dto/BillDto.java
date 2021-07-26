@@ -1,3 +1,4 @@
+
 package com.kh.bnpp.model.dto;
 
 public class BillDto {
@@ -65,3 +66,4 @@ public class BillDto {
 	}
 	
 }
+

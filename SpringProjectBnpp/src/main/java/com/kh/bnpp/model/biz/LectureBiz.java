@@ -1,3 +1,4 @@
+
 package com.kh.bnpp.model.biz;
 
 import java.util.List;
@@ -14,3 +15,4 @@ public interface LectureBiz {
 	public int delete(int lecture_num);
 	
 }
+

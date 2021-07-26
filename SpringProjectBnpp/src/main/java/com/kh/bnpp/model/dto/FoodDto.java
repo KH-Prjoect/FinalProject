@@ -1,3 +1,4 @@
+
 package com.kh.bnpp.model.dto;
 
 public class FoodDto {
@@ -63,3 +64,4 @@ public class FoodDto {
 	}
 	
 }
+
