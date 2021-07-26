@@ -19,11 +19,14 @@
 	<typeAlias type="com.kh.bnpp.model.dto.FoodListDto" alias="FoodListDto"/>
 	<typeAlias type="com.kh.bnpp.model.dto.LectureDto" alias="LectureDto"/>
 	<typeAlias type="com.kh.bnpp.model.dto.PayDto" alias="PayDto"/>
+	<typeAlias type="com.kh.bnpp.model.dto.QboardDto" alias="QboardDto"/>
+	
 </typeAliases>
 
 <!--  resource : src/main/resources와 연결됨 -->
 <mappers>
 	<mapper resource="/mybatis/rboard-mapper.xml"/>
+	<mapper resource="/mybatis/qboard-mapper.xml"/>
 	<mapper resource="/mybatis/reply-mapper.xml"/>
 	<mapper resource="/mybatis/member-mapper.xml"/>
 	<mapper resource="/mybatis/kakao-mapper.xml"/>
