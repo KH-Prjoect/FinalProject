@@ -61,9 +61,9 @@
 							<li class="scroll-to-section"><a href="#">고객센터</a></li>
 							
 							
-								
-								<c:choose>
-									<c:when test="${not empty dbDto.member_id}">
+							<c:choose>
+								<c:when test="${not empty dbDto.member_id}">
+									<c:if test="${not empty dbDto.member_address }">
 										<c:if test="${empty dbDto.member_img_path || dbDto.member_img_path == null}"> 
 											<li class="scroll-to-section" >
 											<form name="iniform" method="post">
@@ -77,15 +77,6 @@
 										<c:if test="${not empty dbDto.member_img_path }">
 										
 										</c:if>
-									</c:when>
-									<c:otherwise>
-									</c:otherwise>
-								</c:choose>
-							
-							
-							<c:choose>
-								<c:when test="${not empty dbDto.member_id}">
-									<c:if test="${not empty dbDto.member_address }">
 										<li class="scroll-to-section" ><a href="#">${dbDto.member_id }님
 										</a></li>
 										<li class="scroll-to-section"><div
