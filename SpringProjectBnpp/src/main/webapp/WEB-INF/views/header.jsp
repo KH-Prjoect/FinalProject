@@ -57,13 +57,16 @@
 							<li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
 							<li class="scroll-to-section"><a href="boardList.do">레시피
 									공유</a></li>
-							<li class="scroll-to-section"><a href="<c:url value='/teacherList.do?category=한식' />">강사</a></li>
+							<li class="scroll-to-section"><a
+								href="<c:url value='/teacherList.do?category=한식' />">강사</a></li>
 							<li class="scroll-to-section"><a href="qnalist.do">고객센터</a></li>
 							<c:choose>
 								<c:when test="${sessionScope.loginCheck eq true}">
 									<c:if test="${empty dbDto.member_img_path }">
-										<li class="scroll-to-section" ><img alt="profileimg" src="./resources/img/dummy.png" width="40" height="40">
-											<a href="javascript:openWindowPop('imgpopup.jsp','imgupload');">사진변경</a>
+										<li class="scroll-to-section"><img alt="profileimg"
+											src="./resources/img/dummy.png" width="40" height="40">
+											<a
+											href="javascript:openWindowPop('imgpopup.jsp','imgupload');">사진변경</a>
 										</li>
 									</c:if>
 									<c:if test="${not empty dbDto.member_img_path }">
@@ -76,28 +79,16 @@
 							<c:choose>
 								<c:when test="${sessionScope.loginCheck eq true}">
 									<c:if test="${not empty dbDto.member_id}">
-										<li class="scroll-to-section" ><a href="./mypage.do?member_id=${dbDto.member_id }">${dbDto.member_id }님
+										<li class="scroll-to-section"><a
+											href="./mypage.do?member_id=${dbDto.member_id }">${dbDto.member_id }님
 										</a></li>
 										<li class="scroll-to-section"><div
 												class="main-blue-button">
 												<a href="logout.do">로그아웃</a>
 											</div>
 									</c:if>
-									<c:if test="${userId ne null}">
-										<c:out value="${userId}" />님 로그인 완료!
-			 	<li class="scroll-to-section"><div class="main-blue-button">
-												<a href="kakaologout.do">로그아웃</a>
-											</div>
-									</c:if>
-									<c:if test="${session != null }">
-										<c:out value="${sessionId }" />님 로그인 완료!
-										<li class="scroll-to-section"><div
-												class="main-blue-button">
-												<a href="naverlogout.do">로그아웃</a>
-											</div>
-									</c:if>
 								</c:when>
-							<c:otherwise>
+								<c:otherwise>
 									<li class="scroll-to-section"><div
 											class="main-blue-button">
 											<a href="loginform.do">로그인</a>
@@ -105,7 +96,7 @@
 									<li class="scroll-to-section"><div class="main-red-button">
 											<a href="signupform.do">회원가입</a>
 										</div></li>
-							</c:otherwise>
+								</c:otherwise>
 							</c:choose>
 
 						</ul>

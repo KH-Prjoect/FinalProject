@@ -50,4 +50,9 @@ public class QboardBizImpl implements QboardBiz {
 		return dao.selectBoard(pdto);
 	}
 
+	@Override
+	public int answerinsert(QboardDto dto) {
+		return dao.answerinsert(dto);
+	}
+
 }

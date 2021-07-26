@@ -16,50 +16,6 @@ public class QboardController {
 	@Autowired
 	private QboardBiz biz;
 
-	
-	@RequestMapping("/qnainsertform.do")
-	public String insertForm() {
-		return "qnaboardinsert";
-	}
-
-	@RequestMapping("/qnainsert.do")
-	public String insertRes(QboardDto dto) {
-		if (biz.insert(dto) > 0) {
-			return "faqboard";
-		}
-		return "";
-	}
-
-	@RequestMapping("/qnaselect.do")
-	public String selectOne(Model model, int bq_num) {
-		model.addAttribute("dto", biz.selectOne(bq_num));
-
-		return "";
-	}
-
-	@RequestMapping("/qnaupdateform.do")
-	public String updateForm(Model model, int bq_num) {
-		model.addAttribute("dto",biz.selectOne(bq_num));
-		return "";
-	}
-
-	@RequestMapping("/qnaupdateres.do")
-	public String updateRes(QboardDto dto) {
-
-		if (biz.update(dto) > 0) {
-			return "redirect:.do?bq_num" + dto.getBq_num();
-		}
-		return "redirect:.do?bq_num=" + dto.getBq_num();
-
-	}
-	@RequestMapping("/qnadelete.do")
-	public String delete(int bq_num) {
-		if(biz.delete(bq_num)>0) {
-			return "redirect:.do";
-		}
-		return "redirect:.do?bq_num="+bq_num;
-	}
-
 	@RequestMapping("/qnalist.do")
 	public String boardList(Model model, PagingDto pdto
 			, @RequestParam(value="nowPage", required=false)String nowPage
@@ -84,6 +40,74 @@ public class QboardController {
 	}
 	
 	
+	
+	@RequestMapping("/qnainsertform.do")
+	public String insertForm() {
+		return "qnaboardinsert";
+	}
+
+	@RequestMapping("/qnainsert.do")
+	public String insertRes(QboardDto dto) {
+		
+		if (biz.insert(dto) > 0) {
+			return "redirect:qnalist.do";
+		}
+		return "redirect:qnainsertform.do";
+	}
+	
+	@RequestMapping("/answerinsertform.do")
+	public String answerinsertForm(Model model, int bq_num) {
+		
+		model.addAttribute("dto", biz.selectOne(bq_num));
+		
+		return "answerinsertform";
+	}
+
+	
+	@RequestMapping("/answerinsert.do")
+	public String answerinsertRes(QboardDto dto) {
+		if (biz.answerinsert(dto) > 0) {
+			return "redirect:qnalist.do";
+		}
+		return "redirect:qnainsertform.do";
+	}
+	
+
+	@RequestMapping("/qnaselect.do")
+	public String selectOne(Model model, int bq_num) {
+		model.addAttribute("qdto", biz.selectOne(bq_num));
+
+		return "qboardselect";
+	}
+
+
+	@RequestMapping("/qnaupdateform.do")
+	public String updateForm(Model model, int bq_num) {
+		
+		model.addAttribute("dto", biz.selectOne(bq_num));
+		
+		return "qnaboardupdate";
+	}
+	
+	
+	@RequestMapping("/qnaupdateres.do")
+	public String updateRes(QboardDto dto) {
+		if (biz.update(dto) > 0) {
+			return "redirect:qnalist.do";
+		}
+		return "redirect:qnaupdateform.do";
+	}
+	
+	
+	
+	@RequestMapping("/qnadelete.do")
+	public String delete(int bq_num) {
+		if(biz.delete(bq_num)>0) {
+			return "redirect:qnalist.do";
+		}
+		return "redirect:qnaselect.do?bq_num="+bq_num;
+	}
+
 	
 	
 	
