@@ -252,7 +252,7 @@ $("#btnRecommend").click(function(){
 					</c:if>
 
 					<td colspan="2" align="right"><input type="button" value="목록"
-						onclick="location.href='qnalist.do?'">
+						onclick="location.href='boardList.do?'">
 				</tr>
 
 			</table>
