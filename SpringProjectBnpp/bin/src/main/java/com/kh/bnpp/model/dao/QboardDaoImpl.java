@@ -115,8 +115,4 @@ public class QboardDaoImpl implements QboardDao {
 	}
 
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/test

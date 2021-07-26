@@ -67,24 +67,24 @@ table {
 	<script>
 		function selChange() {
 			var sel = document.getElementById('cntPerPage').value;
-			location.href = "boardList.do?nowPage=${paging.nowPage}&cntPerPage="
+			location.href = "qnalist.do?nowPage=${paging.nowPage}&cntPerPage="
 					+ sel
 		}
 	</script>
 
 	<jsp:include page="header.jsp" />
 
-	<div class="main-banner wow fadeIn" >
+	<div class="main-banner wow fadeIn">
 
 
-		<div style="position: relative; left: 4%; z-index: 1; width:100px">
-		<nav>
-			<ul class="menus" style="list-style: none; ">
-				고객센터 메뉴
-				<li><a class="menu">FAQ</a></li>
-				<li><a class="menu">1:1문의</a></li>
-			</ul>
-		</nav>
+		<div style="position: relative; left: 4%; z-index: 1; width: 100px">
+			<nav>
+				<ul class="menus" style="list-style: none;">
+					고객센터 메뉴
+					<li><a class="menu">FAQ</a></li>
+					<li><a class="menu">1:1문의</a></li>
+				</ul>
+			</nav>
 		</div>
 		<div class="mypage"
 			style="width: 900px; position: relative; left: 20%;">
@@ -92,50 +92,35 @@ table {
 			<h2>자주묻는질문</h2>
 
 			<div>
-				<button class="accordion">Section 1</button>
+				<button class="accordion">보나베띠는 어떤 서비스인가요?</button>
 				<div class="panel">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-						nisi ut aliquip ex ea commodo consequat.</p>
+					<p>언제 어디서나 나만의 요리를 가르치고, 배우고 싶은 요리를 편리하게 선택하고, 내집 내직장 가까운 곳에서
+						쿠킹클래스가 열리는, 천만가지 즐거운 요리경험을 제공하는 쿠킹클래스 공유 플랫폼 서비스입니다.</p>
 				</div>
 
-				<button class="accordion">Section 2</button>
+				<button class="accordion">서비스 가능지역이 궁금해요</button>
 				<div class="panel">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-						nisi ut aliquip ex ea commodo consequat.</p>
+					<p>PC사용과 인터넷연결이 가능한 환경에서 이용 가능한 서비스입니다.</p>
 				</div>
 
-				<button class="accordion">Section 2</button>
+				<button class="accordion">회원가입은 어떻게 하나요?</button>
 				<div class="panel">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-						nisi ut aliquip ex ea commodo consequat.</p>
+					<p>보나베띠 서비스는 누구나 무료로 이용이 가능합니다. SNS 계정(네이버,카카오)이나 이메일로 쉽고 간단하게
+						회원가입을 할 수 있습니다.</p>
 				</div>
-				<button class="accordion">Section 2</button>
+				<button class="accordion">부가가치세가 포함이 되어 있나요?</button>
 				<div class="panel">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-						nisi ut aliquip ex ea commodo consequat.</p>
+					<p>네. VAT(부가가치세)는 서비스에 부과되는 필수세금입니다. 클래스 비용에 포함이 되어있습니다.</p>
 				</div>
-				<button class="accordion">Section 2</button>
+				<button class="accordion">예약확정 여부는 어떻게 확인 할수 있나요?</button>
 				<div class="panel">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-						nisi ut aliquip ex ea commodo consequat.</p>
+					<p>신청한 클래스 예약 확정 여부는 '마이페이지>예약클래스'에서 실시간 확인하실수 있습니다.</p>
 				</div>
 
-				<button class="accordion">Section 3</button>
+				<button class="accordion">클래스를 개설하고 싶어요. 어떻게 해야하나요?</button>
 				<div class="panel">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-						nisi ut aliquip ex ea commodo consequat.</p>
+					<p>선생님으로 승인되시면, 바로 클래스를 개설 할 수 있습니다. 마이페이지에서 클래스정보 작성, 승인이 완료되면
+						바로 수강생 모집이 시작됩니다. 선생님은 '마이페이지'에서 모집 현황을 확인할 수 있습니다.</p>
 				</div>
 			</div>
 		</div>
@@ -165,13 +150,11 @@ table {
 				</div>
 				<!-- 옵션선택 끝 -->
 
-				<table border="1">
-					<col width="50">
-					<col width="500">
+				<table class="table table-bordered">
+					<col width="300">
 					<col width="100">
 					<col width="100">
 					<tr>
-						<th>번호</th>
 						<th>제목</th>
 						<th>작성자</th>
 						<th>날짜</th>
@@ -186,25 +169,31 @@ table {
 						<c:otherwise>
 							<c:forEach items="${list }" var="dto">
 								<tr>
-									<td>${dto.bq_num }</td>
-									<td><a href="qnaselect.do?br_num=${dto.bq_num }">${dto.bq_title }</a></td>
+									<td><a href="qnaselect.do?bq_num=${dto.bq_num }">${dto.bq_title }</a></td>
 									<td>${dto.member_id }</td>
-									<td>${dto.bq_regdate }</td>
+									<td><fmt:formatDate value="${dto.bq_regdate }"
+											pattern="MM-dd HH:ss" /></td>
 								</tr>
 							</c:forEach>
 						</c:otherwise>
 					</c:choose>
-
-					<tr>
-						<td colspan="5" align="right"><input type="button"
-							value="글작성" onclick="location.href='qnainsertform.do'" /></td>
+					<c:choose>
+					<c:when test="${sessionScope.loginCheck eq true}">
+						<c:if test="${not empty dbDto.member_id}">
+							<tr>
+								<td colspan="5" align="right"><input type="button"
+									value="글작성" onclick="location.href='insertform.do'" /></td>
+							</tr>
+						</c:if>
+					</c:when>
+				</c:choose>
 				</table>
 			</div>
 
 			<div style="display: block; text-align: center;">
 				<c:if test="${paging.startPage != 1 }">
 					<a
-						href="qnaboardList.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+						href="qnalist.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
 				</c:if>
 				<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
 					var="p">
@@ -214,13 +203,13 @@ table {
 						</c:when>
 						<c:when test="${p != paging.nowPage }">
 							<a
-								href="boardList.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+								href="qnalist.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
 						</c:when>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${paging.endPage != paging.lastPage}">
 					<a
-						href="qnaboardList.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&searchType=${paging.searchType}&keyword=${paging.keyword}">&gt;</a>
+						href="qnalist.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
 				</c:if>
 			</div>
 		</div>

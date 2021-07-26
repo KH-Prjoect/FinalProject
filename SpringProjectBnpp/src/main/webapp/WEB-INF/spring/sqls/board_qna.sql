@@ -22,5 +22,8 @@ CREATE TABLE BOARDQNA (
 
 
 SELECT * FROM BOARDQNA ORDER BY BQ_GROUPNO ,BQ_GROUPSEQ ;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/test
 

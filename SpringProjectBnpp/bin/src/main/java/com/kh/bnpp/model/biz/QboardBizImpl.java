@@ -55,8 +55,4 @@ public class QboardBizImpl implements QboardBiz {
 		return dao.answerinsert(dto);
 	}
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/test
