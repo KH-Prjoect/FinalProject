@@ -182,11 +182,7 @@ table {
 						<c:if test="${not empty dbDto.member_id}">
 							<tr>
 								<td colspan="5" align="right"><input type="button"
-<<<<<<< HEAD
-									value="글작성" onclick="location.href='insertform.do'" /></td>
-=======
 									value="글작성" onclick="location.href='qnainsertform.do'" /></td>
->>>>>>> origin/test
 							</tr>
 						</c:if>
 					</c:when>
