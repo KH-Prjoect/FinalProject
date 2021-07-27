@@ -147,21 +147,22 @@ table {
 					<tr>
 						<c:if test="${dbDto.member_id == qdto.member_id }">
 
-							<td colspan="2" align="right"><input type="button"
+							<td align="right"><input type="button"
 								value="수정"
 								onclick="location.href='qnaupdateform.do?bq_num=${qdto.bq_num}'" />
 						</c:if>
-						
 						<c:if test="${dbDto.member_id == 'admin' }">
 
 							<td colspan="2" align="right"><input type="button"
 								value="답변"
 								onclick="location.href='answerinsertform.do?bq_num=${qdto.bq_num}'" />
+								<input type="button"
+											value="삭제" onclick="location.href='qnadelete.do?bq_num=${qdto.bq_num}'" />
 						</c:if>
 						
-						
-						<td colspan="2" align="right"><input type="button" value="목록"
-							onclick="location.href='qnalist.do?'">
+						<td>
+						<input type="button" value="목록"
+							onclick="location.href='qnalist.do?'"></td>
 					</tr>
 
 				</table>

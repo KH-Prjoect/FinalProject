@@ -103,8 +103,9 @@ a {
 								<tr>
 									<td colspan="5" align="right"><input type="button"
 										value="글작성" onclick="location.href='qnainsertform.do'" /></td>
-								</tr>
-							</c:if>
+										
+									</tr>
+								</c:if>
 						</c:when>
 					</c:choose>
 				</table>
