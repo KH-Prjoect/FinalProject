@@ -44,7 +44,8 @@ a {
 	<jsp:include page="header.jsp" />
 
 	<div class="main-banner wow fadeIn">
-		<div style="position: relative; left: 4%; z-index: 1; ">
+		
+<div style="position: relative; left: 4%; z-index: 1; width: 100px">
 			<nav>
 				<ul class="menus" style="list-style: none;">
 					고객센터 메뉴
@@ -52,6 +53,8 @@ a {
 					<li><a href="qnalist.do">1:1문의</a></li>
 				</ul>
 			</nav>
+		</div>
+
 			<h2>1:1 문의게시판</h2>
 
 			<div id="outter">
@@ -101,7 +104,7 @@ a {
 						<c:when test="${sessionScope.loginCheck eq true}">
 							<c:if test="${not empty dbDto.member_id}">
 								<tr>
-									<td colspan="5" align="right"><input type="button"
+									<td colspan="5" align="right"><input type="button" class="btn btn-outline-success"
 										value="글작성" onclick="location.href='qnainsertform.do'" /></td>
 										
 									</tr>

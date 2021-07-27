@@ -43,7 +43,7 @@
 		</c:choose>
 
 		<tr>
-			<td colspan="4" align="right"><input type="button" value="글작성"
+			<td colspan="4" align="right"><input type="button" value="글작성" class="btn btn-outline-success"
 				onclick="location.href='insertform.do'" /></td>
 	</table>
 

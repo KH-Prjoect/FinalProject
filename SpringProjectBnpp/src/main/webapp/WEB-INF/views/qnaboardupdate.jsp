@@ -22,10 +22,10 @@
 
 <div class="main-banner wow fadeIn">
 	<h1>UPDATE</h1>
-
+	<div style="width: 60%; margin: auto;">
 	<form action="qnaupdateres.do" method="post">
 	<input type="hidden" name="bq_num" value="${dto.bq_num }"/>
-	<table border="1">
+	<table class="table table-bordered">
 		<tr>
 			<th>작성자</th>
 			<td>${dto.member_id }</td>
@@ -41,13 +41,14 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
-				<input type="submit" value="수정" />
-				<input type="button" value="취소" onclick="location.href='qnalist.do?'"/>
+				<input type="submit" class="btn btn-outline-success" value="수정" />
+				<input type="button" class="btn btn-outline-danger" value="취소" onclick="location.href='qnalist.do?'"/>
 			</td>
 		</tr>
 
 	</table>
 	</form>
+	</div>
 	</div>
 <script>
 		$(document).ready(function() {
