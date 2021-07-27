@@ -116,7 +116,8 @@ a {
 						<c:if test="${not empty dbDto.member_id}">
 							<tr>
 								<td colspan="5" align="right"><input type="button"
-									value="글작성" onclick="location.href='insertform.do'" /></td>
+									class="btn btn-outline-success"
+									 value="글작성" onclick="location.href='insertform.do'" /></td>
 							</tr>
 						</c:if>
 					</c:when>

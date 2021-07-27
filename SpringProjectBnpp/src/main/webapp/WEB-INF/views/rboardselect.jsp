@@ -17,8 +17,13 @@
 
 
 <script type="text/javascript">
+
 $(document).ready(function(){
 	getreplylist();
+	
+	$('#summernote').summernote({
+		  airMode : true
+	});
 
 });
 function getreplylist(){
@@ -217,10 +222,14 @@ $("#btnRecommend").click(function(){
 	<jsp:include page="header.jsp" />
 
 	<div class="main-banner wow fadeIn">
-		<div style="position: relative; left: 30%;">
+		<div style="width: 80%; margin: auto;">
 
 			<h1>레시피공유</h1>
-			<table border="1">
+			<table class="table table-bordered">
+				<col width="1">
+				<col width="90">
+				
+				
 				<tr>
 					<th>작성자</th>
 					<td>${dto.member_id }</td>
@@ -230,9 +239,8 @@ $("#btnRecommend").click(function(){
 					<td>${dto.br_title }</td>
 				</tr>
 				<tr>
-					<th></th>
-					<td><div id="summernote" class="form-control"
-							style="width: 600px; height: 100%;">${dto.br_content }</div></td>
+					<td colspan="2"><div id="summernote" class="form-control"
+							style="width:100%; height:100%;">${dto.br_content }</div></td>
 				</tr>
 					
 				<tr>
@@ -245,14 +253,13 @@ $("#btnRecommend").click(function(){
 				<tr>
 					<c:if test="${dbDto.member_id == dto.member_id }">
 
-						<td colspan="2" align="right"><input type="button" value="수정"
+						<td colspan="2" align="right"><input type="button" value="수정" class="btn btn-outline-success"
 							onclick="location.href='updateform.do?br_num=${dto.br_num}'" />
-							<input type="button" value="삭제"
+							<input type="button" value="삭제" class="btn btn-outline-danger"
 							onclick="location.href='delete.do?br_num=${dto.br_num}'" />
 					</c:if>
-
-					<td colspan="2" align="right"><input type="button" value="목록"
-						onclick="location.href='boardList.do?'">
+					<input type="button" value="목록" class="btn btn-outline-success"
+						onclick="location.href='boardList.do?'" /></td>
 				</tr>
 
 			</table>
@@ -270,8 +277,8 @@ $("#btnRecommend").click(function(){
 					<input type="hidden" class="form-control" id="reply_member_id"
 						value="${dbDto.member_id }"><br /> <label
 						for="reply_content">댓글 내용 :</label>
-					<textarea class="form-control" id="reply_content"
-						name="reply_content"></textarea>
+					<textarea cols= "60" class="form-control" id="reply_content"
+						name="reply_content" ></textarea>
 					<button type="button" class="btn btn-outline-success"
 						id="replywriteBtn">댓글 작성</button>
 				</div>
@@ -284,12 +291,9 @@ $("#btnRecommend").click(function(){
 	</div>
 
 	<jsp:include page="footer.jsp" />
+	
 <script type="text/javascript">
-$(document).ready(function() {
-	  $('#summernote').summernote({
-		  airMode : true
-	  });
-	  }
+
 </script>
 
 </body>
