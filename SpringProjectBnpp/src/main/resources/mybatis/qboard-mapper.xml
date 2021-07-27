@@ -44,7 +44,7 @@
 		#{bq_content},
 		SYSDATE,
 		#{member_id},
-		'1',
+		BQGROUPNUMSEQ.NEXTVAL,
 		BQGROUPNUMSEQ.NEXTVAL,
 		'1')
 	</insert>
@@ -92,7 +92,7 @@
 		)
 		WHERE (RN BETWEEN #{start} AND
 		#{end})
-		ORDER BY BQ_GROUPNO ,BQ_GROUPSEQ
+		ORDER BY BQ_GROUPNO DESC, BQ_TITLETAB 
 	</select>
 
 

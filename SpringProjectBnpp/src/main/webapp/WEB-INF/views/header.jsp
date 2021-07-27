@@ -58,7 +58,7 @@
 							<li class="scroll-to-section"><a href="boardList.do">레시피
 									공유</a></li>
 							<li class="scroll-to-section"><a href="<c:url value='/teacherList.do?category=한식' />">강사</a></li>
-							<li class="scroll-to-section"><a href="#">고객센터</a></li>
+							<li class="scroll-to-section"><a href="faqboard.do">고객센터</a></li>
 							
 							
 							<c:choose>

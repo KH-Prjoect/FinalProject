@@ -24,11 +24,11 @@ public class QboardController {
 		int total = biz.countBoard(pdto);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
-			cntPerPage = "5";
+			cntPerPage = "10";
 		} else if (nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) { 
-			cntPerPage = "5";
+			cntPerPage = "10";
 		}
 		
 		pdto = new PagingDto(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
@@ -36,10 +36,15 @@ public class QboardController {
 		model.addAttribute("list", biz.selectBoard(pdto));
 		
 		System.out.println(pdto.toString());
-		return "faqboard";
+		return "qnaboard";
 	}
 	
+
 	
+	@RequestMapping("/faqboard.do")
+	public String faqboard() {
+		return "faqboard";
+	}
 	
 	@RequestMapping("/qnainsertform.do")
 	public String insertForm() {
