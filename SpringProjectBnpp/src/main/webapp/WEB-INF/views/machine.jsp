@@ -143,6 +143,7 @@
 </style>
 <body>
 	<h1>식재료 정보 확인</h1>
+	<h4> 내가 가지고 있는 재료를 화면에 비춰주세요. </h4>
 	<button type="button" onclick="init()">내 식재료 정보 확인</button>
 	<br>
 	<br>

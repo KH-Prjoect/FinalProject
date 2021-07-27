@@ -22,11 +22,11 @@
         </tr>
         <tr>
             <th>재료</th>
-            <td width="150"><c:out value="${dto.recipe_ingredient}"/></td>
+            <td width="150"><c:out escapeXml="false" value="${dto.recipe_ingredient}"/></td>
         </tr>
         <tr>
             <th>레시피</th>
-            <td><c:out value="${dto.recipe_info}"/></td>
+            <td><c:out escapeXml="false" value="${dto.recipe_info}"/></td>
         </tr>
     </table>
     <button id="refresh">재추천</button>

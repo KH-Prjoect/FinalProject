@@ -23,10 +23,7 @@ public class KakaoDao {
 		int res = 0;
 
 		try {
-
 			res = sqlSession.insert(NAMESPACE + "insert", dto);
-			
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

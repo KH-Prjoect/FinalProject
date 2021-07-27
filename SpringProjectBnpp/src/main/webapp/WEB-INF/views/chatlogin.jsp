@@ -31,10 +31,11 @@
             <div class="panel-body">
                 <form id="login-form" method="post" action="./loginProcess.do">
                     <div>
-                        <input type="text"  name="id"	class="form-control" name="아이디 입력" placeholder="Username" autofocus>
+                        <!-- <input type="text"  name="id"	class="form-control" > -->
+                       <input type="text"  value="${sessionScope.dbDto.member_id }">
                     </div>
                     <div>
-                        <button type="submit" class="form-control btn btn-primary">로그인</button>
+                        <button type="submit" class="form-control btn btn-primary">상담사와 채팅하기</button>
                     </div>
                 </form>
             </div>

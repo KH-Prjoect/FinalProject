@@ -53,9 +53,7 @@
 				}
 			});
 		}
-		
 	}
-	
 	function kakaoLogin(){
 		location.href='home.do';
 	}

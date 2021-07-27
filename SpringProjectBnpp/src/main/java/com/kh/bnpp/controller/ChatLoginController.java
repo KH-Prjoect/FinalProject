@@ -19,18 +19,21 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Handles requests for the application home page.
  */
 @Controller
-public class ChatLoginController {
-	
-	private static final Logger logger = LoggerFactory.getLogger(ChatLoginController.class);
+public class ChatLoginController {          
+//	 
+	private static final Logger logger = LoggerFactory.getLogger(ChatLoginController.class);  
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/chatlogin.do", method = RequestMethod.GET)
-	public String login() {
-		
+	public String login( ) {  //HttpSession session, Model model
+//		   
+//		  model.addAttribute("dbDto", session.getAttribute("dbDto"));
+//		          
+//		
 		return "chatlogin";
-	}
+	}  
 	
 	/**
 	 * Simply selects the home view to render by returning its name.

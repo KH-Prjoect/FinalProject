@@ -76,16 +76,18 @@ public class LoginController {
 		System.out.println("MemberDto_id = " + dto.getMember_id());
 		System.out.println("MemberDto_pw = " + dto.getMember_pw());
 		
-		MemberDto dbDto = biz.login(dto);
+		MemberDto dbDto =  biz.login(dto);
 		boolean check = false;
+//		
 		 							//방금 가져온pw, db에 저장된 인코딩된pw
+		    //왼쪽과 오른쪽을 비교해줌.  내가쓴거 / DB(암호화 된 거 )
 		if(passwordEncoder.matches(dto.getMember_pw(), dbDto.getMember_pw())) {
 			logger.info("[LoginController] : 비밀번호 비교 성공, 세션에 넣는 중");
 			check = true;
-			session.setAttribute("loginCheck", true);
-			session.setAttribute("dbDto", dbDto);
-		} else {
-			logger.info("[LoginController] : 비밀번호 비교 실패");
+			session.setAttribute("loginCheck", true); //logincheck key 에 val true넣음. 
+			session.setAttribute("dbDto", dbDto); 
+		} else {    
+			logger.info("[LoginController] : 비밀번호 비교 실패");  
 		}
 		
 		Map <String, Boolean> map = new HashMap<String, Boolean>();
@@ -93,6 +95,9 @@ public class LoginController {
 		
 		return map;
 	}
+	
+	
+	
 	
 	@RequestMapping("/logout.do")
 	public String idCheck(HttpSession session) {
