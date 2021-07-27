@@ -35,6 +35,26 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+h2 {
+	text-align: center;
+}
+
+table {
+	width: 100%;
+}
+
+#outter {
+	display: block;
+	width: 60%;
+	margin: auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+</style>
 <body>
 
 
@@ -59,7 +79,7 @@
 									공유</a></li>
 							<li class="scroll-to-section"><a
 								href="<c:url value='/teacherList.do?category=한식' />">강사</a></li>
-							<li class="scroll-to-section"><a href="qnalist.do">고객센터</a></li>
+							<li class="scroll-to-section"><a href="faqboard.do">고객센터</a></li>
 							<c:choose>
 								<c:when test="${sessionScope.loginCheck eq true}">
 									<c:if test="${empty dbDto.member_img_path }">
