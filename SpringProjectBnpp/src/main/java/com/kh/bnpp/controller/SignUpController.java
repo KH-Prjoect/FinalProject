@@ -61,6 +61,8 @@ public class SignUpController {
 		dto.setMember_pw(passwordEncoder.encode(dto.getMember_pw()));
 		System.out.println("인코딩 후 pw(.encode찍은거) = " + passwordEncoder.encode(dto.getMember_pw()));
 		System.out.println("인코딩 후 pw(암호화한 후 dto.get찍은거) = " + dto.getMember_pw());
+		dto.setMember_img_path(null);
+		dto.setMember_img_name(null);
 		
 		if(biz.insert(dto) > 0) {
 			
