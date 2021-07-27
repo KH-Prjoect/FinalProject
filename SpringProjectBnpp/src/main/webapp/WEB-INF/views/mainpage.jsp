@@ -19,6 +19,8 @@
 
 
 <!-- Additional CSS Files -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="resources/assets/css/fontawesome.css">
 <link rel="stylesheet"
 	href="resources/assets/css/templatemo-space-dynamic.css">
@@ -26,17 +28,35 @@
 <link rel="stylesheet" href="resources/assets/css/owl.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	//var floatPosition = parseInt($("quick_menu").css('top'));
+	$(window).scroll(function () {  //브라우저에 스크롤이 발생하는 순간부터
+        var curpos = $(window).scrollTop()+200; //스크롤바의 상단 위치값+20 보관
+        $(".quick_menu").stop().animate({"top":curpos}); //스카이메뉴의 상단위치값 애니
+     }); 
+});
+</script>
+<!--  CSS style sheet -->
+<style type="text/css">
+
+.quick_menu{
+background: white;
+position:absolute;
+width:100px;
+top:150px;   /* window start -side bar position */
+right:10px;
+z-index : 9999; /* 해당 요소 맨앞으로 가져오기  */
+}
+ </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 </head>
-
 <body>
 
 	<!-- ***** Preloader Start ***** -->
@@ -53,7 +73,8 @@
 	<!-- ***** Header Area Start ***** -->
 	<jsp:include page="header.jsp" />
 	<!-- ***** Header Area End ***** -->
-
+	
+	
 	<div class="main-banner wow fadeIn" id="top" data-wow-duration="1s"
 		data-wow-delay="0.5s">
 		<div class="container">
@@ -126,6 +147,17 @@
 				</div>
 			</div>
 		</div>
+	</div>
+
+	
+	<!--  sidebar -quick -menu ******************* -->
+	<div style="height:5000px" class="quick_menu">
+		<ul>  <!--  class="bi bi-headphones"  alt="headphones" style="font-size: 2rem;"  : 글자가 같이 커짐-->
+			<li class="bi bi-headphones" alt="Bootstrap" width="60" height="60" ><a href="chatlogin.do">실시간 상담</a></li> <br>
+			<li class="bi bi-pin-map-fill"  alt="kitchenmap"><a href="kitchenmap.do">가까운 주방</a></li><br>
+			<li class="bi bi-patch-question-fill"><a href="recipe.do">오늘 뭐먹지</a></li><br>
+			<li class="bi bi-basket2"><a href="machine.do">내 재료 확인</a></li>
+		</ul>
 	</div>
 
 
@@ -203,6 +235,7 @@
 			</div>
 		</div>
 	</div>
+	
 
 	<!-- 
 	<div id="about" class="about-us section">
@@ -475,6 +508,7 @@
 
 <jsp:include page="footer.jsp" />
 
+
 	<!-- Scripts -->
 	<script src="resources/vendor/jquery/jquery.min.js"></script>
 	<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -482,6 +516,9 @@
 	<script src="resources/assets/js/animation.js"></script>
 	<script src="resources/assets/js/imagesloaded.js"></script>
 	<script src="resources/assets/js/templatemo-custom.js"></script>
+	
+   
+   
 
 </body>
 </html>
