@@ -23,8 +23,8 @@
 <div class="main-banner wow fadeIn">
 	<h1>UPDATE</h1>
 	<div style="width: 60%; margin: auto;">
-	<form action="updateres.do" method="post">
-	<input type="hidden" name="br_num" value="${dto.br_num }"/>
+	<form action="qnaupdateres.do" method="post">
+	<input type="hidden" name="bq_num" value="${dto.bq_num }"/>
 	<table class="table table-bordered">
 		<tr>
 			<th>작성자</th>
@@ -32,16 +32,17 @@
 		</tr>
 		<tr>
 			<th>제목</th>
-			<td><input type="text" name="br_title" value="${dto.br_title }"/></td>
+			<td><input type="text" name="bq_title" value="${dto.bq_title }"/></td>
 		</tr>
 		<tr>
 			<th></th>
-			<td><textarea id="summernote" rows="10" style="width:100%;" class="form-control" name="br_content">${dto.br_content }</textarea></td>
+			<td><textarea id="summernote" rows="10" cols="50"
+					class="form-control" name="bq_content">${dto.bq_content }</textarea></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
-				<input type="submit" value="수정" />
-				<input type="button" value="취소" class="btn btn-outline-danger" onclick="location.href='boardList.do?'"/>
+				<input type="submit" class="btn btn-outline-success" value="수정" />
+				<input type="button" class="btn btn-outline-danger" value="취소" onclick="location.href='qnalist.do?'"/>
 			</td>
 		</tr>
 
