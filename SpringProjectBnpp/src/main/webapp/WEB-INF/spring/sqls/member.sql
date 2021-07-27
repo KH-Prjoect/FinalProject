@@ -14,10 +14,12 @@ CREATE TABLE MEMBER(
 	MEMBER_CAREER VARCHAR2(2000),
 	MEMBER_REGDATE DATE,
 	MEMBER_IMG_PATH VARCHAR2(500),
+	MEMBER_IMG_NAME VARCHAR2(300),
 	CONSTRAINT MEMBER_ROLE_CHK CHECK (MEMBER_ROLE IN ('M','T','A'))
 );
 
 ALTER TABLE MEMBER ADD MEMBER_IMG_PATH VARCHAR2(500);
+ALTER TABLE MEMBER ADD MEMBER_IMG_NAME VARCHAR2(300);
 
 SELECT * FROM all_all_tables
 
@@ -31,7 +33,7 @@ INSERT INTO MEMBER
 VALUES('member01','member01','Tommy', 'tommy@naver.com', '010-0000-0001', '서울시 서초구', 'M', null,null, null, null, SYSDATE);
 
 INSERT INTO MEMBER
-VALUES('teacher01','teacher01','Roki', 'Roki@naver.com', '010-0001-0000', '서울시 강남구', 'T',  '한식', '김밥달인','한식조리장', '조선호텔 2년, 강남회관 3년', SYSDATE);
+VALUES('teacher01','teacher01','Roki', 'Roki@naver.com', '010-0001-0000', '서울시 강남구', 'T',  '한식', '김밥달인','한식조리장', '조선호텔 2년, 강남회관 3년', SYSDATE , '', '');
 
 INSERT INTO MEMBER
 VALUES('admin','admin','KH', 'admin@admin', '000-0000-0000', '한국', 'A', DEFAULT ,null, null, null, SYSDATE);
@@ -44,3 +46,9 @@ VALUES('member04', 'member04', '4', '', '','', DEFAULT, '','','','',SYSDATE);
 
 DELETE MEMBER
 WHERE MEMBER_ID = 'member04';
+
+DELETE MEMBER
+WHERE MEMBER_ID = '윤인섭Na';
+
+DELETE MEMBER
+WHERE MEMBER_ID = '윤인섭ka';

@@ -49,7 +49,7 @@
 					}
 				},
 				error: function(xhr, status, error){
-					alert("통신 실패");
+					alert("없는 아이디 이거나 아이디와 비밀번호가 틀립니다.");
 				}
 			});
 		}
@@ -68,7 +68,6 @@
 <div class="main-banner wow fadeIn" >
 	
 	<div style="position:relative; left:30%;"><h1>로그인</h1>
-	<h2>잘못온거면 인터셉터에 path확인해</h2>
 		<table>
 			<tr>
 				<th>ID</th>
