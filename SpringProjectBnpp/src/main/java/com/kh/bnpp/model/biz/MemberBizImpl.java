@@ -77,6 +77,8 @@ public class MemberBizImpl implements MemberBiz{
 	@Override
 	public int updatepw(MemberDto dto) {
 		return dao.updatepw(dto);
+
 	}
 }
+
 

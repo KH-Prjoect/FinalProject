@@ -14,6 +14,8 @@ public interface QboardBiz {
 
 	public int insert(QboardDto dto);
 
+	public int answerinsert(QboardDto dto);
+
 	public int update(QboardDto dto);
 
 	public int delete(int bq_num);

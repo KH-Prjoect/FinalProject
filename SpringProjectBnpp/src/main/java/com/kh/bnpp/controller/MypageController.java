@@ -1,4 +1,3 @@
-
 package com.kh.bnpp.controller;
 
 import java.io.UnsupportedEncodingException;
@@ -11,11 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -51,6 +52,7 @@ public class MypageController {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	@Nullable
 	@RequestMapping("/mypage.do")
 	public String mypage(String member_id) {
 		
@@ -61,7 +63,7 @@ public class MypageController {
 		for (FoodDto f_dto : foods) {
 			if (f_dto.getFood_alarm_yn().equals("N")) {
 				f_life = f_dto.getFood_life();
-				if (!f_life.equals("미설정") || !f_life.isBlank()) {
+				if (!f_life.equals("미설정")) {
 					try {
 						if (!SMS.compareDate(f_life).equals("0")) {
 							alarm_dto = m_biz.selectOne(f_dto.getMember_id());
@@ -185,4 +187,5 @@ public class MypageController {
 	}
 	
 }
+
 

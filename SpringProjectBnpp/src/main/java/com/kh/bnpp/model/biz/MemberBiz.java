@@ -23,3 +23,4 @@ public interface MemberBiz {
 	public int updatepw(MemberDto dto);
 }
 
+

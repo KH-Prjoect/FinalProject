@@ -102,4 +102,17 @@ public class QboardDaoImpl implements QboardDao {
 		return list;
 	}
 
+	@Override
+	public int answerinsert(QboardDto dto) {
+		int res = 0;
+		try {
+			res = sqlSession.insert(NAMESPACE+"answerinsert",dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+
 }

@@ -2,6 +2,8 @@ package com.kh.bnpp.controller;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Date;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -17,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.kh.bnpp.model.biz.MemberBiz;
 import com.kh.bnpp.model.biz.NaverLoginBiz;
+import com.kh.bnpp.model.dto.MemberDto;
 
 @Controller
 public class NaverController {
@@ -28,6 +32,9 @@ public class NaverController {
 	@Autowired
 	private NaverLoginBiz naverLoginBiz;
 	private String apiResult = null;
+	
+	@Autowired
+	private MemberBiz mBiz;
 
 	/* NaverLoginBiz */
 	//@Autowired
@@ -94,12 +101,34 @@ public class NaverController {
 		String nickname = response_obj.get("name").getAsString();
 		System.out.println(nickname);
 		System.out.println("nickname 가져왔음?? : " + nickname);
-
-		// 4.파싱 닉네임 세션으로 저장
-		session.setAttribute("sessionId", nickname);
-		session.setAttribute("loginCheck", true);
-		model.addAttribute("result", apiResult);
-
+		//String email = response_obj.get("email").getAsString();
+		String NaverId = nickname + "Na";
+		//String randId = UUID.randomUUID().toString().replaceAll("-","")+nickname;
+		
+		MemberDto dbDto = new MemberDto(NaverId, "naver", nickname, "naver.com", "", "", "M", "", "", "", "", null, "", "");
+		
+		if(mBiz.login(dbDto) == null) {
+			int res = mBiz.insert(dbDto);
+			
+			System.out.println("네이버로 첫 로그인이라 db에 저장함");
+			
+			if(res > 0) {
+				System.out.println("네이버 db저장 성공");
+			}else {
+				System.out.println("네이버 db저장 실패");
+			}
+			
+			// 4.파싱 닉네임 세션으로 저장
+			session.setAttribute("dbDto", dbDto);
+			session.setAttribute("loginCheck", true);
+			model.addAttribute("result", apiResult);
+			
+		} else {
+			System.out.println("네이버로 로그인한 적 있어서 그냥 dto꺼내옴");
+			MemberDto dto = mBiz.login(dbDto);
+			session.setAttribute("dbDto", dto);
+		}
+		
 		return "redirect:/";
 	}
 

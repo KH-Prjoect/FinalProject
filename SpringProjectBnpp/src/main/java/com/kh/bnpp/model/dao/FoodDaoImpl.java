@@ -1,4 +1,3 @@
-
 package com.kh.bnpp.model.dao;
 
 import java.util.ArrayList;
@@ -96,4 +95,5 @@ public class FoodDaoImpl implements FoodDao {
 	}
 
 }
+
 
