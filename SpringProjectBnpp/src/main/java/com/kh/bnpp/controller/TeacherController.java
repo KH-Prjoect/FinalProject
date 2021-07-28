@@ -26,7 +26,9 @@ public class TeacherController {
 		model.addAttribute("category", category);
 		
 		//해당 카테고리에 속한 강사 가져오기
+		System.out.println(mBiz.findAllT(category));
 		model.addAttribute("list", mBiz.findAllT(category));
+		
 		
 		return "teacher";
 	}
