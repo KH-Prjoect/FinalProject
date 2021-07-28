@@ -10,7 +10,7 @@ public class KitchenmapController {
 	@RequestMapping(value = "/kitchenmap.do", method = RequestMethod.GET)
 	public String kitchenmap() {
 		
-		return "kitchenmapjson"; 
+		return "kitchenmap"; 
 	}
 
 }

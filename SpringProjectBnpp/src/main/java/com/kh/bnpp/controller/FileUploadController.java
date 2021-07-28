@@ -24,7 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.bnpp.model.biz.FileUploadBiz;
 import com.kh.bnpp.model.biz.MemberBiz;
 
-@PropertySource("classpath:config/config.properties")
+
+//@PropertySource("") "classpath:config/config.properties"
 @Controller
 public class FileUploadController {
 

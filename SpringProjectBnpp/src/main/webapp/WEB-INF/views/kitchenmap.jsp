@@ -21,28 +21,51 @@
 			<th>공간 이름</th>
 			<td id="kitchenName"> </td>
 		</tr>
-	    <tr>
-			<th>공간 주소</th>
-			<td  id="kitchenAddr"></td>
-		</tr>
-	     <tr>
-			<th>공간 전화번호</th>
-			<td  id=kitchenPhone></td>
-		</tr>
-</table>
-
-
-
+</table><br>
+		<span>
+	    	<button type="button" id="spaceinfo">공간 정보보기</button>
+	    </span>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!--  javascript -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c49d55de179096be77a889b0a969ef10"></script>
-<script>
+<script >
 
+
+var positions = [ ];
+
+
+for(let i=1; i <6; i++){
+	$.getJSON('resources/spacecloudjson/SCpage'+i+'.json', function(data) {
+		// console.log(data.result[0].lng);
+		 //SCpage1을 전부 data 에 넣어서, result의 키 안의 인덱스들(장소들) 의 이름. 경위도를 가져옴 
+		 for(let j=0; j < data.result.length; j++){  
+			 positions.push({ content : data.result[j].spcNm , latlng : new kakao.maps.LatLng(data.result[j].lat , data.result[j].lng) });
+			 //console.log(data.result[j].spcNm + "/"+ data.result[j].lat +"," + data.result[j].lng);
+		 }
+	});
+}
+			 console.log(positions); 
+
+//list = [ {"이름":name, "lng":123, "lat":123}, ~~~ ]
+//{이름. [lat.lng] }  를 list 에 넣
+
+/* getJSON  의 경로에 대한 설명  = = = ==
+
+                  localhost:3334/bnpp/  : 3334 까지가 tomcat의 루트이고, 
+                                        : /bnpp/ 가 context root ,  물리적인 최상위 디렉토리 
+                                        [ webapp = context root ]
+viewresolver  가 prefix  surfix  .jsp 붙여서 jsp파일들의 이름을 만들어주는데, 
+spring이 .jsp 파일들은 views안에 있지만,   root를 webapp으로 해줌! (jsp 파일들 함부로 못건들게 할라고? )
+
+그래서 webapp부터 root가 시작하니까 resource 앞에 / 필요없음! 
+*/
+//============================================
 // div에 지도를 표시
 var mapContainer = document.getElementById('map'),  
     mapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // browser open시 지도가 처음에 표시될  중심좌표
-        level: 5// 지도의 확대 레벨  (숫자가 커질수록 넓은 범위가 보임.)
+                                        		// browser open시 지도가 처음에 표시될  중심좌표
+        center: new kakao.maps.LatLng(33.450701, 126.570667), 
+        level: 10// 지도의 확대 레벨  (숫자가 커질수록 넓은 범위가 보임.)
     };  
     
     
@@ -105,45 +128,26 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 		//------------------------------- 여기까지 -geolocation으로 내위치를 -지도에 마커와 인포윈도우를 표시하는 함수입니다
 	
 		
-		var positions = [
-	    {
-	    	content: '투썸 플레이스',
-            latlng: new kakao.maps.LatLng(37.541284, 126.840278)
-	    },
-	    {
-	    	content: '스타벅스 화곡',
-	        latlng: new kakao.maps.LatLng(37.5405758,126.8356851)
-	    },
-	    {
-	    	content: '카카오', 
-	        latlng: new kakao.maps.LatLng(33.450705, 126.570677)
-	    },
-	    {
-	    	content: '생태연못', 
-	        latlng: new kakao.maps.LatLng(33.450936, 126.569477)
-	    },
-	    {
-	    	content: '텃밭', 
-	        latlng: new kakao.maps.LatLng(33.450879, 126.569940)
-	    },
-	    {
-	    	content: '근린공원',
-	        latlng: new kakao.maps.LatLng(33.451393, 126.570738)
-	    }
-	];
 		
-
-		//------------------------------------------------------------	
+		
+		
+		//-positions 들 -----------------------------------------------------------	
+	var marker; 
 		//var 재선언 가능 
 		//let 재선언 불가, 값 바꾸기 가능.
 		//const 둘다안됨.
+	setTimeout(           //지연시키는 함수 
+	   function (){    
 		for (let i = 0; i < positions.length; i ++) {
 			// 마커를 생성합니다
-		    let marker = new kakao.maps.Marker({
-		        map: map, // 마커를 표시할 지도
+		     marker = new kakao.maps.Marker({
+		    	map: map, // 마커를 표시할 지도
 		        position: positions[i].latlng, // 마커의 위치
-		        clickable: true // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
+		        clickable: true // 마커를 클릭했을 때  지도의 클릭 이벤트가 발생하지 않도록 설정합니다
 		    });
+			
+			//console.log("112");   - 시간 확인용 콘솔 
+			
 		    // 마커에 표시할 인포윈도우를 생성합니다 
 		    let infowindow = new kakao.maps.InfoWindow({
 		        	content: positions[i].content             // 인포윈도우의 내용.     	
@@ -162,6 +166,19 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 		    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
 		    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
 		}
+		//-------------------------마우스 오버 아웃이벤트 ------------------
+		//마커에 마우스오버 이벤트를 등록합니다
+		kakao.maps.event.addListener(marker, 'mouseover', function() {
+		// 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+		 infowindow.open(map, marker);
+		});
+		//마커에 마우스아웃 이벤트를 등록합니다
+		kakao.maps.event.addListener(marker, 'mouseout', function() {
+		 // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+		 infowindow.close();
+		});
+		}, 500);    //0.5초 지연시킴.
+		
 		//----------------infowindow on/off  함수 --------------------------------
 		// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
 		function makeOverListener(map, marker, infowindow) {
@@ -175,17 +192,11 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 		        infowindow.close();
 		    };
 		}
-		//-------------------------마우스 오버 아웃이벤트 ------------------
-		//마커에 마우스오버 이벤트를 등록합니다
-		kakao.maps.event.addListener(marker, 'mouseover', function() {
-		// 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
-		 infowindow.open(map, marker);
-		});
-		//마커에 마우스아웃 이벤트를 등록합니다
-		kakao.maps.event.addListener(marker, 'mouseout', function() {
-		 // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
-		 infowindow.close();
-		});
+		
+		$("#spaceinfo").click(function(){
+		
+		);
+		
 </script>
 </body>
 </html>
