@@ -64,18 +64,23 @@
 							<c:choose>
 								<c:when test="${not empty dbDto.member_id}">
 									<c:if test="${not empty dbDto.member_address }">
-										<c:if test="${empty dbDto.member_img_path || dbDto.member_img_path == null}"> 
+										<c:if test="${empty dbDto.member_img_name }"> 
 											<li class="scroll-to-section" >
 											<form name="iniform" method="post">
 												<input type="hidden" name="member_id" value="${dbDto.member_id }">
 											</form>
 											<a href="#" onclick="openPopup()">
-											<img alt="profileimg" src="./resources/img/dummy.png" width="40" height="40">
+											<img alt="profileimg" src="resources/upload/img/dummy.png" width="40" height="40">
 											</a>
 											</li>
 										</c:if>
-										<c:if test="${not empty dbDto.member_img_path }">
-										
+										<c:if test="${not empty dbDto.member_img_name }">
+											<form name="iniform" method="post">
+												<input type="hidden" name="member_id" value="${dbDto.member_id }">
+											</form>
+											<a href="#" onclick="openPopup()">
+											<img alt="profileimg" src="resources/upload/img/${dbDto.member_img_name }" width="40" height="40">
+											</a>
 										</c:if>
 										<li class="scroll-to-section" ><a href="#">${dbDto.member_id }님
 										</a></li>

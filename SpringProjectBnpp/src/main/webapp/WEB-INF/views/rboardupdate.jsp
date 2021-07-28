@@ -22,10 +22,10 @@
 
 <div class="main-banner wow fadeIn">
 	<h1>UPDATE</h1>
-
+	<div style="width: 60%; margin: auto;">
 	<form action="updateres.do" method="post">
 	<input type="hidden" name="br_num" value="${dto.br_num }"/>
-	<table border="1">
+	<table class="table table-bordered">
 		<tr>
 			<th>작성자</th>
 			<td>${dto.member_id }</td>
@@ -36,18 +36,18 @@
 		</tr>
 		<tr>
 			<th></th>
-			<td><textarea id="summernote" rows="10" cols="50"
-					class="form-control" name="br_content">${dto.br_content }</textarea></td>
+			<td><textarea id="summernote" rows="10" style="width:100%;" class="form-control" name="br_content">${dto.br_content }</textarea></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
 				<input type="submit" value="수정" />
-				<input type="button" value="취소" onclick="location.href='boardList.do?'"/>
+				<input type="button" value="취소" class="btn btn-outline-danger" onclick="location.href='boardList.do?'"/>
 			</td>
 		</tr>
 
 	</table>
 	</form>
+	</div>
 	</div>
 <script>
 		$(document).ready(function() {

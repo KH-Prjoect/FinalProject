@@ -1,3 +1,4 @@
+
 package com.kh.bnpp.model.dao;
 
 import java.util.List;
@@ -8,17 +9,19 @@ public interface MemberDao {
 	
 	String NAMESPACE = "member.";
 	
-	public MemberDto login(MemberDto dto);	//ë¡œê·¸ì¸
-	public int insert(MemberDto dto);		//íšŒì›ê°€ì…
-	public int delete(MemberDto dto);		//íšŒì›íƒˆí‡´
-	public String checkId(String checkID);	//ì•„ì´ë”” ì¤‘ë³µí™•ì¸
-	public String findId(MemberDto dto); //ì•„ì´ë”” ì°¾ê¸°
-	public String findPw(MemberDto dto); //ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°
-	public List<MemberDto> findAllT(String category); //ì¹´í…Œê³ ë¦¬ë³„ ê°•ì‚¬ ë¦¬ìŠ¤íŠ¸ ì°¾ê¸°
+	public MemberDto login(MemberDto dto);	//·Î±×ÀÎ
+	public int insert(MemberDto dto);		//È¸¿ø°¡ÀÔ
+	public int delete(MemberDto dto);		//È¸¿øÅ»Åğ
+	public String checkId(String checkID);	//¾ÆÀÌµğ Áßº¹È®ÀÎ
+	public String findId(MemberDto dto); //¾ÆÀÌµğ Ã£±â
+	public String findPw(MemberDto dto); //ºñ¹Ğ¹øÈ£ Ã£±â
+	public List<MemberDto> findAllT(String category); //Ä«Å×°í¸®º° °­»ç ¸®½ºÆ® Ã£±â
 
 	public List<MemberDto> selectList();
 	public MemberDto selectOne(String member_id);
 	public int updatestudent(MemberDto dto);
 	public int updateteacher(MemberDto dto);
+	public int updatepw(MemberDto dto);
 	
 }
+

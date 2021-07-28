@@ -35,7 +35,8 @@
 						name="bq_content">${dto.bq_content }<br>=============================================<br></textarea>
 				</div>
 
-				<input type="submit" value="글 작성" style="float: right;" />
+				<input type="submit" class="btn btn-outline-success"
+				 value="글 작성" style="float: right;" />
 			</form>
 		</div>
 

@@ -91,7 +91,7 @@ public class KakaoController {
 		session.invalidate();
 		
 		return "redirect:/";
-	}
-	
+	}	
 }
+
 

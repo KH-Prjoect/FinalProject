@@ -22,10 +22,13 @@
 <meta charset="UTF-8">
 <title>마이페이지(강사)</title>
 <link href="resources/css/mypage.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 <script type="text/javascript">
 
 	$(function() {
@@ -122,6 +125,18 @@
 	                }
 	            }
 	        }).open();
+	}
+	
+	function test(){
+		var p1 = $('#password1').val();
+		var p2 = $('#password2').val();
+
+		
+		if(p1 != p2){
+			$("#pw_msg").text("비밀번호를 다시 입력해주세요");
+		} else if(p1 == p2){
+			$("#pw_msg").text("비밀번호가 일치합니다");
+		}
 	}
 	
 	
@@ -242,11 +257,7 @@
 							</div>
 							<div class="general_signup_row">
 								<h4 class="general_signup_title">비밀번호</h4>
-								<div class="general_signup_pw">
-									<span class="general_signup_span">
-										<input class="general_signup_text" type="text" id="password" name="member_pw" value="${m_dto.member_pw }">
-									</span>
-								</div>
+								<input type="button" value="비밀번호 변경" onclick="location.href='./updatepw.do?member_id=${m_dto.member_id}'">
 							</div>
 						</div>
 						<div id="general_signup_info">
@@ -365,7 +376,7 @@
 						<h4 class="general_signup_title">비밀번호</h4>
 						<div class="general_signup_pw">
 							<span class="general_signup_span">
-								<input class="general_signup_text" type="password" name="member_password" ">
+								<input class="general_signup_text" type="password" id="password1" name="member_password" >
 							</span>
 						</div>
 					</div>
@@ -373,10 +384,12 @@
 						<h4 class="general_signup_title">비밀번호 확인</h4>
 						<div class="general_signup_pw">
 							<span class="general_signup_span">
-								<input class="general_signup_text" type="password" name="member_password_chk" ">
+								<input class="general_signup_text" type="password" id="password2" name="member_password_chk" >
+								<input type="button" onclick="test();" value="비밀번호확인">
 							</span>
 						</div>
 					</div>
+					<span id="pw_msg"></span>
 				</div>
 				<div id="general_signup_btn">
 					<button type="submit" class="btn btn-outline-secondary" style="font-weight: bold">회원 탈퇴</button>

@@ -32,7 +32,8 @@
 						name="br_content"></textarea>
 				</div>
 
-				<input type="submit" value="글 작성" style="float: right;" />
+				<input type="submit" class="btn btn-outline-success" value="글 작성" style="float: right;" />
+				<input type="button" value="취소" class="btn btn-outline-danger" onclick="location.href='boardList.do?'"/>
 			</form>
 		</div>
 

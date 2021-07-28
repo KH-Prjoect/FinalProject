@@ -26,7 +26,8 @@
 			<textarea id="summernote" rows="" cols="5" class="form-control" name="bq_content"></textarea>
 		</div>
 
-		<input type="submit" value="글 작성" style="float: right;" />
+		<input type="submit" class="btn btn-outline-success" value="글 작성" style="float: right;" />
+		<input type="button" class="btn btn-outline-danger" value="작성취소" onclick="location.href='qnalist.do?'" style="float: right;" />
 	</form>
 </div>
 
