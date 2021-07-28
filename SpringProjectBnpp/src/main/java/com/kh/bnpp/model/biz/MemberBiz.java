@@ -1,4 +1,3 @@
-
 package com.kh.bnpp.model.biz;
 
 import java.util.List;
@@ -22,3 +21,4 @@ public interface MemberBiz {
 	public int updateteacher(MemberDto dto);
 	public int updatepw(MemberDto dto);
 }
+

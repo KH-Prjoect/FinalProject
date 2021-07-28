@@ -22,10 +22,13 @@
 <meta charset="UTF-8">
 <title>마이페이지(강사)</title>
 <link href="resources/css/mypage.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 <script type="text/javascript">
 
 	$(function() {
@@ -124,14 +127,30 @@
 	        }).open();
 	}
 	
+	function test(){
+		var p1 = $('#password1').val();
+		var p2 = $('#password2').val();
+
+		
+		if(p1 != p2){
+			$("#pw_msg").text("비밀번호를 다시 입력해주세요");
+		} else if(p1 == p2){
+			$("#pw_msg").text("비밀번호가 일치합니다");
+		}
+	}
+	
 	
 </script>
 </head>
 <body>
+
+<jsp:include page="header.jsp" />
+	<div class="main-banner wow fadeIn">
+
 	
 	<div class="mypage-body">
 	
-		<div id="mypage_nav">
+		<div id="mypage_nav" style="z-index: 1;">
 			<nav>
 				<ul class="mymenus">
 					<li><a class="mymenu">나의 강의 목록</a></li>
@@ -181,7 +200,7 @@
 			<div class="mypage_food">
 					<form action="foodlifeupdateres.do" method="post">
 					<input type="hidden" name="member_id" value="${m_dto.member_id }">
-					<table border="1">
+					<table class="table table-bordered">
 						<col width="100"/>
 						<col width="200"/>
 						<tr>
@@ -217,8 +236,8 @@
 						</c:choose>
 						<tr>
 							<td colspan="4" align="right">
-								<input type="submit" value="수정사항 적용" />
-								<input type="button" value="영수증 스캔" onclick=""/>
+								<input type="submit" class="btn btn-outline-success"  value="수정사항 적용" />
+								<input type="button"class="btn btn-outline-success"  value="영수증 스캔" onclick=""/>
 							</td>
 						</tr>
 					</table>
@@ -242,11 +261,7 @@
 							</div>
 							<div class="general_signup_row">
 								<h4 class="general_signup_title">비밀번호</h4>
-								<div class="general_signup_pw">
-									<span class="general_signup_span">
-										<input class="general_signup_text" type="text" id="password" name="member_pw" value="${m_dto.member_pw }">
-									</span>
-								</div>
+								<input type="button" value="비밀번호 변경" class="btn btn-outline-success"  onclick="location.href='./updatepw.do?member_id=${m_dto.member_id}'">
 							</div>
 						</div>
 						<div id="general_signup_info">
@@ -303,19 +318,19 @@
 							<h4 class="general_signup_title">주소</h4>
 							<div class="general_signup_home_addr">
 								<span class="general_signup_span_home_addr">
-									<input type="text" id="postcode" placeholder="우편번호">
-									<input type="button" value="주소 검색" onclick="DaumPostCode()">
+									<input type="text" id="postcode" class="general_signup_addr" placeholder="우편번호">
+									<input type="button" value="주소 검색" class="btn btn-outline-success"  onclick="DaumPostCode()">
 									<br>
-									<input type="text" id="roadAddress" name="member_addr_1" placeholder="도로명주소" value="<%=addr[0]%>">
-									<input type="text" id="jibunAddress" name="member_addr_2" placeholder="지번주소" value="<%=addr[1]%>">
+									<input type="text" id="roadAddress" name="member_addr_1" class="general_signup_addr" placeholder="도로명주소" value="<%=addr[0]%>">
+									<input type="text" id="jibunAddress" name="member_addr_2" class="general_signup_addr" placeholder="지번주소" value="<%=addr[1]%>">
 									<span id="guide" style="color:#999;display:none"></span>
-									<input type="text" id="detailAddress" name="member_addr_3" placeholder="상세주소" value="<%=addr[2]%>">
-									<input type="text" id="extraAddress" name="member_addr_4" placeholder="참고항목" value="<%=addr[3]%>">
+									<input type="text" id="detailAddress" name="member_addr_3" class="general_signup_addr" placeholder="상세주소" value="<%=addr[2]%>">
+									<input type="text" id="extraAddress" name="member_addr_4" class="general_signup_addr" placeholder="참고항목" value="<%=addr[3]%>">
 									<input type="hidden" name="member_address" value="" >
 								</span>
+							</div>	
 							</div>
-						</div>	
-						
+						<br><br>
 						<div class="general_signup_row">
 							<h4 class="general_signup_title">카테고리</h4>
 							<div class="general_signup_category">
@@ -344,7 +359,7 @@
 						</div>
 						
 						<div id="general_signup_btn">
-							<input type="submit" value="회원정보수정" class="btn btn-outline-secondary" style="font-weight: bold" onclick="check();" />
+							<input type="submit" value="회원정보수정" class="btn btn-outline-success" style="font-weight: bold" onclick="check();" />
 						</div>
 				</form>
 			</div>
@@ -365,7 +380,7 @@
 						<h4 class="general_signup_title">비밀번호</h4>
 						<div class="general_signup_pw">
 							<span class="general_signup_span">
-								<input class="general_signup_text" type="password" name="member_password" ">
+								<input class="general_signup_text" type="password" id="password1" name="member_password" >
 							</span>
 						</div>
 					</div>
@@ -373,13 +388,15 @@
 						<h4 class="general_signup_title">비밀번호 확인</h4>
 						<div class="general_signup_pw">
 							<span class="general_signup_span">
-								<input class="general_signup_text" type="password" name="member_password_chk" ">
+								<input class="general_signup_text" type="password" id="password2" name="member_password_chk" >
+								<input type="button" onclick="test();" value="비밀번호확인">
 							</span>
 						</div>
 					</div>
+					<span id="pw_msg"></span>
 				</div>
-				<div id="general_signup_btn">
-					<button type="submit" class="btn btn-outline-secondary" style="font-weight: bold">회원 탈퇴</button>
+				<div id="general_signup_btn" >
+					<button type="submit" class="btn btn-outline-danger" style="font-weight: bold">회원 탈퇴</button>
 				</div>
 			</form>
 		</div>
@@ -390,6 +407,6 @@
 		</div>
 		
 	</div>
-	
+	</div>
 </body>
 </html>

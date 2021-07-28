@@ -22,7 +22,7 @@
 	
 	<insert id="insert" parameterType="FoodDto">
 		INSERT INTO FOOD
-		VALUES(FOODSEQ.NEXTVAL, #{food_name}, '미설정', 'N', #{member_id})
+		VALUES(FOODSEQ.NEXTVAL, #{food_name}, NULL, 'N', #{member_id})
 	</insert>
 	
 	<update id="updateLife" parameterType="FoodDto">

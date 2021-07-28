@@ -8,7 +8,7 @@
 		ORDER BY PAY_NUM DESC
 	</select>
 	
-	<select id="selectMyList" parameterType="String" resultType="PayDto">
+	<select id="selectMyList" parameterType="PayDto" resultType="PayDto">
 		SELECT PAY_NUM, PAY_DATE, PAY_PRICE, PAY_STEP, MEMBER_ID, LECTURE_NUM, LECTURE_NAME, LECTURE_CATEGORY
 		FROM PAY
 		WHERE MEMBER_ID = #{member_id}
@@ -37,3 +37,4 @@
 	</delete>
 	
 </mapper>
+

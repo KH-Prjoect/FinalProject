@@ -15,6 +15,24 @@
 	margin-bottom: 20px;
 }
 
+#mypage_nav nav ul {
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#mypage_nav nav ul li {
+    float: left;
+}
+
+#mypage_nav nav ul li a {
+	display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
 .mypage_h3 {
 	font-weight: bolder;
 }

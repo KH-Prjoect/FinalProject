@@ -1,3 +1,4 @@
+
 package com.kh.bnpp.model.dao;
 
 import java.util.List;
@@ -8,13 +9,13 @@ public interface MemberDao {
 	
 	String NAMESPACE = "member.";
 	
-	public MemberDto login(MemberDto dto);	//로그인
-	public int insert(MemberDto dto);		//회원가입
-	public int delete(MemberDto dto);		//회원탈퇴
-	public String checkId(String checkID);	//아이디 중복확인
-	public String findId(MemberDto dto); //아이디 찾기
-	public String findPw(MemberDto dto); //비밀번호 찾기
-	public List<MemberDto> findAllT(String category); //카테고리별 강사 리스트 찾기
+	public MemberDto login(MemberDto dto);	//�α���
+	public int insert(MemberDto dto);		//ȸ������
+	public int delete(MemberDto dto);		//ȸ��Ż��
+	public String checkId(String checkID);	//���̵� �ߺ�Ȯ��
+	public String findId(MemberDto dto); //���̵� ã��
+	public String findPw(MemberDto dto); //��й�ȣ ã��
+	public List<MemberDto> findAllT(String category); //ī�װ����� ���� ����Ʈ ã��
 
 	public List<MemberDto> selectList();
 	public MemberDto selectOne(String member_id);

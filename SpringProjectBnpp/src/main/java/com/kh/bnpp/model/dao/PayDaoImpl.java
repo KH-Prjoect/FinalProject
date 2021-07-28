@@ -28,9 +28,12 @@ public class PayDaoImpl implements PayDao {
 	
 	@Override
 	public List<PayDto> selectMyList(String member_id) {
+		System.out.println(member_id);
 		List<PayDto> list = new ArrayList<PayDto>();
+		PayDto dto = new PayDto();
+		dto.setMember_id(member_id);
 		try {
-			list = sqlSession.selectList(NAMESPACE + "selectMyList", member_id);
+			list = sqlSession.selectList(NAMESPACE + "selectMyList", dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -82,3 +85,4 @@ public class PayDaoImpl implements PayDao {
 	}
 
 }
+

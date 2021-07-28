@@ -1,4 +1,3 @@
-
 package com.kh.bnpp.model.biz;
 
 import java.util.List;
@@ -79,3 +78,4 @@ public class MemberBizImpl implements MemberBiz{
 		return dao.updatepw(dto);
 	}
 }
+
