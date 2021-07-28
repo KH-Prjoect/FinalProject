@@ -1,31 +1,26 @@
-
 package com.kh.bnpp.sms;
 
+import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 
 public class smsTest {
 
 	public static void main(String[] args) {
-		/*
+		
 		String phone = "01064244977";
-		String content = "ë©”ì‹œì§€í…ŒìŠ¤íŠ¸";
+		String content = "¸Þ½ÃÁöÅ×½ºÆ®";
 		try {
 			SMS.sendSMS(phone, content);
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
 		
 		try {
-			
-			if (!SMS.compareDate("2021-07-21").equals("0")) {
-				System.out.println("notnull");
-			}
+			System.out.println(SMS.compareDate("2021-07-31"));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 	}
 	
 }
-

@@ -1,4 +1,3 @@
-
 package com.kh.bnpp.sms;
 
 import java.io.BufferedReader;
@@ -26,12 +25,12 @@ import com.google.gson.JsonObject;
 public class SMS {
 
 	public static void sendSMS(String phonenumber, String content) throws UnsupportedEncodingException {
-		String hostNameUrl = "https://sens.apigw.ntruss.com";				// í˜¸ìŠ¤íŠ¸ URL
-		String requestUrl = "/sms/v2/services/";							// ìš”ì²­ URL
-		String requestUrlType = "/messages";								// ìš”ì²­ URL
-		String accessKey = "MgnNQBLZWYDmVIWB9A86";							// ì ‘ê·¼í‚¤(ë„¤ì´ë²„ í´ë¼ìš°ë“œ í”Œë«í¼ì—ì„œ ë°›ì•„ì˜´)			
-		String secretKey = "bukxizrgBdgLY4Gs6qIynKtLnqOeLjfCrNoS9Lh5";		// ë¹„ë°€í‚¤(ë„¤ì´ë²„ í´ë¼ìš°ë“œ í”Œë«í¼ì—ì„œ ë°›ì•„ì˜´)
-		String serviceId = "ncp:sms:kr:266284043003:semiproject";			// ì„œë¹„ìŠ¤id(ë„¤ì´ë²„ í´ë¼ìš°ë“œ í”Œë«í¼ì—ì„œ ë°›ì•„ì˜´)
+		String hostNameUrl = "https://sens.apigw.ntruss.com";				// È£½ºÆ® URL
+		String requestUrl = "/sms/v2/services/";							// ¿äÃ» URL
+		String requestUrlType = "/messages";								// ¿äÃ» URL
+		String accessKey = "MgnNQBLZWYDmVIWB9A86";							// Á¢±ÙÅ°(³×ÀÌ¹ö Å¬¶ó¿ìµå ÇÃ·§Æû¿¡¼­ ¹Ş¾Æ¿È)			
+		String secretKey = "bukxizrgBdgLY4Gs6qIynKtLnqOeLjfCrNoS9Lh5";		// ºñ¹ĞÅ°(³×ÀÌ¹ö Å¬¶ó¿ìµå ÇÃ·§Æû¿¡¼­ ¹Ş¾Æ¿È)
+		String serviceId = "ncp:sms:kr:266284043003:semiproject";			// ¼­ºñ½ºid(³×ÀÌ¹ö Å¬¶ó¿ìµå ÇÃ·§Æû¿¡¼­ ¹Ş¾Æ¿È)
 		String timestamp = Long.toString(System.currentTimeMillis());
 		requestUrl += serviceId + requestUrlType;
 		String apiUrl = hostNameUrl + requestUrl;
@@ -40,19 +39,19 @@ public class SMS {
 		JsonObject toJson = new JsonObject();
 		JsonArray Jsarr = new JsonArray();
 			    
-		// json í˜•ì‹ìœ¼ë¡œ ë©”ì‹œì§€ ì „ì†¡ ìš”ì²­
+		// json Çü½ÄÀ¸·Î ¸Ş½ÃÁö Àü¼Û ¿äÃ»
 		
-		toJson.addProperty("subject", "test");			// ë©”ì‹œì§€ ì œëª© (ì ìš©ì•ˆë¨/lmsë§Œ ì ìš©)
-		toJson.addProperty("content", content);  		// ë©”ì‹œì§€ ë‚´ìš©	(ì‹¤ì œë‚´ìš©)
-		toJson.addProperty("to", phonenumber);			// ìˆ˜ì‹ ë²ˆí˜¸
+		toJson.addProperty("to", phonenumber);			// ¼ö½Å¹øÈ£
+		toJson.addProperty("subject", "test");			// ¸Ş½ÃÁö Á¦¸ñ (Àû¿ë¾ÈµÊ/lms¸¸ Àû¿ë)
+		toJson.addProperty("content", content);  		// ¸Ş½ÃÁö ³»¿ë	(½ÇÁ¦³»¿ë)
 		Jsarr.add(toJson);	
 		
-		bodyJson.addProperty("type", "SMS");			// ë©”ì‹œì§€ type sms/lms
-		bodyJson.addProperty("countryCode", "82");		// êµ­ê°€ ì „í™”ë²ˆí˜¸
-		bodyJson.addProperty("contentType", "COMM");	// ë©”ì‹œì§€ ë‚´ìš© type ad/comm
-		bodyJson.addProperty("from", "01064244977");	// ë°œì‹ ë²ˆí˜¸ (ì‚¬ì „ì— ì¸ì¦/ë“±ë¡ëœ ë²ˆí˜¸ë§Œ ì‚¬ìš©ê°€ëŠ¥)
-		bodyJson.addProperty("subject", "test");		// ë©”ì‹œì§€ ì œëª©(ì ìš©ì•ˆë¨/lmsë§Œ ì ìš©)
-		bodyJson.addProperty("content", "test2");		// ë©”ì‹œì§€ ë‚´ìš©
+		bodyJson.addProperty("type", "SMS");			// ¸Ş½ÃÁö type sms/lms
+		bodyJson.addProperty("contentType", "COMM");	// ¸Ş½ÃÁö ³»¿ë type ad/comm
+		bodyJson.addProperty("countryCode", "82");		// ±¹°¡ ÀüÈ­¹øÈ£
+		bodyJson.addProperty("from", "01064244977");	// ¹ß½Å¹øÈ£ (»çÀü¿¡ ÀÎÁõ/µî·ÏµÈ ¹øÈ£¸¸ »ç¿ë°¡´É)
+		bodyJson.addProperty("subject", "test");		// ¸Ş½ÃÁö Á¦¸ñ(Àû¿ë¾ÈµÊ/lms¸¸ Àû¿ë)
+		bodyJson.addProperty("content", "test2");		// ¸Ş½ÃÁö ³»¿ë
 		bodyJson.add("messages", Jsarr);
 		
 		String body = bodyJson.toString();
@@ -84,9 +83,9 @@ public class SMS {
 			BufferedReader br;
 			System.out.println("responseCode" + " " + responseCode);
 			System.out.println("responsemessage : " + urlConnection.getResponseMessage());
-			if(responseCode==202) { // ì •ìƒ í˜¸ì¶œ
+			if(responseCode==202) { // Á¤»ó È£Ãâ
 				br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));	
-			} else { // ì—ëŸ¬ ë°œìƒ
+			} else { // ¿¡·¯ ¹ß»ı
 				br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 			}
 			
@@ -105,7 +104,7 @@ public class SMS {
 		
 	}
 	
-	// sens api ì „ìš© ì‹œê·¸ë‹ˆì²˜ í‚¤ ìƒì„±
+	// sens api Àü¿ë ½Ã±×´ÏÃ³ Å° »ı¼º
 	public static String makeSignature(String url, String timestamp, String accessKey, String secretKey) throws UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException {
 		String space = " ";					
 		String newLine = "\n";				
@@ -132,6 +131,7 @@ public class SMS {
 	}
 	
 	public static String compareDate(String date) throws ParseException {
+		// 3ÀÏ ÃÊ°ú·Î ³²À¸¸é 0
 		Calendar cal = Calendar.getInstance();
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -141,22 +141,26 @@ public class SMS {
 	    Date sysdate = sdf.parse(sys);
 	    
 	    int res = foodlife.compareTo(sysdate);
-	    
+
 	    if (res == 0) {
-	    	return "ìœ í†µê¸°í•œì´ ì˜¤ëŠ˜ê¹Œì§€ ì…ë‹ˆë‹¤.";
+	    	return "À¯Åë±âÇÑÀÌ ¿À´Ã±îÁö ÀÔ´Ï´Ù.";
+	    }
+	    
+	    if (res < 0) {
+	    	return "À¯Åë±âÇÑÀÌ Áö³µ½À´Ï´Ù.";
 	    }
 	    
 	    cal.setTime(foodlife);
-	    cal.add(Calendar.DATE, 3);
+	    cal.add(Calendar.DATE, -3);
 	    foodlife = cal.getTime();
 	    
-	    res = foodlife.compareTo(sysdate);
-	    System.out.println(res);
-	    if (res > 0) {
-    		return "ìœ í†µê¸°í•œì´ 3ì¼ ì´ë‚´ë¡œ ë‚¨ì•˜ìŠµë‹ˆë‹¤.";
-    	}
-	    return "0";
+	    res = sysdate.compareTo(foodlife);
+
+	    if (res >= 0) {
+    		return "À¯Åë±âÇÑÀÌ 3ÀÏ ÀÌ³»·Î ³²¾Ò½À´Ï´Ù.";
+    	} else {
+    		return "0";
+    	}    
 	}
 	
 }
-

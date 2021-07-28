@@ -5,12 +5,16 @@
     <fullyQualifiedTypeName name="com.kh.bnpp.dto.MemberDto"/>
     <fullyQualifiedTypeName name="org.springframework.context.annotation.Primary"/>
     <fullyQualifiedTypeName name="com.kh.bnpp.model.dto.FoodListDto"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="com.kh.bnpp.model.dto.FoodDto"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="java.util.Calendar"/>
     <fullyQualifiedTypeName name="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.model.dto.FoodDto"/>
+    <fullyQualifiedTypeName name="com.kh.bnpp.sms.SMS"/>
+    <fullyQualifiedTypeName name="java.io.UnsupportedEncodingException"/>
 </qualifiedTypeNameHistroy>

@@ -12,6 +12,7 @@
         }
     </script>
 </head>
+
 <body>
     <a href="paytest.do">paytest</a>
     <a href="mypaylist.do?member_id=asd123">mypaytest</a>

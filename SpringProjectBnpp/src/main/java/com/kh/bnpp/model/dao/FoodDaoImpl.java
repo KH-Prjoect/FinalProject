@@ -29,10 +29,12 @@ public class FoodDaoImpl implements FoodDao {
 
 	@Override
 	public List<FoodDto> selectMyList(String member_id) {
+		
 		List<FoodDto> list = new ArrayList<FoodDto>();
 		try {
-			list = sqlSession.selectList(NAMESPACE + "selectMyList", member_id);
+			list = sqlSession.selectList(NAMESPACE + "selectMyList", new FoodDto(0, null, null, null, member_id));
 		} catch (Exception e) {
+			System.out.println("======1========");
 			e.printStackTrace();
 		}
 		return list;
