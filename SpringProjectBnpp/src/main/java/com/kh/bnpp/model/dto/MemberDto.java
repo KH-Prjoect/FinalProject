@@ -17,11 +17,14 @@ public class MemberDto {
 	private String member_career; // 경력
 	private Date member_regdate;
 	private String member_img_path; // 프로필 이미지 경로
-	private String member_img_name; // 프로필 이미지 이름
+	private String member_img_name;	// 프로필 이미지 이름
 
 	public MemberDto() {
 	}
 
+	
+	
+	
 	public MemberDto(String member_id, String member_pw, String member_name, String member_email, String member_phone,
 			String member_address, String member_role, String member_category, String member_intro, String member_certi,
 			String member_career, Date member_regdate, String member_img_path, String member_img_name) {
@@ -40,6 +43,9 @@ public class MemberDto {
 		this.member_img_path = member_img_path;
 		this.member_img_name = member_img_name;
 	}
+
+
+
 
 	public String getMember_id() {
 		return member_id;
@@ -144,15 +150,23 @@ public class MemberDto {
 	public void setMember_img_path(String member_img_path) {
 		this.member_img_path = member_img_path;
 	}
+	
+	
 
 	public String getMember_img_name() {
 		return member_img_name;
 	}
 
+
+
+
 	public void setMember_img_name(String member_img_name) {
 		this.member_img_name = member_img_name;
 	}
-	
+
+
+
+
 	@Override
 	public String toString() {
 		return "MemberDto [member_id=" + member_id + ", member_pw=" + member_pw + ", member_name=" + member_name
