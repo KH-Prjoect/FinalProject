@@ -88,6 +88,6 @@ $.getJSON('resources/spacecloudjson/SCpage6.json', function(data) {
 </head>
 <body>
 
-</h4>
+
 </body>
 </html>
