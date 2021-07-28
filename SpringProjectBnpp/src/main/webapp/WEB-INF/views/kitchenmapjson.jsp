@@ -12,7 +12,7 @@
 
 <script type="text/javascript" >
 
-
+// 여기까지 해서 
 $.getJSON('resources/spacecloudjson/SCpage1.json', function(data) {
 	// console.log(data.result[0].lng);
 	 //SCpage1을 전부 data 에 넣어서, result의 키 안의 인덱스들(장소들) 의 이름. 경위도를 가져옴 
@@ -74,13 +74,6 @@ $.getJSON('resources/spacecloudjson/SCpage6.json', function(data) {
 
  });
  
- 
- 
- 
- 
- 
- 
- 
 /* getJSON  의 경로에 대한 설명  = = = == = = = = = = =
 
                      localhost:3334/bnpp/  : 3334 까지가 tomcat의 루트이고, 
@@ -94,9 +87,6 @@ $.getJSON('resources/spacecloudjson/SCpage6.json', function(data) {
 </script>
 </head>
 <body>
-
-
-<h4> 
 
 </h4>
 </body>
