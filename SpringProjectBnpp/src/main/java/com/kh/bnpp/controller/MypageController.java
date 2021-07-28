@@ -1,5 +1,7 @@
 package com.kh.bnpp.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,11 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.bnpp.model.biz.FoodBiz;
 import com.kh.bnpp.model.biz.LectureBiz;
@@ -23,6 +30,7 @@ import com.kh.bnpp.model.dto.FoodListDto;
 import com.kh.bnpp.model.dto.LectureDto;
 import com.kh.bnpp.model.dto.MemberDto;
 import com.kh.bnpp.model.dto.PayDto;
+import com.kh.bnpp.sms.SMS;
 
 @Controller
 public class MypageController {
@@ -44,8 +52,40 @@ public class MypageController {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	@Nullable
 	@RequestMapping("/mypage.do")
 	public String mypage(String member_id) {
+		
+		List<FoodDto> foods = f_biz.selectList();
+		String f_life, phone, content;
+		MemberDto alarm_dto = new MemberDto();
+		
+		for (FoodDto f_dto : foods) {
+			if (f_dto.getFood_alarm_yn().equals("N")) {
+				f_life = f_dto.getFood_life();
+				if (!f_life.equals("미설정")) {
+					try {
+						if (!SMS.compareDate(f_life).equals("0")) {
+							alarm_dto = m_biz.selectOne(f_dto.getMember_id());
+							// phone = alarm_dto.getMember_phone().replace("-", "");
+							phone = "01064244977";
+							content = "내 냉장고 안의 " + f_dto.getFood_name() + "의 " + SMS.compareDate(f_life);
+							try {
+								SMS.sendSMS(phone, content);
+							} catch (UnsupportedEncodingException e) {
+								e.printStackTrace();
+							}
+							if (f_biz.updateAlarm(f_dto.getFood_num()) > 0) {
+								logger.info("알람 수정 완료");
+							}
+						}
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		
 		MemberDto dto = m_biz.selectOne(member_id);
 		
 		if (dto.getMember_role().equals("M")) {
@@ -87,7 +127,6 @@ public class MypageController {
 	
 	@RequestMapping("/studentupdateres.do")
 	public String studentupdateres(MemberDto dto) {
-		dto.setMember_pw(passwordEncoder.encode(dto.getMember_pw()));
 		if (m_biz.updatestudent(dto) > 0) {
 			return "redirect:mypage.do?member_id="+dto.getMember_id();
 		}
@@ -96,7 +135,6 @@ public class MypageController {
 	
 	@RequestMapping("/teacherupdateres.do")
 	public String teacherupdateres(MemberDto dto) {
-		dto.setMember_pw(passwordEncoder.encode(dto.getMember_pw()));
 		if (m_biz.updateteacher(dto) > 0) {
 			return "redirect:mypage.do?member_id="+dto.getMember_id();
 		}
@@ -114,26 +152,39 @@ public class MypageController {
 		}
 			
 		if (num > f_list.size()) {
-			// logger.info("음식 수정 성공");
 			return "redirect:mypage.do?member_id="+member_id;
 		}
-		// logger.info("음식 수정 실패");
 		return "redirect:mypage.do?member_id="+member_id;
 	}
 	
 	@RequestMapping("/memberdelete.do")
-	public String delete(String member_id, String member_password) {
+	public String delete(String member_id, String member_pw) {
 		MemberDto dto = m_biz.selectOne(member_id);
-		if (dto.getMember_pw().equals(member_password)) {
+		if (passwordEncoder.matches(member_pw, dto.getMember_pw())) {
 			if (m_biz.delete(dto) > 0) {
-				logger.info("회원탈퇴성공");
-				return "index";
+				logger.info("회원 삭제 성공");
+				return "index.do";
 			}
-			logger.info("회원탈퇴실패");
+			logger.info("회원 삭제 실패");
 			return "redirect:mypage.do?member_id="+member_id;
 		}
-		logger.info("비번틀림");
+		logger.info("비밀번호 불일치");
 		return "redirect:mypage.do?member_id="+member_id;
 	}
 	
+	@RequestMapping("/updatepw.do")
+	public String updatepw(Model model, String member_id) {
+		model.addAttribute("member_id", member_id);
+		return "updatepw";
+	}
+	
+	@RequestMapping("/updatepwres.do")
+	@ResponseBody
+	public int updatepwres(@RequestBody MemberDto dto) {
+		dto.setMember_pw(passwordEncoder.encode(dto.getMember_pw()));
+		int res = m_biz.updatepw(dto);
+		return res;
+	}
+	
 }
+

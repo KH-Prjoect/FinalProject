@@ -20,5 +20,6 @@ public interface MemberDao {
 	public MemberDto selectOne(String member_id);
 	public int updatestudent(MemberDto dto);
 	public int updateteacher(MemberDto dto);
+	public int updatepw(MemberDto dto);
 	
 }

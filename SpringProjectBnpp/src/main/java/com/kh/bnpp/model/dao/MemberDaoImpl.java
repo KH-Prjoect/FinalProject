@@ -171,4 +171,15 @@ public class MemberDaoImpl implements MemberDao {
 
 		return list;
 	}
+
+	@Override
+	public int updatepw(MemberDto dto) {
+		int res = 0;
+		try {
+			res = sqlSession.update(NAMESPACE + "updatepw", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
 }
