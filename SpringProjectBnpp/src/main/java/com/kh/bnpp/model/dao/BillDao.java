@@ -7,7 +7,7 @@ import com.kh.bnpp.model.dto.BillDto;
 
 public interface BillDao {
 
-	String NAMESPACE = "kh.bnpp.bill.";
+	String NAMESPACE = "bill.";
 	
 	public List<BillDto> selectList(String member_id);
 	public BillDto selectOne(int bill_num);

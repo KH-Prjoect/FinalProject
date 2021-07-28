@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.lang.Nullable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -19,12 +20,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kh.bnpp.model.biz.BillBiz;
+import com.kh.bnpp.model.biz.FileUploadBiz;
 import com.kh.bnpp.model.biz.FoodBiz;
 import com.kh.bnpp.model.biz.LectureBiz;
 import com.kh.bnpp.model.biz.MemberBiz;
 import com.kh.bnpp.model.biz.PayBiz;
+import com.kh.bnpp.model.dto.BillDto;
 import com.kh.bnpp.model.dto.FoodDto;
 import com.kh.bnpp.model.dto.FoodListDto;
 import com.kh.bnpp.model.dto.LectureDto;
@@ -50,9 +55,25 @@ public class MypageController {
 	private FoodBiz f_biz;
 	
 	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
+	private BillBiz b_biz;
 	
-	@Nullable
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+
+	@Value("${imgfile.Uploadpath}")
+	private String imgUploadPath;	//이거는 로컬에 저장되는거 C:\\Workspaces\\Workspace_final\\SpringProjectBnpp\\src\\main\\webapp\\resources\\img\\
+	
+	@Autowired
+	private FileUploadBiz file_biz;
+
+	@RequestMapping("/receiptupload.do")
+	public String receiptupload(Model model, String member_id) {
+		List<BillDto> b_list = b_biz.selectList(member_id);
+		model.addAttribute("member_id", member_id);
+		model.addAttribute("b_list", b_list);
+		return "receiptupload";
+	}
+	
 	@RequestMapping("/mypage.do")
 	public String mypage(String member_id) {
 		
@@ -67,8 +88,7 @@ public class MypageController {
 					try {
 						if (!SMS.compareDate(f_life).equals("0")) {
 							alarm_dto = m_biz.selectOne(f_dto.getMember_id());
-							// phone = alarm_dto.getMember_phone().replace("-", "");
-							phone = "01064244977";
+							phone = alarm_dto.getMember_phone().replace("-", "");
 							content = "내 냉장고 안의 " + f_dto.getFood_name() + "의 " + SMS.compareDate(f_life);
 							try {
 								SMS.sendSMS(phone, content);

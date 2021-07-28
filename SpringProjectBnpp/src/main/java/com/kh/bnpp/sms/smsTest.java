@@ -6,18 +6,25 @@ import java.text.ParseException;
 public class smsTest {
 
 	public static void main(String[] args) {
-		
+		/*
 		String phone = "01064244977";
-		String content = "¸Þ½ÃÁöÅ×½ºÆ®";
+		String content = "ë©”ì‹œì§€í…ŒìŠ¤íŠ¸";
 		try {
 			SMS.sendSMS(phone, content);
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
 		
 		try {
-			System.out.println(SMS.compareDate("2021-07-31"));
+			
+			if (!SMS.compareDate("2022-08-01").equals("0")) {
+				System.out.println(SMS.compareDate("2022-07-31"));
+			} else
+			{
+				System.out.println("ì•„ë‹˜");
+			}
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

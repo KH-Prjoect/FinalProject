@@ -30,7 +30,6 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <script type="text/javascript">
-
 	$(function() {
 		$('.mymenus li').click(function() {
 			$('.mymenus li').find('a').removeClass('active');
@@ -59,7 +58,6 @@
 		  });
 	});
 		
-
 	function check() {
 		var member_phone = $('input[name=member_phone_1]').val() + "-"
 				+ $('input[name=member_phone_2]').val() + "-"
@@ -76,12 +74,10 @@
 		 new daum.Postcode({
 	            oncomplete: function(data) {
 	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
 	                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
 	                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
 	                var roadAddr = data.roadAddress; // 도로명 주소 변수
 	                var extraRoadAddr = ''; // 참고 항목 변수
-
 	                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
 	                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
 	                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
@@ -95,7 +91,6 @@
 	                if(extraRoadAddr !== ''){
 	                    extraRoadAddr = ' (' + extraRoadAddr + ')';
 	                }
-
 	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
 	                document.getElementById('postcode').value = data.zonecode;
 	                document.getElementById("roadAddress").value = roadAddr;
@@ -107,14 +102,12 @@
 	                } else {
 	                    document.getElementById("extraAddress").value = '';
 	                }
-
 	                var guideTextBox = document.getElementById("guide");
 	                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
 	                if(data.autoRoadAddress) {
 	                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
 	                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
 	                    guideTextBox.style.display = 'block';
-
 	                } else if(data.autoJibunAddress) {
 	                    var expJibunAddr = data.autoJibunAddress;
 	                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
@@ -130,7 +123,6 @@
 	function test(){
 		var p1 = $('#password1').val();
 		var p2 = $('#password2').val();
-
 		
 		if(p1 != p2){
 			$("#pw_msg").text("비밀번호를 다시 입력해주세요");
@@ -144,12 +136,13 @@
 </head>
 <body>
 
-
+<jsp:include page="header.jsp" />
+	<div class="main-banner wow fadeIn">
 
 	<div class="mypage-body">
-		<div id="mypage_nav">
+		<div id="mypage_nav" style="z-index: 1; ">
 			<nav>
-				<ul class="mymenus">
+				<ul class="mymenus" >
 					<li><a class="mymenu">나의 수강 목록</a></li>
 					<li><a class="mymenu">나의 냉장고</a></li>
 					<li><a class="mymenu">회원정보수정</a></li>
@@ -196,9 +189,9 @@
 			<div class="mypage_food">
 					<form action="foodlifeupdateres.do" method="post">
 					<input type="hidden" name="member_id" value="${m_dto.member_id }">
-					<table border="1">
-						<col width="100"/>
-						<col width="200"/>
+					<table class="table table-bordered">
+						<col width="50"/>
+						<col width="50"/>
 						<tr>
 							<th>식품명</th>
 							<th>유통기한</th>
@@ -230,8 +223,8 @@
 						</c:choose>
 						<tr>
 							<td colspan="4" align="right">
-								<input type="submit" value="수정사항 적용" />
-								<input type="button" value="영수증 스캔" onclick=""/>
+								<input type="submit" class="btn btn-outline-success"  value="수정사항 적용" />
+								<input type="button" class="btn btn-outline-success" value="영수증 스캔목록" onclick="location.href='./receiptupload.do?member_id=${m_dto.member_id}'"/>
 							</td>
 						</tr>
 					</table>
@@ -255,7 +248,7 @@
 							</div>
 							<div class="general_signup_row">
 								<h4 class="general_signup_title">비밀번호</h4>
-								<input type="button" value="비밀번호 변경" onclick="location.href='./updatepw.do?member_id=${m_dto.member_id}'">
+								<input type="button" value="비밀번호 변경" class="btn btn-outline-success"  onclick="location.href='./updatepw.do?member_id=${m_dto.member_id}'">
 							</div>
 						</div>
 						<div id="general_signup_info">
@@ -313,20 +306,20 @@
 							<div class="general_signup_home_addr">
 								<span class="general_signup_span_home_addr">
 									<input type="text" id="postcode" placeholder="우편번호">
-									<input type="button" value="주소 검색" onclick="DaumPostCode()">
+									<input type="button" value="주소 검색" class="btn btn-outline-success"  onclick="DaumPostCode()">
 									<br>
-									<input type="text" id="roadAddress" name="member_addr_1" placeholder="도로명주소" value="<%=addr[0]%>">
-									<input type="text" id="jibunAddress" name="member_addr_2" placeholder="지번주소" value="<%=addr[1]%>">
+									<input type="text" id="roadAddress" name="member_addr_1" class="general_signup_addr"  placeholder="도로명주소" value="<%=addr[0]%>">
+									<input type="text" id="jibunAddress" name="member_addr_2" class="general_signup_addr"  placeholder="지번주소" value="<%=addr[1]%>">
 									<span id="guide" style="color:#999;display:none"></span>
-									<input type="text" id="detailAddress" name="member_addr_3" placeholder="상세주소" value="<%=addr[2]%>">
-									<input type="text" id="extraAddress" name="member_addr_4" placeholder="참고항목" value="<%=addr[3]%>">
+									<input type="text" id="detailAddress" name="member_addr_3" class="general_signup_addr"  placeholder="상세주소" value="<%=addr[2]%>">
+									<input type="text" id="extraAddress" name="member_addr_4" class="general_signup_addr"  placeholder="참고항목" value="<%=addr[3]%>">
 									<input type="hidden" name="member_address" value="" >
 								</span>
 							</div>
 						</div>
 						
 						<div id="general_signup_btn">
-							<input type="submit" value="회원정보수정" class="btn btn-outline-secondary" style="font-weight: bold" onclick="check();" />
+							<input type="submit" value="회원정보수정" class="btn btn-outline-success"  style="font-weight: bold" onclick="check();" />
 						</div>
 				</form>
 			</div>
@@ -343,7 +336,7 @@
 							</span>
 						</div>
 					</div>
-					<div class="general_signup_row">
+				<div class="general_signup_row">
 						<h4 class="general_signup_title">비밀번호</h4>
 						<div class="general_signup_pw">
 							<span class="general_signup_span">
@@ -363,13 +356,15 @@
 					<span id="pw_msg"></span>
 				</div>
 				<div id="general_signup_btn">
-					<button type="submit" class="btn btn-outline-secondary" style="font-weight: bold">회원 탈퇴</button>
+					<button type="submit" class="btn btn-outline-danger" style="font-weight: bold">회원 탈퇴</button>
 				</div>
 			</form>
 		</div>
 	</div>
 	
-	<jsp:include page="footer.jsp" />
+</div>
+
+<jsp:include page="footer.jsp" />
 
 	<!-- Scripts -->
 	<script src="resources/vendor/jquery/jquery.min.js"></script>
