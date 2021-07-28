@@ -6,40 +6,61 @@
 
 	<select id="selectList" resultType="QboardDto">
 		SELECT BQ_NUM, BQ_TITLE,
-		BQ_CONTENT, BQ_REGDATE,
-		BQ_COMPLETE,BQ_ANSWER,MEMBER_ID
+		BQ_CONTENT, BQ_REGDATE,MEMBER_ID,BQ_GROUPNO,BQ_GROUPSEQ,BQ_TITLETAB
 		FROM
 		BOARDQNA
-		ORDER BY BQ_NUM DESC
+		ORDER BY BQ_GROUPNO ,BQ_GROUPSEQ
 	</select>
 
 	<select id="selectOne" parameterType="int"
 		resultType="QboardDto">
 		SELECT BQ_NUM, BQ_TITLE,
-		BQ_CONTENT, BQ_REGDATE,
-		BQ_COMPLETE,BQ_ANSWER,MEMBER_ID
+		BQ_CONTENT,
+		BQ_REGDATE,MEMBER_ID,BQ_GROUPNO,BQ_GROUPSEQ,BQ_TITLETAB
 		FROM
 		BOARDQNA
 		WHERE BQ_NUM = #{BQ_num}
 	</select>
 
+	<insert id="answerinsert" parameterType="QboardDto">
+		INSERT INTO BOARDQNA
+		VALUES(
+		BQNUMSEQ.NEXTVAL,
+		#{bq_title},
+		#{bq_content},
+		SYSDATE,
+		#{member_id},
+		(SELECT BQ_GROUPNO FROM BOARDQNA WHERE BQ_NUM = #{bq_num}),
+		(SELECT BQ_GROUPSEQ FROM BOARDQNA WHERE BQ_NUM = #{bq_num}) + 1,
+		(SELECT BQ_TITLETAB FROM BOARDQNA WHERE BQ_NUM = #{bq_num}) + 1
+		)
+	
+	</insert>
+
 	<insert id="insert" parameterType="QboardDto">
 		INSERT INTO BOARDQNA
-		VALUES(BQNUMSEQ.NEXTVAL,#{bq_title},#{bq_content},SYSDATE,'N','',#{member_id})
+		VALUES(BQNUMSEQ.NEXTVAL,
+		#{bq_title},
+		#{bq_content},
+		SYSDATE,
+		#{member_id},
+		'1',
+		BQGROUPNUMSEQ.NEXTVAL,
+		'1')
 	</insert>
 
 	<update id="update" parameterType="QboardDto">
 		UPDATE BOARDQNA
 		SET BQ_TITLE
-		= #{bq_title}, BQ_CONTENT = #{bq_content}
+		=
+		#{bq_title}, BQ_CONTENT = #{bq_content}
 		WHERE BQ_NUM = #{bq_num}
 	</update>
 
 	<update id="delete" parameterType="int">
 		DELETE FROM BOARDQNA
 		WHERE
-		BQ_NUM = #{bq_num} AND
-		BQ_ANSWER != NULL
+		BQ_NUM = #{bq_num} 
 	</update>
 
 
@@ -54,26 +75,24 @@
 	<select id="selectBoard" resultType="QboardDto"
 		parameterType="PagingDto">
 		SELECT BQ_NUM, BQ_TITLE,
-		BQ_CONTENT, BQ_REGDATE,
-		BQ_COMPLETE,BQ_ANSWER,MEMBER_ID
+		BQ_CONTENT, BQ_REGDATE,MEMBER_ID,BQ_GROUPNO,BQ_GROUPSEQ,BQ_TITLETAB
 		FROM (
 		SELECT
 		ROWNUM
 		RN, A.BQ_NUM, BQ_TITLE,
-		BQ_CONTENT, BQ_REGDATE,
-		BQ_COMPLETE,BQ_ANSWER,MEMBER_ID
+		BQ_CONTENT, BQ_REGDATE,MEMBER_ID,BQ_GROUPNO,BQ_GROUPSEQ,BQ_TITLETAB
 		FROM (
 		SELECT
 		BQ_NUM, BQ_TITLE,
-		BQ_CONTENT, BQ_REGDATE,
-		BQ_COMPLETE,BQ_ANSWER,MEMBER_ID
+		BQ_CONTENT, BQ_REGDATE,MEMBER_ID,BQ_GROUPNO,BQ_GROUPSEQ,BQ_TITLETAB
 		FROM
 		BOARDQNA
-		ORDER BY BQ_NUM DESC
+		ORDER BY BQ_NUM DESC 
 		) A
 		)
 		WHERE (RN BETWEEN #{start} AND
-		#{end}) 
+		#{end})
+		ORDER BY BQ_GROUPNO ,BQ_GROUPSEQ
 	</select>
 
 

@@ -13,21 +13,22 @@
     </script>
 </head>
 <body>
-    <a href="paytest.do">paytest</a>
-    <a href="mypaylist.do?member_id=asd123">mypaytest</a>
-    <a href="lecturelist.do">lecture</a>
-    <a href="myfoodlist.do?member_id=asd123">냉장고test</a>
-    <a href="memberlist.do">member</a>
-    <a href="mypage.do?member_id=asd123">mypage-학생</a>
-    <a href="mypage.do?member_id=12">mypage-강사</a>
+    <a href="paytest.do">paytest</a> <br>
+    <a href="mypaylist.do?member_id=asd123">mypaytest</a> <br>
+    <a href="lecturelist.do">lecture</a><br>
+    <a href="myfoodlist.do?member_id=asd123">냉장고test</a> <br>
+    <a href="memberlist.do">member</a> <br>
+    <a href="mypage.do?member_id=asd123">mypage-학생</a> <br>
+    <a href="mypage.do?member_id=12">mypage-강사</a> <br>
 
-    <a href="boardList.do">recipeboard</a>
-    <a href="recipe.do">randomrecipe</a>
+    <a href="boardList.do">recipeboard</a> <br>
+    <a href="recipe.do">randomrecipe</a> <br>
     <a href="boardList.do">recipeboard</a> <br>
     <a href="#" onclick="popupCenter('recipe.do', '600', '400')">randomrecipe</a> <br>
-    <a href="chatlogin.do">Chatlogin</a> <br>
-    <a href="machine.do">machine</a>
-    <a href="main.do">main</a>
+    <a href="chatlogin.do"> 상담사와 채팅</a> <br>
+    <a href="machine.do"> 내 식재료 확인 machine</a> <br>
+    <a href="kitchenmap.do"> 공유주방정보</a> <br>
+    <a href="main.do">main</a> <br>
     <form action="createRoom.do" method="POST">
         <input type="text" name="roomTitle"/>
         <input type="submit" value="방 만들기">

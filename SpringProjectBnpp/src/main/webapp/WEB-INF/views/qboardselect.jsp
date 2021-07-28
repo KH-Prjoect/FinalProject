@@ -61,13 +61,13 @@ table {
 				var i = $(this).index();
 				$('.mypage').eq(i).show();
 			});
-			$('.menus li').eq(0).trigger('click');
+			$('.menus li').eq(1).trigger('click');
 		});
 	</script>
 	<script>
 		function selChange() {
 			var sel = document.getElementById('cntPerPage').value;
-			location.href = "qnalist.do?nowPage=${paging.nowPage}&cntPerPage="
+			location.href = "boardList.do?nowPage=${paging.nowPage}&cntPerPage="
 					+ sel
 		}
 	</script>
@@ -127,94 +127,48 @@ table {
 
 
 		<div class="mypage">
-
-
-			<h2>1:1 문의게시판</h2>
-
-			<div id="outter">
-				<div style="float: right;">
-					<select id="cntPerPage" name="sel" onchange="selChange()">
-						<option value="5"
-							<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄
-							보기</option>
-						<option value="10"
-							<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄
-							보기</option>
-						<option value="15"
-							<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄
-							보기</option>
-						<option value="20"
-							<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄
-							보기</option>
-					</select>
-				</div>
-				<!-- 옵션선택 끝 -->
-
-				<table class="table table-bordered">
-					<col width="300">
-					<col width="100">
-					<col width="100">
+				<div style="width: 75%; margin: auto;">
+				<h2>1:1 문의게시판</h2>
+				<table border="1">
+					<tr>
+						<th>작성자</th>
+						<td>${qdto.member_id }</td>
+					</tr>
 					<tr>
 						<th>제목</th>
-						<th>작성자</th>
-						<th>날짜</th>
+						<td>${qdto.bq_title }</td>
+					</tr>
+					<tr>
+						<th></th>
+						<td><div id="summernote" class="form-control"
+								style="width: 600px; height: 100%;">${qdto.bq_content }</div></td>
 					</tr>
 
-					<c:choose>
-						<c:when test="${empty list }">
-							<tr>
-								<th colspan="4">-------------작성된 글이 없습니다------------</th>
-							</tr>
-						</c:when>
-						<c:otherwise>
-							<c:forEach items="${list }" var="dto">
-								<tr>
-									<td><a href="qnaselect.do?bq_num=${dto.bq_num }">${dto.bq_title }</a></td>
-									<td>${dto.member_id }</td>
-									<td><fmt:formatDate value="${dto.bq_regdate }"
-											pattern="MM-dd HH:ss" /></td>
-								</tr>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
-					<c:choose>
-					<c:when test="${sessionScope.loginCheck eq true}">
-						<c:if test="${not empty dbDto.member_id}">
-							<tr>
-								<td colspan="5" align="right"><input type="button"
-									value="글작성" onclick="location.href='qnainsertform.do'" /></td>
-							</tr>
-						</c:if>
-					</c:when>
-				</c:choose>
-				</table>
-			</div>
+					<tr>
+						<c:if test="${dbDto.member_id == qdto.member_id }">
 
-			<div style="display: block; text-align: center;">
-				<c:if test="${paging.startPage != 1 }">
-					<a
-						href="qnalist.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
-				</c:if>
-				<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
-					var="p">
-					<c:choose>
-						<c:when test="${p == paging.nowPage }">
-							<b>${p }</b>
-						</c:when>
-						<c:when test="${p != paging.nowPage }">
-							<a
-								href="qnalist.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
-						</c:when>
-					</c:choose>
-				</c:forEach>
-				<c:if test="${paging.endPage != paging.lastPage}">
-					<a
-						href="qnalist.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
-				</c:if>
+							<td colspan="2" align="right"><input type="button"
+								value="수정"
+								onclick="location.href='qnaupdateform.do?bq_num=${qdto.bq_num}'" />
+						</c:if>
+						
+						<c:if test="${dbDto.member_id == 'admin' }">
+
+							<td colspan="2" align="right"><input type="button"
+								value="답변"
+								onclick="location.href='answerinsertform.do?bq_num=${qdto.bq_num}'" />
+						</c:if>
+						
+						
+						<td colspan="2" align="right"><input type="button" value="목록"
+							onclick="location.href='qnalist.do?'">
+					</tr>
+
+				</table>
+
+				<hr />
 			</div>
 		</div>
-	</div>
-
 
 
 
@@ -238,6 +192,5 @@ table {
 			});
 		}
 	</script>
-
 </body>
 </html>
