@@ -1,11 +1,15 @@
 
 package com.kh.bnpp.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -23,7 +27,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.bnpp.clova.Clova_temp;
 import com.kh.bnpp.model.biz.BillBiz;
 import com.kh.bnpp.model.biz.ClassBiz;
 import com.kh.bnpp.model.biz.FileUploadBiz;
@@ -63,10 +70,7 @@ public class MypageController {
 	private BCryptPasswordEncoder passwordEncoder;
 
 	@Value("${imgfile.Uploadpath}")
-	private String imgUploadPath;	//이거는 로컬에 저장되는거 C:\\Workspaces\\Workspace_final\\SpringProjectBnpp\\src\\main\\webapp\\resources\\img\\
-	
-	@Autowired
-	private FileUploadBiz file_biz;
+	private String imgUploadPath;	
 
 	@RequestMapping("/receiptupload.do")
 	public String receiptupload(Model model, String member_id) {
@@ -74,6 +78,59 @@ public class MypageController {
 		model.addAttribute("member_id", member_id);
 		model.addAttribute("b_list", b_list);
 		return "receiptupload";
+	}
+	
+	@RequestMapping("/scan.do")
+	public String scan(@RequestParam("member_id") String member_id, @RequestParam("file") MultipartFile fm, HttpServletRequest request) {
+		//파일을 realPath에 저장하기
+		String uploadRealPath = request.getSession().getServletContext().getRealPath("/resources/img/receipts");
+		String paths = "/resources/img/receipts/";
+		
+		//위에 설정한 경로의 폴더가 없을 경우 생성
+		File dir = new File(uploadRealPath);
+		if(!dir.exists()) {
+			dir.mkdirs();
+		}
+				
+		//파일 업로드
+		if (!fm.getOriginalFilename().isEmpty()) {
+			// 파일명
+			String originalFile = fm.getOriginalFilename();
+			System.out.println("파일명이 뭔데? : " + originalFile);
+				
+			String fullPathName = request.getSession().getServletContext().getRealPath(paths + originalFile);	
+			try {
+				fm.transferTo(new File(fullPathName));
+				List<String> list = Clova_temp.OCR(fullPathName);
+				
+				List<BillDto> listres = Clova_temp.input_bill(list, member_id);
+				
+				int res = 0;
+				int i = 0;
+				
+				for (BillDto dto : listres) {
+					res += b_biz.insert(dto);
+					if (b_biz.insert(dto) > 0) {
+						logger.info(i + "번째 bill 삽입 성공");
+					}
+					i++;
+				}
+				if (res == listres.size()) {
+					return "redirect:receiptupload.do?member_id="+member_id;
+				} else {
+					logger.info("내역 몇개 빠짐");
+					return "redirect:receiptupload.do?member_id="+member_id;
+				}
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		} else {
+			logger.info("빈 파일")	;
+		}	
+		return "redirect:receiptupload.do?member_id="+member_id;
 	}
 	
 	@RequestMapping("/mypage.do")
@@ -206,6 +263,13 @@ public class MypageController {
 		dto.setMember_pw(passwordEncoder.encode(dto.getMember_pw()));
 		int res = m_biz.updatepw(dto);
 		return res;
+	}
+	
+	@RequestMapping("/tests.do")
+	public void ocrtest(HttpServletRequest request) {
+		List<String> list = Clova_temp.OCR("/resources/img/receipts/receipt4.jpg");
+		System.out.println("receipt4");
+		List<BillDto> listres = Clova_temp.input_bill(list, "asd123");
 	}
 	
 }

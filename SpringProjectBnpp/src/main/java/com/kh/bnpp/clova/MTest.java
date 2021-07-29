@@ -53,7 +53,14 @@ public class MTest {
 		// 경로 읽어오기
 		// String pathSet = request.getSession().getServletContext().getRealPath("/resources/img/receipt1.jpg");
 
-		
+		String pathSet = request.getSession().getServletContext().getRealPath("/resources/img/receipts/receipt1.jpg");
+
+		List<String> list = Clova_temp.OCR(pathSet);
+		List<BillDto> listres = Clova_temp.input_bill(list, "asd123");
+		for (BillDto dto : listres) {
+			System.out.println(dto.getBill_name()+"\t"+dto.getBill_price()+"\t"+dto.getBill_quantity()
+			+"\t"+dto.getBill_total()+"\t"+dto.getBill_date()+"\t"+dto.getMember_id());
+		}
 		
 	}
 	

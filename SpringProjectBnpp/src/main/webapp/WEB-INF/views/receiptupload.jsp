@@ -41,11 +41,16 @@
 		</c:choose>
 		<tr>
 			<td colspan="8" align="right">
-				<input type="button" value="영수증 스캔" onclick="location.href=''"/>
 				<input type="button" value="선택 목록 냉장고로 보내기" onclick="location.href=''"/>
 				<input type="button" value="선택 목록 삭제" onclick="location.href=''"/>
 			</td>
 		</tr>
 	</table>
+	<form action="scan.do" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="member_id" value="${dbDto.member_id }">
+		<label>파일 : </label>
+		<input multiple="multiple" type="file" name="file">
+		<input type="submit" value="스캔하기">
+	</form>
 </body>
 </html>

@@ -14,11 +14,8 @@
 </head>
 
 <body>
-    <a href="paytest.do">paytest</a>
-    <a href="mypaylist.do?member_id=asd123">mypaytest</a>
-    <a href="lecturelist.do">lecture</a>
-    <a href="myfoodlist.do?member_id=asd123">냉장고test</a>
-    <a href="memberlist.do">member</a>
+    <a href="tests.do">ocr test</a>
+ 
     <a href="mypage.do?member_id=asd123">mypage-학생</a>
     <a href="mypage.do?member_id=12">mypage-강사</a>
 

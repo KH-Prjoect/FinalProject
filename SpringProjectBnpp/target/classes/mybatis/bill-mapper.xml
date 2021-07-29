@@ -3,7 +3,7 @@
 <mapper namespace="bill">
 	
 	
-	<select id="selecList" parameterType="String" resultType="BillDto">
+	<select id="selectList" parameterType="String" resultType="BillDto">
 		SELECT BILL_NUM, BILL_NAME, BILL_PRICE, BILL_QUANTITY, BILL_TOTAL, BILL_DATE, MEMBER_ID
 		FROM BILL
 		WHERE MEMBER_ID = #{member_id}

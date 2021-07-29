@@ -128,6 +128,15 @@
 		}
 	}
 	
+	function receiptlist() {
+		window.open(
+				"",
+				"popOpen",
+				'fullscreen=no,menubar=no,status=no,toolbar=no,titlebar=no,location=no,scrollbar=auto');
+		iniform.target = "popOpen";
+		iniform.action = "receiptupload.do";
+		iniform.submit();
+	}
 	
 </script>
 </head>
@@ -221,7 +230,7 @@
 						<tr>
 							<td colspan="4" align="right">
 								<input type="submit" class="btn btn-outline-success"  value="수정사항 적용" />
-								<input type="button" class="btn btn-outline-success" value="영수증 스캔목록" onclick="location.href='./receiptupload.do?member_id=${m_dto.member_id}'"/>
+								<input type="button" class="btn btn-outline-success" value="영수증 스캔목록" onclick="receiptlist()"/>
 							</td>
 						</tr>
 					</table>
