@@ -65,6 +65,11 @@
 			/* var totalAddress = $('#roadAddress').val() + $('#jibunAddress').val() + $('#detailAddress').val() + $('#extraAddress').val();
 			//alert("totalAddress = " + totalAddress);
 			$('input[name=member_address]').attr('value',totalAddress); */
+			
+			var member_phone = $('input[name=member_phone_1]').val() + "-"
+			+ $('input[name=member_phone_2]').val() + "-"
+			+ $('input[name=member_phone_3]').val();
+			$('input[name=member_phone]').attr('value', member_phone);
 												  
 			alert("최종 input[name=member_address] = " + $("input[name=member_address]").val());
 			$("form[name=signupform]").submit();
@@ -170,7 +175,14 @@
 			</tr>
 			<tr>
 				<th>PHONE</th>
-				<td><input type="text" id="phone1" name="member_phone"></td>
+				<td>
+					<input type="hidden" name="member_phone" value="">
+					<input class="general_signup_phone" type="text" name="member_phone_1" maxlength="3" size="3" >
+					-
+					<input class="general_signup_phone" type="text" name="member_phone_2" maxlength="4" size="3" >
+					-
+					<input class="general_signup_phone" type="text" name="member_phone_3" maxlength="4" size="3" >		
+				</td>
 			</tr>
 			<tr>
 				<th>ADDRESS</th>
@@ -224,4 +236,5 @@
 <jsp:include page="footer.jsp" />
 	
 </body>
+
 </html>
