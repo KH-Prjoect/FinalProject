@@ -94,7 +94,7 @@
 											width="40" height="40">
 										</a>
 									</c:if>
-									<li class="scroll-to-section"><a href="#">${dbDto.member_id }님
+									<li class="scroll-to-section"><a href="./mypage.do?member_id=${dbDto.member_id }">${dbDto.member_id }님
 									</a></li>
 									<li class="scroll-to-section"><div
 											class="main-blue-button">
@@ -135,6 +135,7 @@
 	</header>
 	<!-- ***** Header Area End ***** -->
 	<script type="text/javascript">
+
 		function openPopup() {
 
 			window
@@ -147,6 +148,7 @@
 			iniform.action = "popup.do";
 			iniform.submit();
 		}
+
 	</script>
 </body>
 </html>
