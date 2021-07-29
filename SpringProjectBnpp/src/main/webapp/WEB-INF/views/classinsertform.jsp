@@ -84,6 +84,10 @@
 </head>
 <body>
 
+<jsp:include page="header.jsp" />
+
+<div class="main-banner wow fadeIn">
+<div style="position:relative; left:15%;">
 	<h1>강의 등록</h1>
 
 	<form name="classform" action="classres.do" method="post" enctype="multipart/form-data">
@@ -91,7 +95,7 @@
 		<input type="hidden" name="teacher_id" value="${dbDto.member_id }">	
 		<!-- teacherController에서 view로 갈 때 category필요 -->
 		<input type="hidden" name="category" value="${dbDto.member_category }">
-			<table id="class_form_table">
+			<table id="class_form_table" class="table table-bordered w-auto">
 				<tbody>
 				<tr>
 					<th>강의 이름</th>
@@ -115,7 +119,7 @@
 					<th>강의장소(오프라인시)</th>
 					<td>
 					<input type="text" id="postcode" placeholder="우편번호">
-					<input type="button" value="주소 검색" onclick="DaumPostCode()">
+					<input type="button" value="주소 검색" onclick="DaumPostCode()" class="btn btn-outline-success">
 					<br>
 					<input type="text" id="roadAddress" placeholder="도로명주소">
 					<input type="text" id="jibunAddress" placeholder="지번주소">
@@ -140,13 +144,15 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="button" value="강의등록" onclick="confirm()">
-						<input type="button" value="취소" onclick="location.href='main.do'">		
+						<input type="button" value="강의등록" onclick="confirm()" class="btn btn-outline-success" >
+						<input type="button" value="취소" onclick="location.href='main.do'" class="btn btn-outline-danger" >		
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</form>
-
+	</div>
+</div>
+<jsp:include page="footer.jsp" />
 </body>
 </html>

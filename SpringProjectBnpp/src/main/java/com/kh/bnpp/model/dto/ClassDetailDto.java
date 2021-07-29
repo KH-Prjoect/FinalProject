@@ -173,6 +173,5 @@ public class ClassDetailDto {
 	public void setClass_media_path(String class_media_path) {
 		this.class_media_path = class_media_path;
 	}
-	
-	
+
 }

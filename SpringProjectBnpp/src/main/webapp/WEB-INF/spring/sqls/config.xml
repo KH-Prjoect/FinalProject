@@ -35,5 +35,6 @@
 		<mapper resource="/mybatis/pay-mapper.xml"/>
 		<mapper resource="/mybatis/class-mapper.xml"/> 
 	</mappers>
+
 </configuration>
 

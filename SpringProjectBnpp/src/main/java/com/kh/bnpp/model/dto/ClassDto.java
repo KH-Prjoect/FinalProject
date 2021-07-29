@@ -157,6 +157,5 @@ public class ClassDto {
 				+ ", class_where=" + class_where + ", class_ingred=" + class_ingred + ", class_content=" + class_content
 				+ ", class_regdate=" + class_regdate + ", class_media_name="+ class_media_name + ",  class_media_path=" + class_media_path + "]";
 	}
-	
-	
+
 }
