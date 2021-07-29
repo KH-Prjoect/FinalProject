@@ -5,6 +5,7 @@ import java.util.Date;
 public class ClassDetailDto {
 
 	private String member_name;  //강사이름
+	private String member_category;
 	private int	class_num;
 	private String teacher_id;
 	private String class_title;
@@ -38,6 +39,35 @@ public class ClassDetailDto {
 		this.class_regdate = class_regdate;
 		this.class_media_name = class_media_name;
 		this.class_media_path = class_media_path;
+	}
+	
+	public ClassDetailDto(String member_name, String member_category, int class_num, String teacher_id,
+			String class_title, String class_intro, int class_price, String class_how, String class_where,
+			String class_ingred, String class_content, Date class_regdate, String class_media_name,
+			String class_media_path) {
+		super();
+		this.member_name = member_name;
+		this.member_category = member_category;
+		this.class_num = class_num;
+		this.teacher_id = teacher_id;
+		this.class_title = class_title;
+		this.class_intro = class_intro;
+		this.class_price = class_price;
+		this.class_how = class_how;
+		this.class_where = class_where;
+		this.class_ingred = class_ingred;
+		this.class_content = class_content;
+		this.class_regdate = class_regdate;
+		this.class_media_name = class_media_name;
+		this.class_media_path = class_media_path;
+	}
+
+	public String getMember_category() {
+		return member_category;
+	}
+
+	public void setMember_category(String member_category) {
+		this.member_category = member_category;
 	}
 
 	public String getMember_name() {
@@ -143,7 +173,6 @@ public class ClassDetailDto {
 	public void setClass_media_path(String class_media_path) {
 		this.class_media_path = class_media_path;
 	}
-	
 	
 	
 }

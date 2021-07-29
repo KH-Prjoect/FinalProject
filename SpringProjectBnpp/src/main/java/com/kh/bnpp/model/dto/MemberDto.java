@@ -21,10 +21,28 @@ public class MemberDto {
 
 	public MemberDto() {
 	}
+	
+	public MemberDto(String member_id, String member_pw, String member_name, String member_email, String member_phone,
+			String member_address, String member_role, String member_category, String member_intro, String member_certi,
+			String member_career, Date member_regdate) {
+		super();
+		this.member_id = member_id;
+		this.member_pw = member_pw;
+		this.member_name = member_name;
+		this.member_email = member_email;
+		this.member_phone = member_phone;
+		this.member_address = member_address;
+		this.member_role = member_role;
+		this.member_category = member_category;
+		this.member_intro = member_intro;
+		this.member_certi = member_certi;
+		this.member_career = member_career;
+		this.member_regdate = member_regdate;
+	}
 
-	
-	
-	
+
+
+
 	public MemberDto(String member_id, String member_pw, String member_name, String member_email, String member_phone,
 			String member_address, String member_role, String member_category, String member_intro, String member_certi,
 			String member_career, Date member_regdate, String member_img_path, String member_img_name) {
