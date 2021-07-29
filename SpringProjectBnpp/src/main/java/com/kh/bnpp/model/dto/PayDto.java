@@ -1,4 +1,3 @@
-
 package com.kh.bnpp.model.dto;
 
 import java.util.Date;
@@ -23,6 +22,15 @@ public class PayDto {
 		this.member_id = member_id;
 		this.class_title = class_title;
 		this.pay_method = pay_method;
+	}
+	
+	public PayDto(int class_price, String member_id, int class_num, String class_title, String class_category) {
+		super();
+		this.class_price = class_price;
+		this.member_id = member_id;
+		this.class_num = class_num;
+		this.class_title = class_title;
+		this.class_category = class_category;
 	}
 
 	public PayDto(int pay_num, Date pay_date, int class_price, String pay_step, String member_id, int class_num,
@@ -106,4 +114,5 @@ public class PayDto {
 	}
 	
 }
+
 
