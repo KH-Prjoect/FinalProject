@@ -14,6 +14,7 @@ public class ClassDto {
 	private String class_ingred;
 	private String class_content;
 	private	Date class_regdate;
+	private String class_media_name;
 	private String class_media_path;
 	
 	public ClassDto() {
@@ -21,7 +22,7 @@ public class ClassDto {
 	
 	public ClassDto(int class_num, String teacher_id, String class_title, String class_intro, int class_price,
 			String class_how, String class_where, String class_ingred, String class_content, Date class_regdate,
-			String class_media_path) {
+			String class_media_name, String class_media_path) {
 		this.class_num = class_num;
 		this.teacher_id = teacher_id;
 		this.class_title = class_title;
@@ -32,6 +33,7 @@ public class ClassDto {
 		this.class_ingred = class_ingred;
 		this.class_content = class_content;
 		this.class_regdate = class_regdate;
+		this.class_media_name = class_media_name;
 		this.class_media_path = class_media_path;
 	}
 	public int getClass_num() {
@@ -101,12 +103,20 @@ public class ClassDto {
 		this.class_media_path = class_media_path;
 	}
 	
+	public String getClass_media_name() {
+		return class_media_name;
+	}
+
+	public void setClass_media_name(String class_media_name) {
+		this.class_media_name = class_media_name;
+	}
+
 	@Override
 	public String toString() {
 		return "ClassDto [class_num=" + class_num + ", teacher_id=" + teacher_id + ", class_title=" + class_title
 				+ ", class_intro=" + class_intro + ", class_price=" + class_price + ", class_how=" + class_how
 				+ ", class_where=" + class_where + ", class_ingred=" + class_ingred + ", class_content=" + class_content
-				+ ", class_regdate=" + class_regdate + ", class_media_path=" + class_media_path + "]";
+				+ ", class_regdate=" + class_regdate + ", class_media_name="+ class_media_name + ",  class_media_path=" + class_media_path + "]";
 	}
 	
 	

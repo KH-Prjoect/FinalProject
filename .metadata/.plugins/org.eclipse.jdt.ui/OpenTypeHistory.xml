@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
     <typeInfo handle="=SpringProjectBnpp/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kh.bnpp.model.dao{FileUploadDao.java[FileUploadDao" modifiers="513" timestamp="1627285140601"/>
+    <typeInfo handle="=SpringProjectBnpp/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kh.bnpp.model.biz{ClassBiz.java[ClassBiz" modifiers="513" timestamp="1627475782249"/>
+    <typeInfo handle="=SpringProjectBnpp/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kh.bnpp.model.dao{ClassDao.java[ClassDao" modifiers="513" timestamp="1627475791206"/>
 </typeInfoHistroy>

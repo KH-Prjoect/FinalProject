@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class ClassDetailDto {
 
-	private String member_name;
+	private String member_name;  //강사이름
 	private int	class_num;
 	private String teacher_id;
 	private String class_title;

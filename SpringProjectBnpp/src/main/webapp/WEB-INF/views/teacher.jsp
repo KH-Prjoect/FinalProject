@@ -11,7 +11,18 @@
 <script type="text/javascript">
 
 	function alt(){
-		alert("강의등록page로~");
+		
+		location.href="classform.do"
+	}
+
+	function after(){
+		var msg = "${msg}";
+		
+		if(msg == "success"){
+			alert("강의 저장 성공!");
+		}else{
+			alert("강의 저장 실패!");
+		}
 	}
 
 </script>
@@ -30,11 +41,12 @@
 				<tr><th colspan="2">---------등록된 강사가 없습니다---------</th></tr>
 			</c:when>
 			<c:otherwise>
+				<!-- MemberDto list 가져온 것-->
 				<c:forEach items="${list }" var="dto">
 					<tr>
 						<c:if test="${empty dto.member_img_path || dto.member_img_path eq null }"><td><img alt="teacherImg" src="resources/upload/img/dummy.png" width="100" height="100"></td></c:if>
 						<c:if test="${not empty dto.member_img_name }"><td><img alt="teacherImg" src="resources/upload/img/${dto.member_img_name }" width="100" height="100"></td></c:if>
-						<td>${dto.member_name }</td>
+						<td><a href="classdetailteacher.do?teacher_id=${dto.member_id }">${dto.member_name }</a></td>
 						<td>${dto.member_intro }</td>
 					</tr>
 					<br>
