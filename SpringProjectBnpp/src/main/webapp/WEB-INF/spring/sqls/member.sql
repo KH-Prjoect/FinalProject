@@ -42,20 +42,20 @@ INSERT INTO MEMBER
 VALUES('member02', 'member02', 'Yoon', '', '','', DEFAULT, '','','','',SYSDATE);
 
 INSERT INTO MEMBER
-VALUES('member04', 'member04', '4', '', '','', DEFAULT, '','','','',SYSDATE);
+VALUES('12', '12', '강사1', 'asd@naver.com', '010-123-4567','서울, 12, 345, 678', 'T', '한식', null, null, SYSDATE, null, null, null);
 
 DELETE MEMBER
 WHERE MEMBER_ID = 'member04';
 
-<<<<<<< HEAD
+
 DELETE MEMBER
 WHERE MEMBER_ID = '윤인섭Na';
 
 DELETE MEMBER
-WHERE MEMBER_ID = '윤인섭ka';
-=======
+WHERE MEMBER_ID = '12';
+
 
 ALTER TABLE MEMBER ADD MEMBER_IMG_PATH VARCHAR2(500);
 ALTER TABLE MEMBER ADD MEMBER_IMG_NAME VARCHAR2(300);
 
->>>>>>> origin/test
+

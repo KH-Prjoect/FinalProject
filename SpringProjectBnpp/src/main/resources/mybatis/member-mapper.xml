@@ -9,23 +9,6 @@
 		ORDER BY MEMBER_ID DESC
 	</select>
 	
-	<select id="selectOne" parameterType="String" resultType="MemberDto">
-		SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_PHONE, MEMBER_ADDRESS, MEMBER_ROLE, MEMBER_CATEGORY, MEMBER_CERTI, MEMBER_CAREER, MEMBER_REGDATE
-		FROM MEMBER
-		WHERE MEMBER_ID = #{member_id}
-	</select>
-	
-	<select id="login" parameterType="MemberDto" resultType="MemberDto">
-		SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_PHONE, MEMBER_ADDRESS, MEMBER_ROLE, MEMBER_CATEGORY, MEMBER_CERTI, MEMBER_CAREER ,MEMBER_REGDATE
-		FROM MEMBER
-		WHERE MEMBER_ID = #{member_id}
-	</select>
-	
-	<insert id="insert" parameterType="MemberDto">
-		INSERT INTO MEMBER
-		VALUES(#{member_id},#{member_pw},#{member_name},#{member_email},#{member_phone},#{member_address},#{member_role},#{member_category},#{member_certi},#{member_career},SYSDATE)
-	</insert>
-	
 	<update id="updatestudent" parameterType="MemberDto">
 		UPDATE MEMBER
 		MEMBER_NAME = #{member_name}, MEMBER_EMAIL = #{member_email}, MEMBER_PHONE = #{member_phone}, MEMBER_ADDRESS = #{member_address}
@@ -38,6 +21,29 @@
 		MEMBER_CATEGORY = #{member_category}, MEMBER_CERTI = #{member_certi}, MEMBER_CAREER = #{member_career}
 		WHERE MEMBER_ID = #{member_id}
 	</update>
+	
+	<update id="updatepw" parameterType="MemberDto">
+		UPDATE MEMBER
+		SET MEMBER_PW = #{member_pw}
+		WHERE MEMBER_ID = #{member_id}
+	</update>
+	
+	<select id="login" parameterType="MemberDto" resultType="MemberDto">
+		SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_PHONE, MEMBER_ADDRESS, MEMBER_ROLE, MEMBER_CATEGORY, MEMBER_INTRO, MEMBER_CERTI, MEMBER_CAREER , MEMBER_REGDATE, MEMBER_IMG_PATH, MEMBER_IMG_NAME
+		FROM MEMBER
+		WHERE MEMBER_ID = #{member_id}
+	</select>
+	
+	<select id="selectOne" parameterType="String" resultType="MemberDto">
+		SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_PHONE, MEMBER_ADDRESS, MEMBER_ROLE, MEMBER_CATEGORY, MEMBER_INTRO, MEMBER_CERTI, MEMBER_CAREER , MEMBER_REGDATE, MEMBER_IMG_PATH, MEMBER_IMG_NAME
+		FROM MEMBER
+		WHERE MEMBER_ID = #{member_id}
+	</select>
+	
+	<insert id="insert" parameterType="MemberDto">
+		INSERT INTO MEMBER
+		VALUES(#{member_id},#{member_pw},#{member_name},#{member_email},#{member_phone},#{member_address},#{member_role},#{member_category},#{member_intro},#{member_certi},#{member_career},SYSDATE,#{member_img_path},#{member_img_name})
+	</insert>
 
 	<delete id="delete" parameterType="MemberDto">
 		DELETE FROM MEMBER
@@ -47,7 +53,7 @@
 	<select id="checkId" parameterType="String" resultType="String">
 		SELECT COUNT(*) 
 		FROM MEMBER
-		WHERE MEMBER_ID = #{checkID}
+		WHERE MEMBER_ID=#{checkID}
 	</select>
 	
 	<select id="findId" parameterType="MemberDto" resultType="String">
@@ -63,17 +69,15 @@
 	</select>
 
 	<select id="findAllT" parameterType="String" resultType="MemberDto">
-		SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_PHONE, MEMBER_ADDRESS, MEMBER_ROLE, MEMBER_CATEGORY, MEMBER_INTRO, MEMBER_CERTI, MEMBER_CAREER , MEMBER_REGDATE
+		SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_PHONE, MEMBER_ADDRESS, MEMBER_ROLE, MEMBER_CATEGORY, MEMBER_INTRO, MEMBER_CERTI, MEMBER_CAREER , MEMBER_REGDATE, MEMBER_IMG_PATH, MEMBER_IMG_NAME
 		FROM MEMBER
 		WHERE MEMBER_CATEGORY = #{category}
 	</select>
 	
-	<update id="updatepw" parameterType="MemberDto">
+	<update id="img" parameterType="hashmap">
 		UPDATE MEMBER
-		SET MEMBER_PW = #{member_pw}
+		SET MEMBER_IMG_PATH = #{member_img_path}, MEMBER_IMG_NAME = #{member_img_name}
 		WHERE MEMBER_ID = #{member_id}
 	</update>
-	
+
 </mapper>
-
-

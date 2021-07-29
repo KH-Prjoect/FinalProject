@@ -2,13 +2,10 @@
 <%@page import="com.kh.bnpp.model.dto.MemberDto"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.kh.bnpp.model.biz.FoodBizImpl"%>
-<%@page import="com.kh.bnpp.model.biz.LectureBizImpl"%>
 <%@page import="com.kh.bnpp.model.biz.PayBizImpl"%>
 <%@page import="com.kh.bnpp.model.dto.FoodDto"%>
 <%@page import="com.kh.bnpp.model.biz.FoodBiz"%>
-<%@page import="com.kh.bnpp.model.biz.LectureBiz"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.kh.bnpp.model.dto.LectureDto"%>
 <%@page import="com.kh.bnpp.model.biz.PayBiz"%>
 <%@page import="com.kh.bnpp.model.dto.PayDto"%>
 <%@page import="java.util.List"%>
@@ -157,21 +154,21 @@
 			<div class="mypage_lecture">
 				<div>
 					<c:choose>
-						<c:when test="${empty l_list }">
+						<c:when test="${empty c_list }">
 							<span>----------수강한 강의가 없습니다----------</span>
 						</c:when>
 						<c:otherwise>
 							<ul>
-								<c:forEach items="${l_list }" var="dto">
+								<c:forEach items="${c_list }" var="dto">
 									<li class="lecture_list">
 										<div class="lecture_img_div">
 											<!-- 사진 넣을곳 -->
 										</div>
 										<div class="lecture_info">
-											<span class="lecture_info_num">${dto.lecture_num }</span>
-											<span class="lecture_info_name">${dto.lecture_name }</span>
-											<span class="lecture_info_category">${dto.lecture_category }</span>
-											<span class="lecture_info_money">${dto.lecture_price }원</span>
+											<span class="lecture_info_num">${dto.class_num }</span>
+											<span class="lecture_info_name"><a href="">${dto.class_title }</a></span>
+											<span class="lecture_info_category">${dto.member_category }</span>
+											<span class="lecture_info_money">${dto.class_price }원</span>
 											<span class="lecture_info_teacher">${dto.member_name }</span>
 										</div>
 									</li>
@@ -373,5 +370,6 @@
 	<script src="resources/assets/js/animation.js"></script>
 	<script src="resources/assets/js/imagesloaded.js"></script>
 	<script src="resources/assets/js/templatemo-custom.js"></script>
+
 </body>
 </html>

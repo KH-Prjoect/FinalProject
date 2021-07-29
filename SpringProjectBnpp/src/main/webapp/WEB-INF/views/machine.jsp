@@ -142,15 +142,21 @@
 }
 </style>
 <body>
-	<h1>식재료 정보 확인</h1>
-	<button type="button" onclick="init()">내 식재료 정보 확인</button>
+	<jsp:include page="header.jsp" />
+	<div class="main-banner wow fadeIn">
+	<div class='row'>
+	<div class='col-sm-6' style="padding-left: 30%">
+	<h1>식재료 정보 확인</h1><br><br>
+	<button type="button" class="btn btn-outline-success" onclick="init()">내 식재료 정보 확인</button>
+	
 	<br>
 	<br>
 	<br>
 	<div id="webcam-container"></div>
+	</div>
 	<!--  style="visibility:hidden;  position:absolute;" -->
-	<div id="label-container" style="visibility:hidden;  position:absolute;" ></div>
-
+	<div id="label-container" style="visibility:hidden;  position:absolute;" style="padding-left: 30%" ></div>
+	<div class='col-sm-6' style="padding-right: 10%">
 		<div class="fruits" id="apple">
 			<h1>사과</h1>
 			[ apple , 沙果,砂果 ]<br> 쌍떡잎식물 장미목 장미과 낙엽교목 식물인 사과나무의 열매.<br>
@@ -354,6 +360,12 @@
 <br><br>
 아프리카 원산으로 고대 이집트 시대부터 재배되었다고 하며, 각지에 분포된 것은 약 500년 전이라고 한다. 한국에는 조선시대 《연산군일기》(1507)에 수박의 재배에 대한 기록이 나타난 것으로 보아 그 이전에 들어온 것이 분명하다. 오늘날에는 일반재배는 물론 시설원예를 통한 연중재배가 이루어지고 있으며 우수한 품종은 물론 씨없는 수박도 생산되고 있다. 한방과 민간에서는 구창·방광염·보혈·강장 등에 쓴다. 꽃말은 '큰 마음'이다.
 	</div>
+	</div>
+</div>
+
+</div>
+
+<jsp:include page="footer.jsp" />
 
 </body>
 </html>

@@ -17,7 +17,6 @@
 		<typeAlias type="com.kh.bnpp.model.dto.BillDto" alias="BillDto"/>
 		<typeAlias type="com.kh.bnpp.model.dto.FoodDto" alias="FoodDto"/>
 		<typeAlias type="com.kh.bnpp.model.dto.FoodListDto" alias="FoodListDto"/>
-		<typeAlias type="com.kh.bnpp.model.dto.LectureDto" alias="LectureDto"/>
 		<typeAlias type="com.kh.bnpp.model.dto.PayDto" alias="PayDto"/>
 		<typeAlias type="com.kh.bnpp.model.dto.QboardDto" alias="QboardDto"/>
 		<typeAlias type="com.kh.bnpp.model.dto.ClassDetailDto" alias="ClassDetailDto"/> 
@@ -33,7 +32,6 @@
 		<mapper resource="/mybatis/rrecipe-mapper.xml"/>
 		<mapper resource="/mybatis/bill-mapper.xml"/>
 		<mapper resource="/mybatis/food-mapper.xml"/>
-		<mapper resource="/mybatis/lecture-mapper.xml"/>
 		<mapper resource="/mybatis/pay-mapper.xml"/>
 		<mapper resource="/mybatis/class-mapper.xml"/> 
 	</mappers>
