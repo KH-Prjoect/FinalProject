@@ -48,8 +48,8 @@
 		</tr>
 		<tr>
 			<td>
-				<button onclick="">결재</button>
-				<button onclick="history.back()">취소</button>
+				<button onclick="" class="btn btn-outline-success" >결제</button>
+				<button onclick="history.back()" class="btn btn-outline-danger" >취소</button>
 			</td>
 		</tr>
 	</table>
