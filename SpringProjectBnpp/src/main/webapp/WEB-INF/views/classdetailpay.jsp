@@ -19,8 +19,8 @@
 	
 		
 		<tr>
-			<th class="col-md-3" >강의 이름</th>
-			<td class="col-md-6" >${dto.class_title }</td>
+			<th>강의 이름</th>
+			<td>${dto.class_title }</td>
 		</tr>
 		<tr>
 			<th>강의 소개</th>
