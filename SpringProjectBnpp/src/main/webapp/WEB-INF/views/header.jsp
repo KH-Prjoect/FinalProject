@@ -57,13 +57,10 @@
 							<li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
 							<li class="scroll-to-section"><a href="boardList.do">레시피
 									공유</a></li>
-							<li class="dropdown"><a
-								href="<c:url value='/teacherList.do?category=한식' />"
-								id="dropdownCategoryMenu" data-toggle="dropdown">강사</a>
+							<li class="dropdown"><a id="dropdownCategoryMenu" data-toggle="dropdown">강사</a>
 								<ul class="dropdown-menu" role="menu"
 									aria-labelledby="dropdownCategoryMenu">
-									<li><a href="#">전체보기</a></li>
-									<li><a href="#">
+									<li><a href="<c:url value='/teacherList.do?category=한식' />">
 											한식</a></li>
 									<li><a href="#">
 											양식</a></li>
@@ -122,12 +119,12 @@
 								<li class="scroll-to-section"><div class="main-blue-button">
 										<a href="loginform.do">로그인</a>
 									</div></li>
-								<li class="scroll-to-section"><div class="main-red-button">
+								<li class="scroll-to-section"><div class="main-white-button">
 										<a href="signupform.do">회원가입</a>
 									</div></li>
 							</c:otherwise>
 						</c:choose>
-						
+						</ul>
 						<a class='menu-trigger'> <span>Menu</span>
 						</a>
 						<!-- ***** Menu End ***** -->

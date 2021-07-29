@@ -229,9 +229,14 @@ body {
   font-weight: 400;
   color: #fe3f40;
   text-transform: capitalize;
-  padding: 12px 25px;
+  padding: 0px 20px;
   border-radius: 23px;
   letter-spacing: 0.25px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
 }
 
 /* 
@@ -343,13 +348,12 @@ header
 .header-area .main-nav .nav li:last-child a ,
 .background-header .main-nav .nav li:last-child a {
   color: #2a2a2a !important;
-  padding: 0px 20px;
+  
   font-weight: 400;
 }
 
-.header-area .main-nav .nav li:nth-child(n+5) a:hover,
-.header-area .main-nav .nav li:nth-child(n+5) a.active {
-  color: #5f5f5f!important;
+.main-red-button a  a.hover {
+  color: #fff!important;
 }
 
 .header-area .main-nav .nav li a {
