@@ -9,9 +9,13 @@
 <body>
 <h1>공유주방 정보</h1>
 지금 현재 나의 위치가 가장 먼저 표시됩니다.(chrom e에선 https 환경에서만 가능합니다.)<br>
-공유주방의 정보를 지도에서 확인할 수 있습니다.  <br>
-마커에 마우스를 올리면 타이틀이 표시됩니다.<br><br><br>
-////////////////마커 클릭시 맵 밖에 주소 보이도록 하기 
+gps 가 현재 위치를 찾기까지 잠시 기다려 주세요 <br><br>
+1.서울시의 공유주방의 정보를 지도에서 확인할 수 있습니다.  <br><br>
+2.마커에 마우스를 올리면 타이틀이 마커 위에 표시됩니다.<br><br>
+3. 마커를 클릭하면 지도 밖에 마커이름이 표시됩니다. <br><br>
+
+ -----------todo : 마커 클릭시 맵 밖에 주소 보이도록 하기 <br><br><br>
+
 <body>
 <!-- 지도를 표시할 div 입니다 -->
 <div id="map" style="width:50%; height:350px;"></div>
@@ -193,9 +197,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 		    };
 		}
 		
-		$("#spaceinfo").click(function(){
 		
-		);
 		
 </script>
 </body>
