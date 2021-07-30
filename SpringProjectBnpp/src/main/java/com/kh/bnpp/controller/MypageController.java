@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -71,7 +72,66 @@ public class MypageController {
 
 	@Value("${imgfile.Uploadpath}")
 	private String imgUploadPath;	
+	
+	@RequestMapping("/classdetailmedia.do")
+	public String classdetail(Model model, int class_num) {
+		model.addAttribute("class_num", class_num);
+		return "classdetail";
+	}
 
+	@RequestMapping("/foodinsert.do")
+	public String foodinsert(@RequestParam("member_id") String member_id, @RequestParam("bill_list") String bill_list) {
+		int temp;
+
+        String [] b_list = bill_list.split(",");
+        int cnt = b_list.length;
+        BillDto b_dto = new BillDto();
+        FoodDto f_dto = new FoodDto();
+        f_dto.setMember_id(member_id);
+        try {
+            for(int i = 0; i < cnt; i++) {
+            	temp = Integer.parseInt((String)b_list[i]);
+            	b_dto = b_biz.selectOne(temp);
+            	f_dto.setFood_name(b_dto.getBill_name());
+            	
+                if (f_biz.insert(f_dto) > 0) {
+                	logger.info(i + " 번 식재료 등록 성공");
+                } else {
+                	logger.info(i + " 번 식재료 등록 실패");
+                }
+                
+                if (b_biz.delete(temp) > 0) {
+                	logger.info(i + " 번 영수증 삭제 성공");
+                } else {
+                	logger.info(i + " 번 영수증 삭제 실패");
+                }
+            }
+        } catch (Exception e) {
+        	logger.debug(e.getMessage());
+        }
+		return "redirect:receiptupload.do?member_id=" + member_id;
+	}
+	
+	@RequestMapping("/billdelete.do")
+	public String billdelete(@RequestParam("member_id") String member_id, @RequestParam("bill_list") String bill_list) {
+		int temp;
+        String [] b_list = bill_list.split(",");
+        int cnt = b_list.length;
+        try {
+            for(int i = 0; i < cnt; i++) {
+            	temp = Integer.parseInt((String)b_list[i]);
+                if (b_biz.delete(temp) > 0) {
+                	logger.info(i + " 번 영수증 삭제 성공");
+                } else {
+                	logger.info(i + " 번 영수증 삭제 실패");
+                }
+            }
+        } catch (Exception e) {
+        	logger.debug(e.getMessage());
+        }
+		return "redirect:receiptupload.do?member_id=" + member_id;
+	}
+	
 	@RequestMapping("/receiptupload.do")
 	public String receiptupload(Model model, String member_id) {
 		List<BillDto> b_list = b_biz.selectList(member_id);
