@@ -175,7 +175,7 @@
 										</div>
 										<div class="lecture_info">
 											<span class="lecture_info_num">${dto.class_num }</span>
-											<span class="lecture_info_name"><a href="">${dto.class_title }</a></span>
+											<span class="lecture_info_name"><a href="./classdetailmedia.do?class_num=${dto.class_num }">${dto.class_title }</a></span>
 											<span class="lecture_info_category">${dto.member_category }</span>
 											<span class="lecture_info_money">${dto.class_price }원</span>
 											<span class="lecture_info_teacher">${dto.member_name }</span>
