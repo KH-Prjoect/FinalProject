@@ -21,6 +21,7 @@
 <link href="resources/css/mypage.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -117,17 +118,6 @@
 	        }).open();
 	}
 	
-	function test(){
-		var p1 = $('#password1').val();
-		var p2 = $('#password2').val();
-		
-		if(p1 != p2){
-			$("#pw_msg").text("비밀번호를 다시 입력해주세요");
-		} else if(p1 == p2){
-			$("#pw_msg").text("비밀번호가 일치합니다");
-		}
-	}
-	
 	function receiptlist() {
 		window.open(
 				"",
@@ -136,6 +126,30 @@
 		iniform.target = "popOpen";
 		iniform.action = "receiptupload.do";
 		iniform.submit();
+	}
+	
+	function selectAll(selectAll)  {
+		  const checkboxes 
+		       = document.getElementsByName('ischeck');
+		  
+		  checkboxes.forEach((checkbox) => {
+		    checkbox.checked = selectAll.checked;
+		  })
+		}
+	
+	function fooddelete() {
+		var cnt = $("input[name='ischeck']:checked").length;
+    	var member_id = $("input[name='member_id']").val();
+        var food_nums = new Array();
+        $("input[name='ischeck']:checked").each(function() {
+        	food_nums.push($(this).attr('value'));
+        });
+        if(cnt == 0){
+            alert("선택된 목록이 없습니다.");
+        } else {
+        	alert(food_nums);
+        	$('input[name=food_nums]').attr('value', food_nums);
+        }
 	}
 	
 </script>
@@ -193,14 +207,17 @@
 			<h2>나의 냉장고</h2>
 			<br>
 			<div class="mypage_food">
-					<form action="foodlifeupdateres.do" method="post">
+					<form method="post">
 					<input type="hidden" name="member_id" value="${m_dto.member_id }">
+					<input type="hidden" name="food_nums" value="">
 					<table class="table table-bordered">
 						<col width="50"/>
 						<col width="50"/>
-						<tr>
+						<col width="50"/>
+						<tr>	
 							<th>식품명</th>
 							<th>유통기한</th>
+							<th><input type="checkbox" onclick='selectAll(this)'/></th>
 						</tr>
 						<c:choose>
 							<c:when test="${empty f_list}">
@@ -214,14 +231,10 @@
 											<td><input type="text" name="food_list[${status.index }].food_name" value="${dto.food_name }" /></td>
 											<td>
 												<input type="hidden" name="food_list[${status.index }].food_num" value="${dto.food_num }"/>
-												<c:choose>
-													<c:when test="${empty dto.food_life}">
-														<input type="text" name="food_list[${status.index }].food_life" id="datepicker" value="미설정" />
-													</c:when>
-													<c:otherwise>
-														<input type="text" name="food_list[${status.index }].food_life" id="datepicker" value="${dto.food_life }" />
-													</c:otherwise>
-												</c:choose>
+												<input type="text" name="food_list[${status.index }].food_life" id="datepicker" value="${dto.food_life }" />
+											</td>
+											<td>
+												<input type="checkbox" name="ischeck" value="${dto.food_num }"/>
 											</td>
 										</tr>
 								</c:forEach>
@@ -229,7 +242,8 @@
 						</c:choose>
 						<tr>
 							<td colspan="4" align="right">
-								<input type="submit" class="btn btn-outline-success"  value="수정사항 적용" />
+								<input type="submit" class="btn btn-outline-success"  value="수정사항 적용" formaction="foodlifeupdateres.do" />
+								<input type="submit" class="btn btn-outline-success"  value="선택목록 삭제" formaction="fooddelete.do" onclick="fooddelete()" />
 								<input type="button" class="btn btn-outline-success" value="영수증 스캔목록" onclick="receiptlist()"/>
 							</td>
 						</tr>
@@ -338,7 +352,7 @@
 						<h4 class="general_signup_title">아이디</h4>
 						<div class="general_signup_id">
 							<span class="general_signup_span">
-								<input class="general_signup_text" type="text" value="<%=m_dto.getMember_id()%>" readonly="readonly" />
+								<input class="general_signup_text" type="text" name="member_id" value="<%=m_dto.getMember_id()%>" readonly="readonly" />
 							</span>
 						</div>
 					</div>
@@ -346,20 +360,10 @@
 						<h4 class="general_signup_title">비밀번호</h4>
 						<div class="general_signup_pw">
 							<span class="general_signup_span">
-								<input class="general_signup_text" type="password" id="password1" name="member_password" >
+								<input class="general_signup_text" type="password" name="member_pw" />
 							</span>
 						</div>
 					</div>
-					<div class="general_signup_row">
-						<h4 class="general_signup_title">비밀번호 확인</h4>
-						<div class="general_signup_pw">
-							<span class="general_signup_span">
-								<input class="general_signup_text" type="password" id="password2" name="member_password_chk" >
-								<input type="button" onclick="test();" value="비밀번호확인">
-							</span>
-						</div>
-					</div>
-					<span id="pw_msg"></span>
 				</div>
 				<div id="general_signup_btn">
 					<button type="submit" class="btn btn-outline-danger" style="font-weight: bold">회원 탈퇴</button>
