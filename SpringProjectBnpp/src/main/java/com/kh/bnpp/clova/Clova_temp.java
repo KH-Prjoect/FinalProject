@@ -1,3 +1,4 @@
+
 package com.kh.bnpp.clova;
 
 import java.io.BufferedReader;
@@ -113,6 +114,10 @@ public class Clova_temp {
 		String names = rawlist.get(1);
 		int start, end, price, quantity, total;
 		String name;
+		
+		if (!bill_price[count-1].matches("-?\\d+")) {
+			count--;
+		}
 		
 		if (count > 1) {
 			for (int i = 0; i < count-1; i++) {
