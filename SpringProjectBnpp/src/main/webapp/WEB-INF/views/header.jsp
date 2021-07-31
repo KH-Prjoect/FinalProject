@@ -57,63 +57,77 @@
 							<li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
 							<li class="scroll-to-section"><a href="boardList.do">레시피
 									공유</a></li>
-							<li class="scroll-to-section"><a href="<c:url value='/teacherList.do?category=한식' />">강사</a></li>
-							<li class="scroll-to-section"><a href="#">고객센터</a></li>
-							 
-							
-							<c:choose>
-								<c:when test="${not empty dbDto.member_id}">
-									<c:if test="${not empty dbDto.member_address }">
-										<c:if test="${empty dbDto.member_img_name }"> 
-											<li class="scroll-to-section" >
+							<li class="dropdown"><a id="dropdownCategoryMenu" data-toggle="dropdown">강사</a>
+								<ul class="dropdown-menu" role="menu"
+									aria-labelledby="dropdownCategoryMenu">
+									<li><a href="<c:url value='/teacherList.do?category=한식' />">
+											한식</a></li>
+									<li><a href="<c:url value='/teacherList.do?category=양식'/>">
+											양식</a></li>
+									<li><a href="<c:url value='/teacherList.do?category=중식' />">
+											중식</a></li>
+									<li><a href="<c:url value='/teacherList.do?category=일식' />">
+											일식</a></li>
+									<li><a href="<c:url value='/teacherList.do?category=기타' />">
+											기타</a></li>
+								</ul></li>
+						
+						<li class="scroll-to-section"><a href="#">고객센터</a></li>
+						
+						
+						<c:choose>
+							<c:when test="${not empty dbDto.member_id}">
+								<c:if test="${not empty dbDto.member_address }">
+									<c:if test="${empty dbDto.member_img_name }">
+										<li class="scroll-to-section">
 											<form name="iniform" method="post">
-												<input type="hidden" name="member_id" value="${dbDto.member_id }">
-											</form>
-											<a href="#" onclick="openPopup()">
-											<img alt="profileimg" src="resources/upload/img/dummy.png" width="40" height="40">
-											</a>
-											</li>
-										</c:if>
-										<c:if test="${not empty dbDto.member_img_name }">
-											<form name="iniform" method="post">
-												<input type="hidden" name="member_id" value="${dbDto.member_id }">
-											</form>
-											<a href="#" onclick="openPopup()">
-											<img alt="profileimg" src="resources/upload/img/${dbDto.member_img_name }" width="40" height="40">
-											</a>
-										</c:if>
-										<li class="scroll-to-section" ><a href="#">${dbDto.member_id }님
-										</a></li>
-										<li class="scroll-to-section"><div
-												class="main-blue-button">
-												<a href="logout.do">로그아웃</a>
-											</div>
+												<input type="hidden" name="member_id"
+													value="${dbDto.member_id }">
+											</form> <a href="#" onclick="openPopup()"> <img alt="profileimg"
+												src="resources/upload/img/dummy.png" width="40" height="40">
+										</a>
+										</li>
 									</c:if>
-									<c:if test="${dbDto.member_pw == 'kakao'}">
-										<c:out value="${dbDto.member_name }" />님 로그인 완료!
-			 	<li class="scroll-to-section"><div class="main-blue-button">
-												<a href="kakaologout.do">로그아웃</a>
-											</div>
+									<c:if test="${not empty dbDto.member_img_name }">
+										<form name="iniform" method="post">
+											<input type="hidden" name="member_id"
+												value="${dbDto.member_id }">
+										</form>
+										<a href="#" onclick="openPopup()"> <img alt="profileimg"
+											src="resources/upload/img/${dbDto.member_img_name }"
+											width="40" height="40">
+										</a>
 									</c:if>
-									<c:if test="${dbDto.member_pw == 'naver'}">
-										<c:out value="${dbDto.member_name }" />님 로그인 완료!
-										<li class="scroll-to-section"><div
-												class="main-blue-button">
-												<a href="naverlogout.do">로그아웃</a>
-											</div>
-									</c:if>
-								</c:when>
-							<c:otherwise >
+									<li class="scroll-to-section"><a href="#">${dbDto.member_id }님
+									</a></li>
 									<li class="scroll-to-section"><div
 											class="main-blue-button">
-											<a href="loginform.do">로그인</a>
-										</div></li>
-									<li class="scroll-to-section"><div class="main-red-button">
-											<a href="signupform.do">회원가입</a>
-										</div></li>
+											<a href="logout.do">로그아웃</a>
+										</div>
+								</c:if>
+								<c:if test="${dbDto.member_pw == 'kakao'}">
+									<c:out value="${dbDto.member_name }" />님 로그인 완료!
+			 	<li class="scroll-to-section"><div class="main-blue-button">
+											<a href="kakaologout.do">로그아웃</a>
+										</div>
+								</c:if>
+								<c:if test="${dbDto.member_pw == 'naver'}">
+									<c:out value="${dbDto.member_name }" />님 로그인 완료!
+										<li class="scroll-to-section"><div
+											class="main-blue-button">
+											<a href="naverlogout.do">로그아웃</a>
+										</div>
+								</c:if>
+							</c:when>
+							<c:otherwise>
+								<li class="scroll-to-section"><div class="main-blue-button">
+										<a href="loginform.do">로그인</a>
+									</div></li>
+								<li class="scroll-to-section"><div class="main-white-button">
+										<a href="signupform.do">회원가입</a>
+									</div></li>
 							</c:otherwise>
-							</c:choose>
-
+						</c:choose>
 						</ul>
 						<a class='menu-trigger'> <span>Menu</span>
 						</a>
@@ -125,16 +139,22 @@
 	</header>
 	<!-- ***** Header Area End ***** -->
 	<script type="text/javascript">
-	
-		function openPopup(){
+		function openPopup() {
 			
-			window.open("","popOpen",'fullscreen=no,menubar=no,status=no,toolbar=no,titlebar=no,location=no,scrollbar=auto');
+			var popupX = (document.body.offsetWidth / 2) - (200 / 2);
+			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+			var popupY= (document.body.offsetHeight / 2) - (300 / 2);
+			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
 			
-			iniform.target="popOpen";
-			iniform.action="popup.do";
+			window.open(
+							"",
+							"popOpen",
+							'status=no,scrollbar=auto, height=500, width=400, left='+popupX+',top='+popupY);
+			iniform.target = "popOpen";
+			iniform.action = "popup.do";
 			iniform.submit();
 		}
-	
 	</script>
 </body>
 </html>

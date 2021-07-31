@@ -20,4 +20,5 @@ public interface MemberBiz {
 	public int updatestudent(MemberDto dto);
 	public int updateteacher(MemberDto dto);
 	public int updatepw(MemberDto dto);
+	public int updateEmailPw(MemberDto dto);
 }

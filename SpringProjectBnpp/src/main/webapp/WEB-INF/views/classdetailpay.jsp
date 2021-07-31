@@ -6,9 +6,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <body>
 
-	<table border="1">
+	<jsp:include page="header.jsp" />
+
+	<div class="main-banner wow fadeIn">
+	
+<div style="position:relative; left:15%;">
+	<table class="table table-bordered w-auto">
+	
+		
 		<tr>
 			<th>강의 이름</th>
 			<td>${dto.class_title }</td>
@@ -39,11 +48,15 @@
 		</tr>
 		<tr>
 			<td>
-				<button onclick="">결재</button>
-				<button onclick="history.back()">취소</button>
+				<button onclick="" class="btn btn-outline-success" >결제</button>
+				<button onclick="history.back()" class="btn btn-outline-danger" >취소</button>
 			</td>
 		</tr>
 	</table>
+	</div>
+	</div>
+	
+<jsp:include page="footer.jsp" />
 
 </body>
 </html>

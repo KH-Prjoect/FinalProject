@@ -105,15 +105,17 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public String findPw(MemberDto dto) {
 		
-		String member_pw = "";
+		String isPw = "";
 		
 		try {
-			member_pw = sqlSession.selectOne(NAMESPACE + "findPw", dto);
+			isPw = sqlSession.selectOne(NAMESPACE + "findPw", dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return member_pw;
+		//isPw에 문자열"0"이면 없는 아이디나 이메일이다 전송 , "1"이면 다시한번 임시비밀번호 생성해서 그거 이메일로 보내고 비번으로 업데이트도 해주기 
+		
+		return isPw;
 	}
 	
 	@Override

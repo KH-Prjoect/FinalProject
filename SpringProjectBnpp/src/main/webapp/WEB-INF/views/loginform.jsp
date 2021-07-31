@@ -75,7 +75,7 @@
 			</tr>
 			<tr>
 				<th>PW</th>
-				<td><input type="text" name="loginPw"></td>
+				<td><input type="password" name="loginPw" required></td>
 			</tr>
 			<tr>
 				<td colspan="2"id="loginChk"></td>

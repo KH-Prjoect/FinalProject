@@ -8,18 +8,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-
 	function classdetail(){
 		alert("classdeatil로 가즈아~");
 	}
-
 </script>
 </head>
 <body>
 
+<jsp:include page="header.jsp" />
+
+<div class="main-banner wow fadeIn">
+<div style="position:relative; left:15%;">
+
 	<h2>강사 강의 목록</h2>
 
-	<table border="1">
+	<table class="table table-bordered w-auto">
 		<col width="50">
 		<col width="200">
 		<col width="100">
@@ -49,7 +52,7 @@
 	<hr>
 	<br>
 	
-	<table border="1">
+	<table class="table table-bordered w-auto">
 		<col width="100">	<!-- 이름 -->
 		<col width="200">	<!-- 강좌이름 -->
 		<col width="100">	<!-- 강좌간단소개 -->
@@ -86,8 +89,9 @@
 			</c:otherwise>
 		</c:choose>
 	</table>
-	
-	
+	</div>
+	</div>
+	<jsp:include page="footer.jsp" />
 
 </body>
 </html>
