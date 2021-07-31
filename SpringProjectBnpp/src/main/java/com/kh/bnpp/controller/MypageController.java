@@ -12,6 +12,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -78,8 +79,29 @@ public class MypageController {
 		model.addAttribute("class_num", class_num);
 		return "classdetail";
 	}
+	
+	@RequestMapping("/fooddelete.do")
+	public String fooddelete(String food_nums, String member_id) {
+		int temp;
+        String [] f_nums = food_nums.split(",");
+        int cnt = f_nums.length;
+        try {
+            for(int i = 0; i < cnt; i++) {
+            	temp = Integer.parseInt((String)f_nums[i]);
+                if (f_biz.delete(temp) > 0) {
+                	logger.info(i + " 번 식품 삭제 성공");
+                } else {
+                	logger.info(i + " 번 식품 삭제 실패");
+                }
+            }
+        } catch (Exception e) {
+        	logger.debug(e.getMessage());
+        }
+			
+		return "redirect:mypage.do?member_id="+member_id;
+	}
 
-	@RequestMapping("/foodinsert.do")
+	@RequestMapping(value = "/foodinsert.do", method = RequestMethod.POST)
 	public String foodinsert(@RequestParam("member_id") String member_id, @RequestParam("bill_list") String bill_list) {
 		int temp;
 
@@ -297,12 +319,13 @@ public class MypageController {
 	}
 	
 	@RequestMapping("/memberdelete.do")
-	public String delete(String member_id, String member_pw) {
+	public String delete(String member_id, String member_pw, HttpSession session) {
 		MemberDto dto = m_biz.selectOne(member_id);
 		if (passwordEncoder.matches(member_pw, dto.getMember_pw())) {
 			if (m_biz.delete(dto) > 0) {
 				logger.info("회원 삭제 성공");
-				return "index.do";
+				session.invalidate(); 
+				return "redirect:main.do";
 			}
 			logger.info("회원 삭제 실패");
 			return "redirect:mypage.do?member_id="+member_id;

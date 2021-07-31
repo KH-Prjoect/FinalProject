@@ -8,6 +8,9 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="table "/>
+			<item value="table table-bordered"/>
+			<item value="table-table"/>
 			<item value="spring-websocket"/>
 		</list>
 		<list key="replacehistory">
