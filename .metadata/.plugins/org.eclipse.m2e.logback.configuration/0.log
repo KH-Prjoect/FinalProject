@@ -9243,3 +9243,7 @@ org.apache.maven.project.ProjectBuildingException: Some problems were encountere
 2021-08-01 19:35:11,296 [Worker-229: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of SpringProjectBnpp
 2021-08-01 19:35:11,296 [Worker-229: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for SpringProjectBnpp
 2021-08-01 19:35:11,309 [Worker-229: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-08-01 19:41:49,331 [Worker-236: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-08-01 19:41:49,478 [Worker-236: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 174 resources
+2021-08-01 19:41:49,602 [Worker-236: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-08-01 19:41:49,608 [Worker-236: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
