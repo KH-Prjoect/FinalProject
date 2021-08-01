@@ -40,7 +40,8 @@
 	});
 	
 	$(function() {
-		$( "#datepicker" ).datepicker({
+		$(".ui-datepicker-trigger").remove();
+		$(".datePicker").removeClass('hasDatepicker').datepicker({
 		    dateFormat: 'yy-mm-dd',
 		    prevText: '이전 달',
 		    nextText: '다음 달',
@@ -185,7 +186,7 @@
 								<c:forEach items="${c_list }" var="dto">
 									<li class="lecture_list">
 										<div class="lecture_img_div">
-											<!-- 사진 넣을곳 -->
+											<img alt="foodimage" class="lecture_img" src="resources/img/koreafood.JPG">
 										</div>
 										<div class="lecture_info">
 											<span class="lecture_info_num">${dto.class_num }</span>
@@ -231,7 +232,7 @@
 											<td><input type="text" name="food_list[${status.index }].food_name" value="${dto.food_name }" /></td>
 											<td>
 												<input type="hidden" name="food_list[${status.index }].food_num" value="${dto.food_num }"/>
-												<input type="text" name="food_list[${status.index }].food_life" id="datepicker" value="${dto.food_life }" />
+												<input type="text" name="food_list[${status.index }].food_life" class="datePicker" id="date_${status.index }" value="${dto.food_life }" />
 											</td>
 											<td>
 												<input type="checkbox" name="ischeck" value="${dto.food_num }"/>
