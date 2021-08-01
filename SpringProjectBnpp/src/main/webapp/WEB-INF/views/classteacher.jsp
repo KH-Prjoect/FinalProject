@@ -8,9 +8,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+
 	function classdetail(){
 		alert("classdeatil로 가즈아~");
 	}
+
 </script>
 </head>
 <body>

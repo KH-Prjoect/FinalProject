@@ -16,6 +16,8 @@ public class ClassDto {
 	private	Date class_regdate;
 	private String class_media_name;
 	private String class_media_path;
+	private String member_name;  
+	private String member_category;
 	
 	public ClassDto() {
 	}
@@ -36,6 +38,43 @@ public class ClassDto {
 		this.class_media_name = class_media_name;
 		this.class_media_path = class_media_path;
 	}
+	
+	public ClassDto(int class_num, String teacher_id, String class_title, String class_intro, int class_price,
+			String class_how, String class_where, String class_ingred, String class_content, Date class_regdate,
+			String class_media_name, String class_media_path, String member_name, String member_category) {
+		super();
+		this.class_num = class_num;
+		this.teacher_id = teacher_id;
+		this.class_title = class_title;
+		this.class_intro = class_intro;
+		this.class_price = class_price;
+		this.class_how = class_how;
+		this.class_where = class_where;
+		this.class_ingred = class_ingred;
+		this.class_content = class_content;
+		this.class_regdate = class_regdate;
+		this.class_media_name = class_media_name;
+		this.class_media_path = class_media_path;
+		this.member_name = member_name;
+		this.member_category = member_category;
+	}
+
+	public String getMember_name() {
+		return member_name;
+	}
+
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
+	}
+
+	public String getMember_category() {
+		return member_category;
+	}
+
+	public void setMember_category(String member_category) {
+		this.member_category = member_category;
+	}
+
 	public int getClass_num() {
 		return class_num;
 	}
@@ -118,6 +157,5 @@ public class ClassDto {
 				+ ", class_where=" + class_where + ", class_ingred=" + class_ingred + ", class_content=" + class_content
 				+ ", class_regdate=" + class_regdate + ", class_media_name="+ class_media_name + ",  class_media_path=" + class_media_path + "]";
 	}
-	
-	
+
 }

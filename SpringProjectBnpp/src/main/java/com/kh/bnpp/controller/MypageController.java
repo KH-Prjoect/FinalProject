@@ -1,32 +1,49 @@
 
 package com.kh.bnpp.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.bnpp.clova.Clova_temp;
+import com.kh.bnpp.model.biz.BillBiz;
+import com.kh.bnpp.model.biz.ClassBiz;
+import com.kh.bnpp.model.biz.FileUploadBiz;
 import com.kh.bnpp.model.biz.FoodBiz;
-import com.kh.bnpp.model.biz.LectureBiz;
 import com.kh.bnpp.model.biz.MemberBiz;
 import com.kh.bnpp.model.biz.PayBiz;
+import com.kh.bnpp.model.dto.BillDto;
+import com.kh.bnpp.model.dto.ClassDetailDto;
+import com.kh.bnpp.model.dto.ClassDto;
 import com.kh.bnpp.model.dto.FoodDto;
 import com.kh.bnpp.model.dto.FoodListDto;
-import com.kh.bnpp.model.dto.LectureDto;
 import com.kh.bnpp.model.dto.MemberDto;
 import com.kh.bnpp.model.dto.PayDto;
 import com.kh.bnpp.sms.SMS;
@@ -43,13 +60,160 @@ public class MypageController {
 	private PayBiz p_biz;
 	
 	@Autowired
-	private LectureBiz l_biz;
+	private ClassBiz c_biz;
 	
 	@Autowired
 	private FoodBiz f_biz;
 	
 	@Autowired
+	private BillBiz b_biz;
+	
+	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+
+	@Value("${imgfile.Uploadpath}")
+	private String imgUploadPath;	
+	
+	@RequestMapping("/classdetailmedia.do")
+	public String classdetail(Model model, int class_num) {
+		model.addAttribute("class_num", class_num);
+		return "classdetail";
+	}
+	
+	@RequestMapping("/fooddelete.do")
+	public String fooddelete(String food_nums, String member_id) {
+		int temp;
+        String [] f_nums = food_nums.split(",");
+        int cnt = f_nums.length;
+        try {
+            for(int i = 0; i < cnt; i++) {
+            	temp = Integer.parseInt((String)f_nums[i]);
+                if (f_biz.delete(temp) > 0) {
+                	logger.info(i + " 번 식품 삭제 성공");
+                } else {
+                	logger.info(i + " 번 식품 삭제 실패");
+                }
+            }
+        } catch (Exception e) {
+        	logger.debug(e.getMessage());
+        }
+			
+		return "redirect:mypage.do?member_id="+member_id;
+	}
+
+	@RequestMapping(value = "/foodinsert.do", method = RequestMethod.POST)
+	public String foodinsert(@RequestParam("member_id") String member_id, @RequestParam("bill_list") String bill_list) {
+		int temp;
+
+        String [] b_list = bill_list.split(",");
+        int cnt = b_list.length;
+        BillDto b_dto = new BillDto();
+        FoodDto f_dto = new FoodDto();
+        f_dto.setMember_id(member_id);
+        try {
+            for(int i = 0; i < cnt; i++) {
+            	temp = Integer.parseInt((String)b_list[i]);
+            	b_dto = b_biz.selectOne(temp);
+            	f_dto.setFood_name(b_dto.getBill_name());
+            	
+                if (f_biz.insert(f_dto) > 0) {
+                	logger.info(i + " 번 식재료 등록 성공");
+                } else {
+                	logger.info(i + " 번 식재료 등록 실패");
+                }
+                
+                if (b_biz.delete(temp) > 0) {
+                	logger.info(i + " 번 영수증 삭제 성공");
+                } else {
+                	logger.info(i + " 번 영수증 삭제 실패");
+                }
+            }
+        } catch (Exception e) {
+        	logger.debug(e.getMessage());
+        }
+		return "redirect:receiptupload.do?member_id=" + member_id;
+	}
+	
+	@RequestMapping("/billdelete.do")
+	public String billdelete(@RequestParam("member_id") String member_id, @RequestParam("bill_list") String bill_list) {
+		int temp;
+        String [] b_list = bill_list.split(",");
+        int cnt = b_list.length;
+        try {
+            for(int i = 0; i < cnt; i++) {
+            	temp = Integer.parseInt((String)b_list[i]);
+                if (b_biz.delete(temp) > 0) {
+                	logger.info(i + " 번 영수증 삭제 성공");
+                } else {
+                	logger.info(i + " 번 영수증 삭제 실패");
+                }
+            }
+        } catch (Exception e) {
+        	logger.debug(e.getMessage());
+        }
+		return "redirect:receiptupload.do?member_id=" + member_id;
+	}
+	
+	@RequestMapping("/receiptupload.do")
+	public String receiptupload(Model model, String member_id) {
+		List<BillDto> b_list = b_biz.selectList(member_id);
+		model.addAttribute("member_id", member_id);
+		model.addAttribute("b_list", b_list);
+		return "receiptupload";
+	}
+	
+	@RequestMapping("/scan.do")
+	public String scan(@RequestParam("member_id") String member_id, @RequestParam("file") MultipartFile fm, HttpServletRequest request) {
+		//파일을 realPath에 저장하기
+		String uploadRealPath = request.getSession().getServletContext().getRealPath("/resources/img/receipts");
+		String paths = "/resources/img/receipts/";
+		
+		//위에 설정한 경로의 폴더가 없을 경우 생성
+		File dir = new File(uploadRealPath);
+		if(!dir.exists()) {
+			dir.mkdirs();
+		}
+				
+		//파일 업로드
+		if (!fm.getOriginalFilename().isEmpty()) {
+			// 파일명
+			String originalFile = fm.getOriginalFilename();
+			System.out.println("파일명이 뭔데? : " + originalFile);
+				
+			String fullPathName = request.getSession().getServletContext().getRealPath(paths + originalFile);	
+			try {
+				fm.transferTo(new File(fullPathName));
+				List<String> list = Clova_temp.OCR(fullPathName);
+				
+				List<BillDto> listres = Clova_temp.input_bill(list, member_id);
+				
+				int res = 0;
+				int i = 0;
+				
+				for (BillDto dto : listres) {
+					res += b_biz.insert(dto);
+					if (b_biz.insert(dto) > 0) {
+						logger.info(i + "번째 bill 삽입 성공");
+					}
+					i++;
+				}
+				if (res == listres.size()) {
+					return "redirect:receiptupload.do?member_id="+member_id;
+				} else {
+					logger.info("내역 몇개 빠짐");
+					return "redirect:receiptupload.do?member_id="+member_id;
+				}
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		} else {
+			logger.info("빈 파일")	;
+		}	
+		return "redirect:receiptupload.do?member_id="+member_id;
+	}
 	
 	@RequestMapping("/mypage.do")
 	public String mypage(String member_id) {
@@ -61,12 +225,11 @@ public class MypageController {
 		for (FoodDto f_dto : foods) {
 			if (f_dto.getFood_alarm_yn().equals("N")) {
 				f_life = f_dto.getFood_life();
-				if (!f_life.equals("미설정") || !f_life.isBlank()) {
+				if (!f_life.equals("미설정")) {
 					try {
 						if (!SMS.compareDate(f_life).equals("0")) {
 							alarm_dto = m_biz.selectOne(f_dto.getMember_id());
-							// phone = alarm_dto.getMember_phone().replace("-", "");
-							phone = "01064244977";
+							phone = alarm_dto.getMember_phone().replace("-", "");
 							content = "내 냉장고 안의 " + f_dto.getFood_name() + "의 " + SMS.compareDate(f_life);
 							try {
 								SMS.sendSMS(phone, content);
@@ -99,14 +262,14 @@ public class MypageController {
 	public String mypage_student(Model model, String member_id) {
 		MemberDto m_dto = m_biz.selectOne(member_id);
 		List<PayDto> p_list = p_biz.selectMyList(member_id);
-		List<LectureDto> l_list = new ArrayList<LectureDto>();
-		LectureDto l_dto = null;
+		List<ClassDto> c_list = new ArrayList<ClassDto>();
+		ClassDto c_dto = null;
 		for (PayDto p_dto : p_list) {
-			l_dto = l_biz.selectOne(p_dto.getLecture_num());
-			l_list.add(l_dto);
+			c_dto = c_biz.selectOne(p_dto.getClass_num());
+			c_list.add(c_dto);
 		}
 		List<FoodDto> f_list = f_biz.selectMyList(member_id);
-		model.addAttribute("l_list", l_list);
+		model.addAttribute("c_list", c_list);
 		model.addAttribute("f_list", f_list);
 		model.addAttribute("m_dto", m_dto);
 		return "mypage_student";
@@ -115,9 +278,9 @@ public class MypageController {
 	@RequestMapping("/mypage_teacher.do")
 	public String mypage_teacher(Model model, String member_id) {
 		MemberDto m_dto = m_biz.selectOne(member_id);
-		List<LectureDto> l_list = l_biz.selectMyList(member_id);
+		List<ClassDetailDto> c_list = c_biz.selectList(member_id);
 		List<FoodDto> f_list = f_biz.selectMyList(member_id);
-		model.addAttribute("l_list", l_list);
+		model.addAttribute("c_list", c_list);
 		model.addAttribute("f_list", f_list);
 		model.addAttribute("m_dto", m_dto);
 		return "mypage_teacher";
@@ -156,12 +319,13 @@ public class MypageController {
 	}
 	
 	@RequestMapping("/memberdelete.do")
-	public String delete(String member_id, String member_pw) {
+	public String delete(String member_id, String member_pw, HttpSession session) {
 		MemberDto dto = m_biz.selectOne(member_id);
 		if (passwordEncoder.matches(member_pw, dto.getMember_pw())) {
 			if (m_biz.delete(dto) > 0) {
 				logger.info("회원 삭제 성공");
-				return "index.do";
+				session.invalidate(); 
+				return "redirect:main.do";
 			}
 			logger.info("회원 삭제 실패");
 			return "redirect:mypage.do?member_id="+member_id;
@@ -184,5 +348,14 @@ public class MypageController {
 		return res;
 	}
 	
+	@RequestMapping("/tests.do")
+	public void ocrtest(HttpServletRequest request) {
+		List<String> list = Clova_temp.OCR("/resources/img/receipts/receipt4.jpg");
+		System.out.println("receipt4");
+		List<BillDto> listres = Clova_temp.input_bill(list, "asd123");
+	}
+	
 }
+
+
 

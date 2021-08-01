@@ -151,12 +151,12 @@ z-index : 9999; /* 해당 요소 맨앞으로 가져오기  */
 
 	
 	<!--  sidebar -quick -menu ******************* -->
-	<div style="height:5000px" class="quick_menu">
+	<div style="height:800px; right-padding:20%" class="quick_menu">
 		<ul>  <!--  class="bi bi-headphones"  alt="headphones" style="font-size: 2rem;"  : 글자가 같이 커짐-->
-			<li class="bi bi-headphones" alt="Bootstrap" width="60" height="60" ><a href="chatlogin.do">실시간 상담</a></li> <br>
-			<li class="bi bi-pin-map-fill"  alt="kitchenmap"><a href="kitchenmap.do">가까운 주방</a></li><br>
-			<li class="bi bi-patch-question-fill"><a href="recipe.do">오늘 뭐먹지</a></li><br>
-			<li class="bi bi-basket2"><a href="machine.do">내 재료 확인</a></li>
+			<li width="60" height="60" ><a href="chatlogin.do"><img src="resources/assets/images/sidebar1.png" width="100" alt=""></a></li> <br>
+			<li><a href="kitchenmap.do"><img src="resources/assets/images/sidebar2.png" width="100" alt=""></a></li><br>
+			<li><a href="recipe.do"><img src="resources/assets/images/sidebar3.png" width="100" alt=""></a></li><br>
+			<li><a href="machine.do"><img src="resources/assets/images/sidebar4.png" width="100" alt=""></a></li>
 		</ul>
 	</div>
 

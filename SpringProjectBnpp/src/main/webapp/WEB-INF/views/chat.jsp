@@ -1,29 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Simple Chat</title>
+<title>실시간 상담 채팅방</title>
 </head>
 <body>
 
     <div>
-        <button type="button" onclick="openSocket();">대화방 참여</button>
-        <button type="button" onclick="closeSocket();">대회방 나가기</button>
+        <button type="button" onclick="openSocket();">상담 시작하기</button>
+        <button type="button" onclick="closeSocket();">상담 끝내기</button>
     	<br/><br/><br/>
+    	<c:choose>
+    		<c:when test="${sessionScope.id eq 'admin'}">
+    		고객님과의상담방입니다. 상담 시작하기를 눌러주세요. <br><br>
+    		</c:when>
+    	<c:otherwise>
           <input type="text" id="sender" value="${sessionScope.id}" style="display: none;">   <!--  id: jstl 로 사용 -->
-          <p>${id} 님과의 대화방입니다.<p>
+          <p> [ ${id} 님과 상담사와의 실시간 채팅방 ] 입니다. 상담 시작하기를 눌러주세요 </p><br>
+          </c:otherwise>
+          </c:choose>
+          <br>
   		메세지 입력 : 
         <input type="text" id="messageinput">
         <button type="button" onclick="send();">메세지 전송</button>
-        <button type="button" onclick="javascript:clearText();">대화내용 지우기</button>
+        <!--  현재의 대화내용 모두 지우는 함수 호출 버튼-->
+       <!--   <button type="button" onclick="javascript:clearText();">대화내용 지우기</button> --> 
     </div>
     <!-- Server responses get written here -->
     <div id="messages">
     </div>
     
-    회원 - 상담사연결! 
+    
     
     
     <!-- websocket javascript -->
@@ -39,7 +49,7 @@
             }
             
             //웹소켓 객체 만드는 코드          //qclass.iptime.org  :포트도 톰켓 버전에 맞춰서 바꿔주기. (9.0에맞는거 쓰면 됨.)
-            ws = new WebSocket("ws://localhost:8080/bnpp/echo.do");            //바꿔야 하나?
+            ws = new WebSocket("ws://localhost:3334/bnpp/echo.do");            //바꿔야 하나?
             		//localhost: me: 127.0.0.1  나한테 요청, 실제 아이피 주소가 바뀜. 
             		//dns. 
             

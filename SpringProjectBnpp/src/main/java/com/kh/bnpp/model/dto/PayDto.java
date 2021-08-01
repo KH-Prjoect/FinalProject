@@ -6,47 +6,56 @@ public class PayDto {
 
 	private int pay_num;
 	private Date pay_date;
-	private int pay_price;
+	private int class_price;
 	private String pay_step;
 	private String member_id;
-	private int lecture_num;
-	private String lecture_name;
-	private String lecture_category;
+	private int class_num;
+	private String class_title;
+	private String class_category;
 	private String pay_method;
 	public PayDto() {
 	}
 	
-	public PayDto(int pay_price, String member_id, String lecture_name, String pay_method) {
+	public PayDto(int class_price, String member_id, String class_title, String pay_method) {
 		super();
-		this.pay_price = pay_price;
+		this.class_price = class_price;
 		this.member_id = member_id;
-		this.lecture_name = lecture_name;
+		this.class_title = class_title;
 		this.pay_method = pay_method;
 	}
+	
+	public PayDto(int class_price, String member_id, int class_num, String class_title, String class_category) {
+		super();
+		this.class_price = class_price;
+		this.member_id = member_id;
+		this.class_num = class_num;
+		this.class_title = class_title;
+		this.class_category = class_category;
+	}
 
-	public PayDto(int pay_num, Date pay_date, int pay_price, String pay_step, String member_id, int lecture_num,
-			String lecture_name, String lecture_category) {
+	public PayDto(int pay_num, Date pay_date, int class_price, String pay_step, String member_id, int class_num,
+			String class_title, String class_category) {
 		this.pay_num = pay_num;
 		this.pay_date = pay_date;
-		this.pay_price = pay_price;
+		this.class_price = class_price;
 		this.pay_step = pay_step;
 		this.member_id = member_id;
-		this.lecture_num = lecture_num;
-		this.lecture_name = lecture_name;
-		this.lecture_category = lecture_category;
+		this.class_num = class_num;
+		this.class_title = class_title;
+		this.class_category = class_category;
 	}
 	
-	public PayDto(int pay_num, Date pay_date, int pay_price, String pay_step, String member_id, int lecture_num,
-			String lecture_name, String lecture_category, String pay_method) {
+	public PayDto(int pay_num, Date pay_date, int class_price, String pay_step, String member_id, int class_num,
+			String class_title, String class_category, String pay_method) {
 		super();
 		this.pay_num = pay_num;
 		this.pay_date = pay_date;
-		this.pay_price = pay_price;
+		this.class_price = class_price;
 		this.pay_step = pay_step;
 		this.member_id = member_id;
-		this.lecture_num = lecture_num;
-		this.lecture_name = lecture_name;
-		this.lecture_category = lecture_category;
+		this.class_num = class_num;
+		this.class_title = class_title;
+		this.class_category = class_category;
 		this.pay_method = pay_method;
 	}
 	public String getPay_method() {
@@ -67,11 +76,11 @@ public class PayDto {
 	public void setPay_date(Date pay_date) {
 		this.pay_date = pay_date;
 	}
-	public int getPay_price() {
-		return pay_price;
+	public int getClass_price() {
+		return class_price;
 	}
-	public void setPay_price(int pay_price) {
-		this.pay_price = pay_price;
+	public void setClass_price(int class_price) {
+		this.class_price = class_price;
 	}
 	public String getPay_step() {
 		return pay_step;
@@ -85,23 +94,25 @@ public class PayDto {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
-	public int getLecture_num() {
-		return lecture_num;
+	public int getClass_num() {
+		return class_num;
 	}
-	public void setLecture_num(int lecture_num) {
-		this.lecture_num = lecture_num;
+	public void setClass_num(int class_num) {
+		this.class_num = class_num;
 	}
-	public String getLecture_name() {
-		return lecture_name;
+	public String getClass_title() {
+		return class_title;
 	}
-	public void setLecture_name(String lecture_name) {
-		this.lecture_name = lecture_name;
+	public void setClass_title(String class_title) {
+		this.class_title = class_title;
 	}
-	public String getLecture_category() {
-		return lecture_category;
+	public String getClass_category() {
+		return class_category;
 	}
-	public void setLecture_category(String lecture_category) {
-		this.lecture_category = lecture_category;
+	public void setClass_category(String class_category) {
+		this.class_category = class_category;
 	}
 	
 }
+
+
