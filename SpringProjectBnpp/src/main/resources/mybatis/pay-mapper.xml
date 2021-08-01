@@ -12,7 +12,7 @@
 		SELECT P.PAY_NUM, P.PAY_DATE, C.CLASS_PRICE, P.PAY_STEP, P.MEMBER_ID, C.CLASS_NUM, C.CLASS_TITLE, 
 		(SELECT MEMBER_CATEGORY FROM MEMBER WHERE MEMBER_ID = C.TEACHER_ID) AS CLASS_CATEGORY
 		FROM PAY P, CLASS C
-		WHERE P.MEMBER_ID = 'asd123' AND P.CLASS_NUM = C.CLASS_NUM
+		WHERE P.MEMBER_ID = #{member_id} AND P.CLASS_NUM = C.CLASS_NUM
 	</select>
 	
 	<select id="selectOne" parameterType="int" resultType="PayDto">
@@ -38,7 +38,6 @@
 	</delete>
 	
 </mapper>
-
 
 
 
