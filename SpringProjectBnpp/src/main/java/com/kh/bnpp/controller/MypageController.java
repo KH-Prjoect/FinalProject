@@ -76,7 +76,8 @@ public class MypageController {
 	
 	@RequestMapping("/classdetailmedia.do")
 	public String classdetail(Model model, int class_num) {
-		model.addAttribute("class_num", class_num);
+		ClassDto dto = c_biz.selectOne(class_num);
+		model.addAttribute("dto", dto);
 		return "classdetail";
 	}
 	
