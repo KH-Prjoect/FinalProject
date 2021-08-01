@@ -64,6 +64,19 @@
 		});
 	}
 	
+	//영역 숨기기할 때 tr외부나 내부에 div 안먹히니깐 tr에 id줘서 해결하기
+	function setDisplay(value){
+		if(value=="M"){
+			tCat.style.display='none';
+			tCer.style.display='none';
+			tCar.style.display='none';
+		}else{
+			tCat.style.display='';
+			tCer.style.display='';
+			tCar.style.display='';
+		}
+	}
+	
 	function isValid(inputVal){
 		if (inputVal == null || inputVal.trim() == "") {
 			alert("* 표시는 필수입력 항목입니다!");
@@ -260,6 +273,7 @@
 					<br>
 					<input type="text" name="checkAd" id="roadAddress" placeholder="도로명주소">
 					<input type="text" id="jibunAddress" placeholder="지번주소">
+					<br>
 					<span id="guide" style="color:#999;display:none"></span>
 					<input type="text" id="detailAddress" placeholder="상세주소">
 					<input type="text" id="extraAddress" placeholder="참고항목">
@@ -268,25 +282,24 @@
 			</tr>
 			<tr>
 				<th>강사가입시 체크</th>
-				<td><input type="radio" name="member_role" value="T">강사가입</td>
+				<td><input type="radio" id="tr1" name="member_role" value="T" onclick="setDisplay(this.value)"><label>강사가입</label>
+				    <input type="radio" id="tr2" name="member_role" value="M" onclick="setDisplay(this.value)" checked><label>강사가입안함</label>
+					</td>
 			</tr>
-			<tr>
+			<tr id="tCat" style="display: none;">
 				<th>강사 분야</th>
 				<td><input type="radio" name="member_category" value="한식">한식
 					<input type="radio" name="member_category" value="중식">중식
 					<input type="radio" name="member_category" value="양식">양식
 					<input type="radio" name="member_category" value="일식">일식
-					<br>
-					<input type="radio" name="member_category" value="베이커리">베이커리
-					<input type="radio" name="member_category" value="디저트">디저트
-					<input type="radio" name="member_category" value="올라운더">올라운더
+					<input type="radio" name="member_category" value="기타">기타
 				</td>
 			</tr>
-			<tr>
+			<tr id="tCer" style="display: none;">
 				<th>강사 자격증</th>
 				<td><textarea rows="10" cols="20" name="member_certi"></textarea></td>
 			</tr>
-			<tr>
+			<tr id="tCar" style="display: none;">
 				<th>강사 경력</th>
 				<td><textarea rows="10" cols="20" name="member_career"></textarea></td>
 			</tr>

@@ -17,6 +17,16 @@
 		}
 	}
 	
+	function setDisplay(value){
+		if(value=="N"){
+			trWhereOn.style.display='none';
+			trWhereOff.style.display='';
+		}else{
+			trWhereOn.style.display='';
+			trWhereOff.style.display='none';
+		}
+	}
+	
 	
 	function confirm(){
 		
@@ -148,12 +158,12 @@
 				</tr>
 				<tr>
 					<th>* 강의 진행 방법</th>
-					<td><input type="radio" id="radio1" name="class_how" value="N">온라인
-						<input type="radio" name="class_how" value="F">오프라인
+					<td><input type="radio" id="radio1" name="class_how" value="N" onclick="setDisplay(this.value)"><label>온라인</label>
+						<input type="radio" id="radio2" name="class_how" value="F" checked onclick="setDisplay(this.value)"><label>오프라인</label>
 					</td>
 				</tr>
-				<tr>
-					<th>강의장소(오프라인시)</th>
+				<tr id="trWhereOn">
+					<th>강의장소(오프라인)</th>
 					<td>
 					<input type="text" id="postcode" placeholder="우편번호">
 					<input type="button" value="주소 검색" onclick="DaumPostCode()" class="btn btn-outline-success">
@@ -166,6 +176,10 @@
 					<input type="text" id="extraAddress" placeholder="참고항목">
 					<input type="hidden" id="address1" name="class_where" >
 					</td>
+				</tr>
+				<tr id="trWhereOff" style="display: none">
+					<th>강의장소(온라인)</th>
+					<td>온라인 강의입니다!</td>
 				</tr>
 				<tr>
 					<th>* 필요한 재료</th>
