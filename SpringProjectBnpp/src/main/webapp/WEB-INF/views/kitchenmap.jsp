@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="header.jsp" />
+
+	<div class="main-banner wow fadeIn">
 <h1>공유주방 정보</h1>
 지금 현재 나의 위치가 가장 먼저 표시됩니다.(chrom e에선 https 환경에서만 가능합니다.)<br>
 gps 가 현재 위치를 찾기까지 잠시 기다려 주세요 <br><br>
@@ -16,7 +19,9 @@ gps 가 현재 위치를 찾기까지 잠시 기다려 주세요 <br><br>
 
  -----------todo : 마커 클릭시 맵 밖에 주소 보이도록 하기 <br><br><br>
 
-<body>
+
+
+	
 <!-- 지도를 표시할 div 입니다 -->
 <div id="map" style="width:50%; height:350px;"></div>
 <br><br><br>
@@ -30,7 +35,8 @@ gps 가 현재 위치를 찾기까지 잠시 기다려 주세요 <br><br>
 	    	<button type="button" id="spaceinfo"  onclick="popup();">공간 정보보기</button>
 	    </span>
 	    
-	    
+</div>
+<jsp:include page="footer.jsp" />
 	    
 	    <!--  script -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
