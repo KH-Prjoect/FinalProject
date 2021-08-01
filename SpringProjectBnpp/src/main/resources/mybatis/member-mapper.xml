@@ -11,13 +11,13 @@
 	
 	<update id="updatestudent" parameterType="MemberDto">
 		UPDATE MEMBER
-		MEMBER_NAME = #{member_name}, MEMBER_EMAIL = #{member_email}, MEMBER_PHONE = #{member_phone}, MEMBER_ADDRESS = #{member_address}
+		SET MEMBER_NAME = #{member_name}, MEMBER_EMAIL = #{member_email}, MEMBER_PHONE = #{member_phone}, MEMBER_ADDRESS = #{member_address}
 		WHERE MEMBER_ID = #{member_id}
 	</update>
 	
 	<update id="updateteacher" parameterType="MemberDto">
 		UPDATE MEMBER
-		MEMBER_NAME = #{member_name}, MEMBER_EMAIL = #{member_email}, MEMBER_PHONE = #{member_phone}, MEMBER_ADDRESS = #{member_address}, 
+		SET MEMBER_NAME = #{member_name}, MEMBER_EMAIL = #{member_email}, MEMBER_PHONE = #{member_phone}, MEMBER_ADDRESS = #{member_address}, 
 		MEMBER_CATEGORY = #{member_category}, MEMBER_CERTI = #{member_certi}, MEMBER_CAREER = #{member_career}
 		WHERE MEMBER_ID = #{member_id}
 	</update>
@@ -42,7 +42,7 @@
 	
 	<insert id="insert" parameterType="MemberDto">
 		INSERT INTO MEMBER
-		VALUES(#{member_id},#{member_pw},#{member_name},#{member_email},#{member_phone},#{member_address},#{member_role},#{member_category},#{member_intro},#{member_certi},#{member_career},SYSDATE,#{member_img_path},#{member_img_name})
+		VALUES(#{member_id},#{member_pw},#{member_name},#{member_email},#{member_phone},#{member_address},#{member_role},#{member_category},#{member_certi},#{member_career},SYSDATE,#{member_img_path},#{member_img_name},#{member_intro})
 	</insert>
 
 	<delete id="delete" parameterType="MemberDto">
@@ -51,7 +51,7 @@
 	</delete>
 	
 	<select id="checkId" parameterType="String" resultType="String">
-		SELECT COUNT(*) 
+		SELECT COUNT(*)
 		FROM MEMBER
 		WHERE MEMBER_ID=#{checkID}
 	</select>
@@ -63,9 +63,9 @@
 	</select>
 	
 	<select id="findPw" parameterType="MemberDto" resultType="String">
-		SELECT MEMBER_PW
+		SELECT COUNT(*)
 		FROM MEMBER
-		WHERE MEMBER_ID = #{member_id} AND MEMBER_NAME = #{member_name}
+		WHERE MEMBER_ID = #{member_id} AND MEMBER_EMAIL = #{member_email}
 	</select>
 
 	<select id="findAllT" parameterType="String" resultType="MemberDto">

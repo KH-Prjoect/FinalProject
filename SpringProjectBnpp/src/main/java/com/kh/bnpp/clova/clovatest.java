@@ -1,18 +1,12 @@
-
 package com.kh.bnpp.clova;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.kh.bnpp.model.dto.BillDto;
-
-import java.io.File;
 
 public class clovatest {
 	
@@ -90,7 +84,6 @@ public class clovatest {
 			+"\t"+dto.getBill_total()+"\t"+dto.getBill_date()+"\t"+dto.getMember_id());
 		}
 
-		
 	}
 	
 	public static List<BillDto> input_bill(List<String> rawlist, String member_id) {
@@ -162,9 +155,8 @@ public class clovatest {
 			result = Integer.toString(num);
 		}
 		return result;
-	}
-	
-	
+
+	}	
 	
 }
 

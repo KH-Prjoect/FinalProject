@@ -62,10 +62,14 @@
 									aria-labelledby="dropdownCategoryMenu">
 									<li><a href="<c:url value='/teacherList.do?category=한식' />">
 											한식</a></li>
-									<li><a href="#">
+									<li><a href="<c:url value='/teacherList.do?category=양식'/>">
 											양식</a></li>
-									<li><a href="#">
+									<li><a href="<c:url value='/teacherList.do?category=중식' />">
 											중식</a></li>
+									<li><a href="<c:url value='/teacherList.do?category=일식' />">
+											일식</a></li>
+									<li><a href="<c:url value='/teacherList.do?category=기타' />">
+											기타</a></li>
 								</ul></li>
 						
 						<li class="scroll-to-section"><a href="#">고객센터</a></li>
@@ -94,7 +98,7 @@
 											width="40" height="40">
 										</a>
 									</c:if>
-									<li class="scroll-to-section"><a href="./mypage.do?member_id=${dbDto.member_id }">${dbDto.member_id }님
+									<li class="scroll-to-section"><a href="mypage.do?member_id=${dbDto.member_id }">${dbDto.member_id }님
 									</a></li>
 									<li class="scroll-to-section"><div
 											class="main-blue-button">
@@ -137,13 +141,17 @@
 	<script type="text/javascript">
 
 		function openPopup() {
+			
+			var popupX = (document.body.offsetWidth / 2) - (200 / 2);
+			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
 
-			window
-					.open(
+			var popupY= (document.body.offsetHeight / 2) - (300 / 2);
+			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+			
+			window.open(
 							"",
 							"popOpen",
-							'fullscreen=no,menubar=no,status=no,toolbar=no,titlebar=no,location=no,scrollbar=auto');
-
+							'status=no,scrollbar=auto, height=500, width=400, left='+popupX+',top='+popupY);
 			iniform.target = "popOpen";
 			iniform.action = "popup.do";
 			iniform.submit();

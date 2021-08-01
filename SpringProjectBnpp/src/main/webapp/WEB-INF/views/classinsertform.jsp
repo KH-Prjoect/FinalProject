@@ -8,26 +8,72 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	
-	function confirm(){
-		//alert("회원가입 버튼 클릭>>");
-		
-		$('input[name=class_where]').val($('#roadAddress').val()
-										  + ','
-				  						  + $('#jibunAddress').val()
-				  						  + ','
-				  						  + $('#detailAddress').val()
-				  						     
-									  	  + $('#extraAddress').val());
-		//위에랑 기능은 같음
-		/* var totalAddress = $('#roadAddress').val() + $('#jibunAddress').val() + $('#detailAddress').val() + $('#extraAddress').val();
-		//alert("totalAddress = " + totalAddress);
-		$('input[name=member_address]').attr('value',totalAddress); */
-											  
-		//alert("최종 input[name=class_where] = " + $("input[class_where]").val());
-		$("form[name=classform]").submit();
+	function isValid(inputVal){
+		if(inputVal == null || inputVal.trim() == ""){
+			alert("* 표시는 필수 입력 항목입니다!!");
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
-
+	function setDisplay(value){
+		if(value=="N"){
+			trWhereOn.style.display='none';
+			trWhereOff.style.display='';
+		}else{
+			trWhereOn.style.display='';
+			trWhereOff.style.display='none';
+		}
+	}
+	
+	
+	function confirm(){
+		
+		// focus는 모든 태그에 적용 안됨(textarea는 되는데 input은 안됨), scrollIntoView()이건 거의 모든 태그 가능함
+		
+		if(isValid($("input[name=class_title]").val())){
+			alert("강의 이름을 입력해주세요!");
+			document.getElementById('title1').scrollIntoView();
+		}else if(isValid($("textarea[name=class_intro]").val())){
+			alert("강의 소개를 입력해주세요!");
+			document.getElementById('intro1').focus();
+		}else if(isValid($("input[name=class_price]").val())){
+			alert("강의 가격을 입력해주세요!");
+			document.getElementById('price1').focus();
+		}else if(isValid($("input[name=class_how]:checked").val())){
+			alert("강의 방법을 체크해주세요!");
+			document.getElementById('radio1').scrollIntoView();
+		}else if(isValid($("textarea[name=class_ingred]").val())){
+			alert("강의 재료를 입력해주세요!");
+			document.getElementById('ingred1').focus();
+		}else if(isValid($("textarea[name=class_content]").val())){
+			alert("강의 내용을 입력해주세요!");
+			document.getElementById('content1').focus();
+		}else{
+		
+			$('input[name=class_where]').val($('#roadAddress').val()
+											  + ','
+					  						  + $('#jibunAddress').val()
+					  						  + ','
+					  						  + $('#detailAddress').val()
+					  						  + ','  
+										  	  + $('#extraAddress').val());
+			/*
+			if($('input[name=class_where]').val().trim() == ",,,"){
+				$('input[name=class_where]').val("온라인 강의입니다!");
+			}
+			*/
+			//위에랑 기능은 같음
+			/* var totalAddress = $('#roadAddress').val() + $('#jibunAddress').val() + $('#detailAddress').val() + $('#extraAddress').val();
+			//alert("totalAddress = " + totalAddress);
+			$('input[name=member_address]').attr('value',totalAddress); */
+												  
+			//alert("최종 input[name=class_where] = " + $("input[class_where]").val());
+			$("form[name=classform]").submit();
+		}
+	}
+	
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -98,25 +144,25 @@
 			<table id="class_form_table" class="table table-bordered w-auto">
 				<tbody>
 				<tr>
-					<th>강의 이름</th>
-					<td><input type="text" name="class_title"></td>
+					<th>* 강의 이름</th>
+					<td><input id="title1" type="text" name="class_title"></td>
 				</tr>
 				<tr>
-					<th>강의 소개</th>
-					<td><textarea rows="10" cols="20" name="class_intro"></textarea></td>
+					<th>* 강의 소개</th>
+					<td><textarea id="intro1" rows="10" cols="20" name="class_intro"></textarea></td>
 				</tr>
 				<tr>
-					<th>강의 가격</th>
-					<td><input type="text" name="class_price">원</td>
+					<th>* 강의 가격</th>
+					<td><input id="price1" type="text" name="class_price">원</td>
 				</tr>
 				<tr>
-					<th>강의 진행 방법</th>
-					<td><input type="radio" name="class_how" value="N">온라인
-						<input type="radio" name="class_how" value="F">오프라인
+					<th>* 강의 진행 방법</th>
+					<td><input type="radio" id="radio1" name="class_how" value="N" onclick="setDisplay(this.value)"><label>온라인</label>
+						<input type="radio" id="radio2" name="class_how" value="F" checked onclick="setDisplay(this.value)"><label>오프라인</label>
 					</td>
 				</tr>
-				<tr>
-					<th>강의장소(오프라인시)</th>
+				<tr id="trWhereOn">
+					<th>강의장소(오프라인)</th>
 					<td>
 					<input type="text" id="postcode" placeholder="우편번호">
 					<input type="button" value="주소 검색" onclick="DaumPostCode()" class="btn btn-outline-success">
@@ -130,13 +176,17 @@
 					<input type="hidden" id="address1" name="class_where" >
 					</td>
 				</tr>
-				<tr>
-					<th>필요한 재료</th>
-					<td><textarea rows="10" cols="20" name="class_ingred"></textarea></td>
+				<tr id="trWhereOff" style="display: none">
+					<th>강의장소(온라인)</th>
+					<td>온라인 강의입니다!</td>
 				</tr>
 				<tr>
-					<th>강의 내용</th>
-					<td><textarea rows="10" cols="20" name="class_content"></textarea></td>
+					<th>* 필요한 재료</th>
+					<td><textarea id="ingred1" rows="10" cols="20" name="class_ingred"></textarea></td>
+				</tr>
+				<tr>
+					<th>* 강의 내용</th>
+					<td><textarea id="content1" rows="10" cols="20" name="class_content"></textarea></td>
 				</tr>
 				<tr>
 					<th>강의 영상</th>

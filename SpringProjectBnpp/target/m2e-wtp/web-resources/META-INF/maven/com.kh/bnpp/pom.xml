@@ -238,13 +238,16 @@
 			<version>2.4</version>
 		</dependency>
 		
+
+		<!-- email추가 -->
 		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
 			<version>1.6.1</version>
 		</dependency>
-		
+
 	</dependencies>
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -283,4 +286,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>
+
