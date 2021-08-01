@@ -23,7 +23,7 @@
 	
 	<insert id="insert" parameterType="PayDto">
 		INSERT INTO PAY
-		VALUES(PAYSEQ.NEXTVAL, SYSDATE, #{class_price}, '결제완료', #{member_id}, #{class_num}, #{class_title}, #{class_category})
+		VALUES(PAYSEQ.NEXTVAL, SYSDATE, #{class_price}, '결제완료', #{member_id}, #{class_num}, #{class_title}, #{member_category})
 	</insert>
 	
 	<update id="update" parameterType="PayDto">
@@ -38,6 +38,7 @@
 	</delete>
 	
 </mapper>
+
 
 
 
