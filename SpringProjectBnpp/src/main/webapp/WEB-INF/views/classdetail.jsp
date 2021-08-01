@@ -50,11 +50,17 @@
 				<th>강의 내용</th>
 				<td>${dto.class_content }</td>
 			</tr>
-			<!-- 동영상  -->
-			
+			<tr>
+				<th>강의 영상</th>
+				<td>
+					<video height="200" width="300"  autoplay="autoplay" controls="controls">
+						<source src="resources/upload/video/${dto.class_media_name }">
+						 이 문장은 여러분의 브라우저가 video 태그를 지원하지 않을 때 화면에 표시됩니다!
+					</video>
+				</td>
+			</tr>
 			<tr>
 				<td>
-					<input type="button" value="영상 다운로드" />
 					<button onclick="history.back()">취소</button>
 				</td>
 			</tr>
