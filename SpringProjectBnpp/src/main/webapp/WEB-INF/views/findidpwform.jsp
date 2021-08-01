@@ -20,6 +20,15 @@
 		var member_nameId=$("input[name=member_nameId]").val().trim();
 		var member_email=$("input[name=member_email]").val().trim();
 		
+		//이메일 유효성 검사 먼저
+		var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+		if(exptext.test(member_email)==false){
+			//이메일 형식이 알파벳+숫자@알파벳+숫자.알파벳+숫자 형식이 아닐경우
+			alert("입력하신 메일의 형식이 올바르지 않습니다. 다시 입력해주세요.");
+			document.getElementById('idPw').scrollIntoView();
+			return false;
+		}
+		
 		var idVal = {
 				"member_name" : member_nameId,
 				"member_email" : member_email
@@ -54,27 +63,36 @@
 	
 	function findPw(){
 		var member_id = $("input[name=member_id]").val().trim();
-		var member_namePw = $("input[name=member_namePw]").val().trim();
+		var member_emailPw = $("input[name=member_emailPw]").val().trim();
+		
+		//이메일 유효성 검사 먼저
+		var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+		if(exptext.test(member_emailPw)==false){
+			//이메일 형식이 알파벳+숫자@알파벳+숫자.알파벳+숫자 형식이 아닐경우
+			alert("입력하신 메일의 형식이 올바르지 않습니다. 다시 입력해주세요.");
+			document.getElementById('idPw').scrollIntoView();
+			return false;
+		}
 		
 		var pwVal = {
 				"member_id" : member_id,
-				"member_name" : member_namePw
+				"member_email" : member_emailPw
 		}
 		
-		if(member_id == null || member_id == "" || member_namePw == null || member_namePw == ""){
-			alert("아이디와 이름을 모두 입력해주세요!!");
+		if(member_id == null || member_id == "" || member_emailPw == null || member_emailPw == ""){
+			alert("아이디와 이메일을 모두 입력해주세요!!");
 		}else{
 			$.ajax({
 				type: "post",
 				url: "findPw.do",
 				data: JSON.stringify(pwVal),
 				contentType: "application/json",
-				dataType: "text",
-				success: function(pw){
+				dataType: "json",
+				success: function(msg){
 					alert("통신성공");
-					if(pw != null || pw != ""){
+					if(msg.check == true){
 						$("#pwChk").show();
-						$("#pwChk").html("찾으시는 비밀번호는 [ " + pw + " ] 입니다.");
+						$("#pwChk").html("이메일로 전송된 임시비밀번호로 로그인 해주세요.");
 					}else{
 						$("#pwChk").show();
 						$("#pwChk").html("아이디와 이메일을 다시 확인해주세요.");
@@ -105,14 +123,14 @@
 	<hr>
 	<h2>ID찾기</h2>
 	
-	<table border="1">
+	<table>
 		<tr>
 			<th>이름</th>
 			<td><input type="text" name="member_nameId" placeholder="이름을 입력해주세요"></td>
 		</tr>
 		<tr>
 			<th>Email</th>
-			<td><input type="text" name="member_email" placeholder="Email을 입력해주세요"></td>
+			<td><input type="text" id="idPw" name="member_email" placeholder="Email을 입력해주세요"></td>
 		</tr>
 		<tr>
 			<td colspan="2" id="idChk"></td>
@@ -131,14 +149,14 @@
 	<hr>
 	<h2>PW찾기</h2>
 	
-	<table border="1">
+	<table>
 		<tr>
 			<th>ID</th>
 			<td><input type="text" name="member_id" placeholder="아이디를 입력해주세요"></td>
 		</tr>
 		<tr>
-			<th>이름</th>
-			<td><input type="text" name="member_namePw" placeholder="이름을 입력해주세요"></td>
+			<th>email</th>
+			<td><input type="text" id="emailPw" name="member_emailPw" placeholder="이메일을 입력해주세요"></td>
 		</tr>
 		<tr>
 			<td colspan="2" id="pwChk"></td>
