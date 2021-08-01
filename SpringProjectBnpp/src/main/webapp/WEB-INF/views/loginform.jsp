@@ -103,11 +103,7 @@
 				</td>
 			</tr>
 		</table>
-			<div id="google_recaptha">
-			<script src='https://www.google.com/recaptcha/api.js'></script>
-			<div class="g-recaptcha" data-sitekey="6LeEPdMbAAAAAPqUsWdIxEf8MlNiBotA4_tH8uke"></div>
-			</div>
-		</div>
+	</div>
 </div>
 
 <jsp:include page="footer.jsp" />
