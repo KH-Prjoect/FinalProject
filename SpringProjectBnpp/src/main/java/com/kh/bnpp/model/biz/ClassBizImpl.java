@@ -28,20 +28,16 @@ public class ClassBizImpl implements ClassBiz {
 	@Override
 	public int insert(ClassDto dto) {
 		System.out.println("dto.getClass_how() : " + dto.getClass_how());
-		if(dto.getClass_how() == "N") {
-			dto.setClass_where("온라인강의 입니다.");
-			System.out.println("dto.setClass_where : " + dto.getClass_where());
+		//문자열비교는 == 아니고 .equlse()!!!!!!!!!!!!!!!!!!!!!!!!!
+		if(dto.getClass_how().equals("N")) {
+			System.out.println("온라인 강의라서 장소에 온라인 강의입니다!! 넣어주기");
+			dto.setClass_where("온라인 강의 입니다!!");
 		}
-		
 		return dao.insert(dto);
 	}
 
 	@Override
 	public int update(ClassDto dto) {
-		//강의 신청시 온라인강의로 신청했을 시 class_where컬럼에 "온라인강의입니다." 넣어주기
-		if(dto.getClass_where().trim() == ",,") {
-			dto.setClass_where("온라인강의입니다.");
-		}
 		return dao.update(dto);
 	}
 
