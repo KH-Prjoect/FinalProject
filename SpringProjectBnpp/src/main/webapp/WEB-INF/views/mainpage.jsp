@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -177,7 +177,7 @@ z-index : 9999; /* 해당 요소 맨앞으로 가져오기  */
 			</div>
 			<div class="row">
 				<div class="col-lg-3 col-sm-6">
-					<a href="">
+					<a href="<c:url value='/teacherList.do?category=한식' />">
 						<div class="item wow bounceInUp" data-wow-duration="1s"
 							data-wow-delay="0.3s">
 							<div class="hidden-content">
@@ -191,12 +191,12 @@ z-index : 9999; /* 해당 요소 맨앞으로 가져오기  */
 					</a>
 				</div>
 				<div class="col-lg-3 col-sm-6">
-					<a href="">
+					<a href="<c:url value='/teacherList.do?category=양식' />">
 						<div class="item wow bounceInUp" data-wow-duration="1s"
 							data-wow-delay="0.5s">
 							<div class="hidden-content">
-								<h4>Performance Tests</h4>
-								<p>Lorem ipsum dolor sit ameti ctetur aoi adipiscing eto.</p>
+								<h4>양식 전문가</h4>
+								<p>언제나 먹어도 질리지 않는 양식의 세계! 느끼할꺼 같지만 그렇지 않은 양식의 매력을 알려드립니다!</p>
 							</div>
 							<div class="showed-content">
 								<img src="resources/assets/images/portfolio-image2.png" alt="">
@@ -205,12 +205,12 @@ z-index : 9999; /* 해당 요소 맨앞으로 가져오기  */
 					</a>
 				</div>
 				<div class="col-lg-3 col-sm-6">
-					<a href="">
+					<a href="<c:url value='/teacherList.do?category=중식' />">
 						<div class="item wow bounceInUp" data-wow-duration="1s"
 							data-wow-delay="0.6s">
 							<div class="hidden-content">
-								<h4>Data Analysis</h4>
-								<p>Lorem ipsum dolor sit ameti ctetur aoi adipiscing eto.</p>
+								<h4>중식 전문가</h4>
+								<p>커다란 중식도로 큼직하게 썰어낸 재료와 화끈한 불의 향현! 중식의 매력에 빠져보세요!</p>
 							</div>
 							<div class="showed-content">
 								<img src="resources/assets/images/portfolio-image3.png" alt="">
@@ -219,12 +219,12 @@ z-index : 9999; /* 해당 요소 맨앞으로 가져오기  */
 					</a>
 				</div>
 				<div class="col-lg-3 col-sm-6">
-					<a href="">
+					<a href="<c:url value='/teacherList.do?category=일식' />">
 						<div class="item wow bounceInUp" data-wow-duration="1s"
 							data-wow-delay="0.6s">
 							<div class="hidden-content">
-								<h4>Data Analysis</h4>
-								<p>Lorem ipsum dolor sit ameti ctetur aoi adipiscing eto.</p>
+								<h4>일식 전문가</h4>
+								<p>최고급 재료로 최고급 요리를 선사합니다! 일식의 세계로 초대합니다!</p>
 							</div>
 							<div class="showed-content">
 								<img src="resources/assets/images/portfolio-image4.png" alt="">
