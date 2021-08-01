@@ -15,6 +15,7 @@
 
 <body>
     <a href="tests.do">ocr test</a>
+    <a href="date.do">date test</a>
  
     <a href="mypage.do?member_id=asd123">mypage-학생</a>
     <a href="mypage.do?member_id=12">mypage-강사</a>
