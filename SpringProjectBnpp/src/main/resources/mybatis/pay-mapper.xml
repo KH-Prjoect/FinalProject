@@ -12,7 +12,7 @@
 		SELECT P.PAY_NUM, P.PAY_DATE, C.CLASS_PRICE, P.PAY_STEP, P.MEMBER_ID, C.CLASS_NUM, C.CLASS_TITLE, 
 		(SELECT MEMBER_CATEGORY FROM MEMBER WHERE MEMBER_ID = C.TEACHER_ID) AS CLASS_CATEGORY
 		FROM PAY P, CLASS C
-		WHERE P.MEMBER_ID = #{member_id}
+		WHERE P.MEMBER_ID = 'asd123' AND P.CLASS_NUM = C.CLASS_NUM
 	</select>
 	
 	<select id="selectOne" parameterType="int" resultType="PayDto">
@@ -23,7 +23,7 @@
 	
 	<insert id="insert" parameterType="PayDto">
 		INSERT INTO PAY
-		VALUES(PAYSEQ.NEXTVAL, SYSDATE, #{class_price}, '결제완료', #{member_id}, #{class_num}, #{class_title}, #{member_category})
+		VALUES(PAYSEQ.NEXTVAL, SYSDATE, #{class_price}, '결제완료', #{member_id}, #{class_num}, #{class_title}, #{class_category})
 	</insert>
 	
 	<update id="update" parameterType="PayDto">
