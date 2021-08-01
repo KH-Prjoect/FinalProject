@@ -22,7 +22,7 @@
 		var member_id = $("input[name=loginId]").val().trim();
 		var member_pw = $("input[name=loginPw]").val().trim();
 		
-		alert(member_id + ' / ' + member_pw);
+		//alert(member_id + ' / ' + member_pw);
 		
 		//자바스크립트 객체
 		var loginVal = {
@@ -101,9 +101,6 @@
 						<img src="resources/upload/img/kakao_login_medium_narrow.png" alt="kakaologin" >
 					</a>
 				</td>
-			</tr>
-			<tr>
-				<td>RECAPTCHA API</td>
 			</tr>
 		</table>
 		</div>
