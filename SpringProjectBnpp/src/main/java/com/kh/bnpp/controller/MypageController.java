@@ -351,20 +351,9 @@ public class MypageController {
 	
 	@RequestMapping("/tests.do")
 	public void ocrtest(HttpServletRequest request) {
-		String fullPathName = request.getSession().getServletContext()
-				.getRealPath("/resources/img/receipts/receipt4.jpg");
-		List<String> list = Clova_temp.OCR(fullPathName);
+		List<String> list = Clova_temp.OCR("/resources/img/receipts/receipt4.jpg");
 		System.out.println("receipt4");
 		List<BillDto> listres = Clova_temp.input_bill(list, "asd123");
-		for (BillDto dto : listres) {
-			System.out.println(dto.getBill_name() + "\t" + dto.getBill_price() + "\t"
-								+ dto.getBill_quantity() + "\t" + dto.getBill_total());
-		}
-	}
-	
-	@RequestMapping("date.do")
-	public String datetest() {
-		return "datetest";
 	}
 	
 }

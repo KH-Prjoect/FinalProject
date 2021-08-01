@@ -1,6 +1,9 @@
 package com.kh.bnpp.controller;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,20 +53,35 @@ public class FindIdPwController {
 	
 	@RequestMapping("/findPw.do")
 	@ResponseBody
-	public String findPw(@RequestBody MemberDto dto) {
+	public Map<String, Boolean> findPw(@RequestBody MemberDto dto) {
 		
 		//json형태의 http body내용을 java object로 변환!! 시켜주는 RequestBody 사용해보기
 		
 		logger.info("[FindIdPwController] : 비밀번호찾기 진입");
 		
 		System.out.println("[FindIdPwController] findId() 받아온 아이디 : " + dto.getMember_id());
-		System.out.println("[FindIdPwController] findId() 받아온 이름 : " + dto.getMember_name());
+		System.out.println("[FindIdPwController] findId() 받아온 이메일 : " + dto.getMember_email());
 		
-		String member_pw = biz.findPw(dto);
+		String isPw = biz.findPw(dto);
+		System.out.println("있는 아이디, 이메일인지 0이면 없고 1이면 있음 : " + isPw);
 		
-		System.out.println("[FindIdPwController] 최종적으로 받아온 pw : " + member_pw);
+		Map<String, Boolean> map = new HashMap<String, Boolean>();
+		boolean check = false;
+		int res = 0;
+		if(isPw.equals("1")) {
+			System.out.println("해당 pw 강제변경 준비완료!");
+			res = biz.updateEmailPw(dto);
+			if(res > 0) {
+				check = true;
+			}else {
+				System.out.println("pw변경 및 이메일 발송 실패!");
+			}
+		}
 		
-		return member_pw;
+		map.put("check", check);
+		//System.out.println("[FindIdPwController] 최종적으로 받아온 pw : " + member_pw);
+		
+		return map;
 	}
 	
 	

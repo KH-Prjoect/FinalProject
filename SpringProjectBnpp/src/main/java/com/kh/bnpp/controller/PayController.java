@@ -37,6 +37,7 @@ public class PayController {
 	@RequestMapping("/paysuccess.do")
 	public String paysuccess(Model model, String member_id, int class_num) {
 		ClassDto c_dto = c_biz.selectOne(class_num);
+
 		PayDto p_dto = new PayDto(c_dto.getClass_price(), member_id, c_dto.getClass_num(),
 									c_dto.getClass_title(), c_dto.getMember_category());
 		
@@ -48,5 +49,5 @@ public class PayController {
 		return "redirect:classdetailteacher.do?teacher_id="+c_dto.getTeacher_id();
 	}
 	
+	
 }
-
