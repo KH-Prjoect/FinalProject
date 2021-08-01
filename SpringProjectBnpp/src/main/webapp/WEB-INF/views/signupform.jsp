@@ -134,7 +134,7 @@
 			document.getElementById('postcode').scrollIntoView();
 			
 		}else{
-			alert("회원가입 버튼 클릭");
+			alert("회원가입 진행중입니다");
 		
 			$('input[name=member_address]').val($('#roadAddress').val()
 											  + ','
